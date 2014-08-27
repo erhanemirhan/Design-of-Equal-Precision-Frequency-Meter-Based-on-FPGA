@@ -1,0 +1,928 @@
+Simulator report for cpj
+Tue Jul 26 19:09:35 2011
+Version 6.0 Build 178 04/27/2006 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2006 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 428 nodes    ;
+; Simulation Coverage         ;      16.39 % ;
+; Total Number of Transitions ; 2570         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
++-----------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Functional ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off        ;               ;
+; Glitch Filtering                                                                           ; Off        ; Off           ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      16.39 % ;
+; Total nodes checked                                 ; 428          ;
+; Total output ports checked                          ; 427          ;
+; Total output ports with complete 1/0-value coverage ; 70           ;
+; Total output ports with no 1/0-value coverage       ; 345          ;
+; Total output ports with no 1-value coverage         ; 345          ;
+; Total output ports with no 0-value coverage         ; 357          ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++----------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                            ;
++----------------------------------+----------------------------------+------------------+
+; Node Name                        ; Output Port Name                 ; Output Port Type ;
++----------------------------------+----------------------------------+------------------+
+; |cpj|clkx                        ; |cpj|clkx                        ; out              ;
+; |cpj|clkbz                       ; |cpj|clkbz                       ; out              ;
+; |cpj|bzjs:comb_6|out2[5]         ; |cpj|bzjs:comb_6|out2[5]         ; out              ;
+; |cpj|bzjs:comb_6|out2[4]         ; |cpj|bzjs:comb_6|out2[4]         ; out              ;
+; |cpj|bzjs:comb_6|out2[3]         ; |cpj|bzjs:comb_6|out2[3]         ; out              ;
+; |cpj|bzjs:comb_6|out2[2]         ; |cpj|bzjs:comb_6|out2[2]         ; out              ;
+; |cpj|bzjs:comb_6|out2[1]         ; |cpj|bzjs:comb_6|out2[1]         ; out              ;
+; |cpj|bzjs:comb_6|out2[0]         ; |cpj|bzjs:comb_6|out2[0]         ; out              ;
+; |cpj|sjzm:comb_5|out1[2]         ; |cpj|sjzm:comb_5|out1[2]         ; out              ;
+; |cpj|sjzm:comb_5|out1[1]         ; |cpj|sjzm:comb_5|out1[1]         ; out              ;
+; |cpj|sjzm:comb_5|out1[0]         ; |cpj|sjzm:comb_5|out1[0]         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~24        ; |cpj|rmk:comb_4|clkjcq~24        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~25        ; |cpj|rmk:comb_4|clkjcq~25        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~26        ; |cpj|rmk:comb_4|clkjcq~26        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~27        ; |cpj|rmk:comb_4|clkjcq~27        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~28        ; |cpj|rmk:comb_4|clkjcq~28        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~29        ; |cpj|rmk:comb_4|clkjcq~29        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~30        ; |cpj|rmk:comb_4|clkjcq~30        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~31        ; |cpj|rmk:comb_4|clkjcq~31        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[5]        ; |cpj|rmk:comb_4|clkjcq[5]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[4]        ; |cpj|rmk:comb_4|clkjcq[4]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[3]        ; |cpj|rmk:comb_4|clkjcq[3]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[2]        ; |cpj|rmk:comb_4|clkjcq[2]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[1]        ; |cpj|rmk:comb_4|clkjcq[1]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[0]        ; |cpj|rmk:comb_4|clkjcq[0]        ; out              ;
+; |cpj|mux4to1:comb_7|Selector2~9  ; |cpj|mux4to1:comb_7|Selector2~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~14 ; |cpj|mux4to1:comb_7|Selector2~14 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~9  ; |cpj|mux4to1:comb_7|Selector3~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~14 ; |cpj|mux4to1:comb_7|Selector3~14 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~9  ; |cpj|mux4to1:comb_7|Selector4~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~14 ; |cpj|mux4to1:comb_7|Selector4~14 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~9  ; |cpj|mux4to1:comb_7|Selector5~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~14 ; |cpj|mux4to1:comb_7|Selector5~14 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~9  ; |cpj|mux4to1:comb_7|Selector6~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~14 ; |cpj|mux4to1:comb_7|Selector6~14 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~9  ; |cpj|mux4to1:comb_7|Selector7~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~14 ; |cpj|mux4to1:comb_7|Selector7~14 ; out0             ;
+; |cpj|bzjs:comb_6|Add0~160        ; |cpj|bzjs:comb_6|Add0~160        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~161        ; |cpj|bzjs:comb_6|Add0~161        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~162        ; |cpj|bzjs:comb_6|Add0~162        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~163        ; |cpj|bzjs:comb_6|Add0~163        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~164        ; |cpj|bzjs:comb_6|Add0~164        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~165        ; |cpj|bzjs:comb_6|Add0~165        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~166        ; |cpj|bzjs:comb_6|Add0~166        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~167        ; |cpj|bzjs:comb_6|Add0~167        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~168        ; |cpj|bzjs:comb_6|Add0~168        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~169        ; |cpj|bzjs:comb_6|Add0~169        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~170        ; |cpj|bzjs:comb_6|Add0~170        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~171        ; |cpj|bzjs:comb_6|Add0~171        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~172        ; |cpj|bzjs:comb_6|Add0~172        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~160        ; |cpj|sjzm:comb_5|Add0~160        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~161        ; |cpj|sjzm:comb_5|Add0~161        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~162        ; |cpj|sjzm:comb_5|Add0~162        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~163        ; |cpj|sjzm:comb_5|Add0~163        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~164        ; |cpj|sjzm:comb_5|Add0~164        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~165        ; |cpj|sjzm:comb_5|Add0~165        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~166        ; |cpj|sjzm:comb_5|Add0~166        ; out0             ;
+; |cpj|rmk:comb_4|Add0~160         ; |cpj|rmk:comb_4|Add0~160         ; out0             ;
+; |cpj|rmk:comb_4|Add0~161         ; |cpj|rmk:comb_4|Add0~161         ; out0             ;
+; |cpj|rmk:comb_4|Add0~162         ; |cpj|rmk:comb_4|Add0~162         ; out0             ;
+; |cpj|rmk:comb_4|Add0~163         ; |cpj|rmk:comb_4|Add0~163         ; out0             ;
+; |cpj|rmk:comb_4|Add0~164         ; |cpj|rmk:comb_4|Add0~164         ; out0             ;
+; |cpj|rmk:comb_4|Add0~165         ; |cpj|rmk:comb_4|Add0~165         ; out0             ;
+; |cpj|rmk:comb_4|Add0~166         ; |cpj|rmk:comb_4|Add0~166         ; out0             ;
+; |cpj|rmk:comb_4|Add0~167         ; |cpj|rmk:comb_4|Add0~167         ; out0             ;
+; |cpj|rmk:comb_4|Add0~168         ; |cpj|rmk:comb_4|Add0~168         ; out0             ;
+; |cpj|rmk:comb_4|Add0~169         ; |cpj|rmk:comb_4|Add0~169         ; out0             ;
+; |cpj|rmk:comb_4|Add0~170         ; |cpj|rmk:comb_4|Add0~170         ; out0             ;
+; |cpj|rmk:comb_4|Add0~171         ; |cpj|rmk:comb_4|Add0~171         ; out0             ;
+; |cpj|rmk:comb_4|Add0~172         ; |cpj|rmk:comb_4|Add0~172         ; out0             ;
++----------------------------------+----------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++----------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                               ;
++----------------------------------+----------------------------------+------------------+
+; Node Name                        ; Output Port Name                 ; Output Port Type ;
++----------------------------------+----------------------------------+------------------+
+; |cpj|sel[0]                      ; |cpj|sel[0]                      ; out              ;
+; |cpj|sel[1]                      ; |cpj|sel[1]                      ; out              ;
+; |cpj|sel[2]                      ; |cpj|sel[2]                      ; out              ;
+; |cpj|int1                        ; |cpj|int1                        ; pin_out          ;
+; |cpj|out8[0]                     ; |cpj|out8[0]                     ; pin_out          ;
+; |cpj|out8[1]                     ; |cpj|out8[1]                     ; pin_out          ;
+; |cpj|out8[2]                     ; |cpj|out8[2]                     ; pin_out          ;
+; |cpj|out8[3]                     ; |cpj|out8[3]                     ; pin_out          ;
+; |cpj|out8[4]                     ; |cpj|out8[4]                     ; pin_out          ;
+; |cpj|out8[5]                     ; |cpj|out8[5]                     ; pin_out          ;
+; |cpj|out8[6]                     ; |cpj|out8[6]                     ; pin_out          ;
+; |cpj|out8[7]                     ; |cpj|out8[7]                     ; pin_out          ;
+; |cpj|clr                         ; |cpj|clr                         ; out              ;
+; |cpj|y                           ; |cpj|y                           ; pin_out          ;
+; |cpj|mux4to1:comb_7|out8[6]      ; |cpj|mux4to1:comb_7|out8[6]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[5]      ; |cpj|mux4to1:comb_7|out8[5]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[4]      ; |cpj|mux4to1:comb_7|out8[4]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[3]      ; |cpj|mux4to1:comb_7|out8[3]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[2]      ; |cpj|mux4to1:comb_7|out8[2]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[1]      ; |cpj|mux4to1:comb_7|out8[1]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[0]      ; |cpj|mux4to1:comb_7|out8[0]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[7]      ; |cpj|mux4to1:comb_7|out8[7]      ; out              ;
+; |cpj|bzjs:comb_6|out2[30]        ; |cpj|bzjs:comb_6|out2[30]        ; out              ;
+; |cpj|bzjs:comb_6|out2[29]        ; |cpj|bzjs:comb_6|out2[29]        ; out              ;
+; |cpj|bzjs:comb_6|out2[28]        ; |cpj|bzjs:comb_6|out2[28]        ; out              ;
+; |cpj|bzjs:comb_6|out2[27]        ; |cpj|bzjs:comb_6|out2[27]        ; out              ;
+; |cpj|bzjs:comb_6|out2[26]        ; |cpj|bzjs:comb_6|out2[26]        ; out              ;
+; |cpj|bzjs:comb_6|out2[25]        ; |cpj|bzjs:comb_6|out2[25]        ; out              ;
+; |cpj|bzjs:comb_6|out2[24]        ; |cpj|bzjs:comb_6|out2[24]        ; out              ;
+; |cpj|bzjs:comb_6|out2[23]        ; |cpj|bzjs:comb_6|out2[23]        ; out              ;
+; |cpj|bzjs:comb_6|out2[22]        ; |cpj|bzjs:comb_6|out2[22]        ; out              ;
+; |cpj|bzjs:comb_6|out2[21]        ; |cpj|bzjs:comb_6|out2[21]        ; out              ;
+; |cpj|bzjs:comb_6|out2[20]        ; |cpj|bzjs:comb_6|out2[20]        ; out              ;
+; |cpj|bzjs:comb_6|out2[19]        ; |cpj|bzjs:comb_6|out2[19]        ; out              ;
+; |cpj|bzjs:comb_6|out2[18]        ; |cpj|bzjs:comb_6|out2[18]        ; out              ;
+; |cpj|bzjs:comb_6|out2[17]        ; |cpj|bzjs:comb_6|out2[17]        ; out              ;
+; |cpj|bzjs:comb_6|out2[16]        ; |cpj|bzjs:comb_6|out2[16]        ; out              ;
+; |cpj|bzjs:comb_6|out2[15]        ; |cpj|bzjs:comb_6|out2[15]        ; out              ;
+; |cpj|bzjs:comb_6|out2[14]        ; |cpj|bzjs:comb_6|out2[14]        ; out              ;
+; |cpj|bzjs:comb_6|out2[13]        ; |cpj|bzjs:comb_6|out2[13]        ; out              ;
+; |cpj|bzjs:comb_6|out2[12]        ; |cpj|bzjs:comb_6|out2[12]        ; out              ;
+; |cpj|bzjs:comb_6|out2[11]        ; |cpj|bzjs:comb_6|out2[11]        ; out              ;
+; |cpj|bzjs:comb_6|out2[10]        ; |cpj|bzjs:comb_6|out2[10]        ; out              ;
+; |cpj|bzjs:comb_6|out2[9]         ; |cpj|bzjs:comb_6|out2[9]         ; out              ;
+; |cpj|bzjs:comb_6|out2[8]         ; |cpj|bzjs:comb_6|out2[8]         ; out              ;
+; |cpj|bzjs:comb_6|out2[7]         ; |cpj|bzjs:comb_6|out2[7]         ; out              ;
+; |cpj|bzjs:comb_6|load            ; |cpj|bzjs:comb_6|load            ; out              ;
+; |cpj|bzjs:comb_6|out2[31]        ; |cpj|bzjs:comb_6|out2[31]        ; out              ;
+; |cpj|bzjs:comb_6|load~1          ; |cpj|bzjs:comb_6|load~1          ; out0             ;
+; |cpj|sjzm:comb_5|dcen~0          ; |cpj|sjzm:comb_5|dcen~0          ; out              ;
+; |cpj|sjzm:comb_5|out1[30]        ; |cpj|sjzm:comb_5|out1[30]        ; out              ;
+; |cpj|sjzm:comb_5|out1[29]        ; |cpj|sjzm:comb_5|out1[29]        ; out              ;
+; |cpj|sjzm:comb_5|out1[28]        ; |cpj|sjzm:comb_5|out1[28]        ; out              ;
+; |cpj|sjzm:comb_5|out1[27]        ; |cpj|sjzm:comb_5|out1[27]        ; out              ;
+; |cpj|sjzm:comb_5|out1[26]        ; |cpj|sjzm:comb_5|out1[26]        ; out              ;
+; |cpj|sjzm:comb_5|out1[25]        ; |cpj|sjzm:comb_5|out1[25]        ; out              ;
+; |cpj|sjzm:comb_5|out1[24]        ; |cpj|sjzm:comb_5|out1[24]        ; out              ;
+; |cpj|sjzm:comb_5|out1[23]        ; |cpj|sjzm:comb_5|out1[23]        ; out              ;
+; |cpj|sjzm:comb_5|out1[22]        ; |cpj|sjzm:comb_5|out1[22]        ; out              ;
+; |cpj|sjzm:comb_5|out1[21]        ; |cpj|sjzm:comb_5|out1[21]        ; out              ;
+; |cpj|sjzm:comb_5|out1[20]        ; |cpj|sjzm:comb_5|out1[20]        ; out              ;
+; |cpj|sjzm:comb_5|out1[19]        ; |cpj|sjzm:comb_5|out1[19]        ; out              ;
+; |cpj|sjzm:comb_5|out1[18]        ; |cpj|sjzm:comb_5|out1[18]        ; out              ;
+; |cpj|sjzm:comb_5|out1[17]        ; |cpj|sjzm:comb_5|out1[17]        ; out              ;
+; |cpj|sjzm:comb_5|out1[16]        ; |cpj|sjzm:comb_5|out1[16]        ; out              ;
+; |cpj|sjzm:comb_5|out1[15]        ; |cpj|sjzm:comb_5|out1[15]        ; out              ;
+; |cpj|sjzm:comb_5|out1[14]        ; |cpj|sjzm:comb_5|out1[14]        ; out              ;
+; |cpj|sjzm:comb_5|out1[13]        ; |cpj|sjzm:comb_5|out1[13]        ; out              ;
+; |cpj|sjzm:comb_5|out1[12]        ; |cpj|sjzm:comb_5|out1[12]        ; out              ;
+; |cpj|sjzm:comb_5|out1[11]        ; |cpj|sjzm:comb_5|out1[11]        ; out              ;
+; |cpj|sjzm:comb_5|out1[10]        ; |cpj|sjzm:comb_5|out1[10]        ; out              ;
+; |cpj|sjzm:comb_5|out1[9]         ; |cpj|sjzm:comb_5|out1[9]         ; out              ;
+; |cpj|sjzm:comb_5|out1[8]         ; |cpj|sjzm:comb_5|out1[8]         ; out              ;
+; |cpj|sjzm:comb_5|out1[7]         ; |cpj|sjzm:comb_5|out1[7]         ; out              ;
+; |cpj|sjzm:comb_5|out1[6]         ; |cpj|sjzm:comb_5|out1[6]         ; out              ;
+; |cpj|sjzm:comb_5|out1[5]         ; |cpj|sjzm:comb_5|out1[5]         ; out              ;
+; |cpj|sjzm:comb_5|out1[4]         ; |cpj|sjzm:comb_5|out1[4]         ; out              ;
+; |cpj|sjzm:comb_5|out1[31]        ; |cpj|sjzm:comb_5|out1[31]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~0         ; |cpj|rmk:comb_4|clkjcq~0         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~1         ; |cpj|rmk:comb_4|clkjcq~1         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~2         ; |cpj|rmk:comb_4|clkjcq~2         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~3         ; |cpj|rmk:comb_4|clkjcq~3         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~4         ; |cpj|rmk:comb_4|clkjcq~4         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~5         ; |cpj|rmk:comb_4|clkjcq~5         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~6         ; |cpj|rmk:comb_4|clkjcq~6         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~7         ; |cpj|rmk:comb_4|clkjcq~7         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~8         ; |cpj|rmk:comb_4|clkjcq~8         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~9         ; |cpj|rmk:comb_4|clkjcq~9         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~10        ; |cpj|rmk:comb_4|clkjcq~10        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~11        ; |cpj|rmk:comb_4|clkjcq~11        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~12        ; |cpj|rmk:comb_4|clkjcq~12        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~13        ; |cpj|rmk:comb_4|clkjcq~13        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~14        ; |cpj|rmk:comb_4|clkjcq~14        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~15        ; |cpj|rmk:comb_4|clkjcq~15        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~16        ; |cpj|rmk:comb_4|clkjcq~16        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~17        ; |cpj|rmk:comb_4|clkjcq~17        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~18        ; |cpj|rmk:comb_4|clkjcq~18        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~19        ; |cpj|rmk:comb_4|clkjcq~19        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~20        ; |cpj|rmk:comb_4|clkjcq~20        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~21        ; |cpj|rmk:comb_4|clkjcq~21        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~22        ; |cpj|rmk:comb_4|clkjcq~22        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~23        ; |cpj|rmk:comb_4|clkjcq~23        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[30]       ; |cpj|rmk:comb_4|clkjcq[30]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[29]       ; |cpj|rmk:comb_4|clkjcq[29]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[28]       ; |cpj|rmk:comb_4|clkjcq[28]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[27]       ; |cpj|rmk:comb_4|clkjcq[27]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[26]       ; |cpj|rmk:comb_4|clkjcq[26]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[25]       ; |cpj|rmk:comb_4|clkjcq[25]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[24]       ; |cpj|rmk:comb_4|clkjcq[24]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[23]       ; |cpj|rmk:comb_4|clkjcq[23]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[22]       ; |cpj|rmk:comb_4|clkjcq[22]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[21]       ; |cpj|rmk:comb_4|clkjcq[21]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[20]       ; |cpj|rmk:comb_4|clkjcq[20]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[19]       ; |cpj|rmk:comb_4|clkjcq[19]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[18]       ; |cpj|rmk:comb_4|clkjcq[18]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[17]       ; |cpj|rmk:comb_4|clkjcq[17]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[16]       ; |cpj|rmk:comb_4|clkjcq[16]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[15]       ; |cpj|rmk:comb_4|clkjcq[15]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[14]       ; |cpj|rmk:comb_4|clkjcq[14]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[13]       ; |cpj|rmk:comb_4|clkjcq[13]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[12]       ; |cpj|rmk:comb_4|clkjcq[12]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[11]       ; |cpj|rmk:comb_4|clkjcq[11]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[10]       ; |cpj|rmk:comb_4|clkjcq[10]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[9]        ; |cpj|rmk:comb_4|clkjcq[9]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[8]        ; |cpj|rmk:comb_4|clkjcq[8]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[7]        ; |cpj|rmk:comb_4|clkjcq[7]        ; out              ;
+; |cpj|rmk:comb_4|y                ; |cpj|rmk:comb_4|y                ; out              ;
+; |cpj|rmk:comb_4|clkjcq[31]       ; |cpj|rmk:comb_4|clkjcq[31]       ; out              ;
+; |cpj|mux4to1:comb_7|Selector0~9  ; |cpj|mux4to1:comb_7|Selector0~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~10 ; |cpj|mux4to1:comb_7|Selector0~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~11 ; |cpj|mux4to1:comb_7|Selector0~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~12 ; |cpj|mux4to1:comb_7|Selector0~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~13 ; |cpj|mux4to1:comb_7|Selector0~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~14 ; |cpj|mux4to1:comb_7|Selector0~14 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~15 ; |cpj|mux4to1:comb_7|Selector0~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~16 ; |cpj|mux4to1:comb_7|Selector0~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~17 ; |cpj|mux4to1:comb_7|Selector0~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~10 ; |cpj|mux4to1:comb_7|Selector1~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~11 ; |cpj|mux4to1:comb_7|Selector1~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~12 ; |cpj|mux4to1:comb_7|Selector1~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~13 ; |cpj|mux4to1:comb_7|Selector1~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~15 ; |cpj|mux4to1:comb_7|Selector1~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~16 ; |cpj|mux4to1:comb_7|Selector1~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~17 ; |cpj|mux4to1:comb_7|Selector1~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~10 ; |cpj|mux4to1:comb_7|Selector2~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~11 ; |cpj|mux4to1:comb_7|Selector2~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~12 ; |cpj|mux4to1:comb_7|Selector2~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~13 ; |cpj|mux4to1:comb_7|Selector2~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~15 ; |cpj|mux4to1:comb_7|Selector2~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~16 ; |cpj|mux4to1:comb_7|Selector2~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~17 ; |cpj|mux4to1:comb_7|Selector2~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~10 ; |cpj|mux4to1:comb_7|Selector3~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~11 ; |cpj|mux4to1:comb_7|Selector3~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~12 ; |cpj|mux4to1:comb_7|Selector3~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~13 ; |cpj|mux4to1:comb_7|Selector3~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~15 ; |cpj|mux4to1:comb_7|Selector3~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~16 ; |cpj|mux4to1:comb_7|Selector3~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~17 ; |cpj|mux4to1:comb_7|Selector3~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~10 ; |cpj|mux4to1:comb_7|Selector4~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~11 ; |cpj|mux4to1:comb_7|Selector4~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~12 ; |cpj|mux4to1:comb_7|Selector4~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~13 ; |cpj|mux4to1:comb_7|Selector4~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~15 ; |cpj|mux4to1:comb_7|Selector4~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~16 ; |cpj|mux4to1:comb_7|Selector4~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~17 ; |cpj|mux4to1:comb_7|Selector4~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~10 ; |cpj|mux4to1:comb_7|Selector5~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~11 ; |cpj|mux4to1:comb_7|Selector5~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~12 ; |cpj|mux4to1:comb_7|Selector5~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~13 ; |cpj|mux4to1:comb_7|Selector5~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~15 ; |cpj|mux4to1:comb_7|Selector5~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~16 ; |cpj|mux4to1:comb_7|Selector5~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~17 ; |cpj|mux4to1:comb_7|Selector5~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~10 ; |cpj|mux4to1:comb_7|Selector6~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~11 ; |cpj|mux4to1:comb_7|Selector6~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~12 ; |cpj|mux4to1:comb_7|Selector6~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~13 ; |cpj|mux4to1:comb_7|Selector6~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~15 ; |cpj|mux4to1:comb_7|Selector6~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~16 ; |cpj|mux4to1:comb_7|Selector6~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~17 ; |cpj|mux4to1:comb_7|Selector6~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~10 ; |cpj|mux4to1:comb_7|Selector7~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~11 ; |cpj|mux4to1:comb_7|Selector7~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~12 ; |cpj|mux4to1:comb_7|Selector7~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~13 ; |cpj|mux4to1:comb_7|Selector7~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~15 ; |cpj|mux4to1:comb_7|Selector7~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~16 ; |cpj|mux4to1:comb_7|Selector7~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~17 ; |cpj|mux4to1:comb_7|Selector7~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~8   ; |cpj|mux4to1:comb_7|Decoder0~8   ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~9   ; |cpj|mux4to1:comb_7|Decoder0~9   ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~10  ; |cpj|mux4to1:comb_7|Decoder0~10  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~11  ; |cpj|mux4to1:comb_7|Decoder0~11  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~12  ; |cpj|mux4to1:comb_7|Decoder0~12  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~13  ; |cpj|mux4to1:comb_7|Decoder0~13  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~14  ; |cpj|mux4to1:comb_7|Decoder0~14  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~15  ; |cpj|mux4to1:comb_7|Decoder0~15  ; out0             ;
+; |cpj|bzjs:comb_6|Add0~173        ; |cpj|bzjs:comb_6|Add0~173        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~174        ; |cpj|bzjs:comb_6|Add0~174        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~175        ; |cpj|bzjs:comb_6|Add0~175        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~176        ; |cpj|bzjs:comb_6|Add0~176        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~177        ; |cpj|bzjs:comb_6|Add0~177        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~178        ; |cpj|bzjs:comb_6|Add0~178        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~179        ; |cpj|bzjs:comb_6|Add0~179        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~180        ; |cpj|bzjs:comb_6|Add0~180        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~181        ; |cpj|bzjs:comb_6|Add0~181        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~182        ; |cpj|bzjs:comb_6|Add0~182        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~183        ; |cpj|bzjs:comb_6|Add0~183        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~184        ; |cpj|bzjs:comb_6|Add0~184        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~185        ; |cpj|bzjs:comb_6|Add0~185        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~186        ; |cpj|bzjs:comb_6|Add0~186        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~187        ; |cpj|bzjs:comb_6|Add0~187        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~188        ; |cpj|bzjs:comb_6|Add0~188        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~189        ; |cpj|bzjs:comb_6|Add0~189        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~190        ; |cpj|bzjs:comb_6|Add0~190        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~191        ; |cpj|bzjs:comb_6|Add0~191        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~192        ; |cpj|bzjs:comb_6|Add0~192        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~193        ; |cpj|bzjs:comb_6|Add0~193        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~194        ; |cpj|bzjs:comb_6|Add0~194        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~195        ; |cpj|bzjs:comb_6|Add0~195        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~196        ; |cpj|bzjs:comb_6|Add0~196        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~197        ; |cpj|bzjs:comb_6|Add0~197        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~198        ; |cpj|bzjs:comb_6|Add0~198        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~199        ; |cpj|bzjs:comb_6|Add0~199        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~200        ; |cpj|bzjs:comb_6|Add0~200        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~201        ; |cpj|bzjs:comb_6|Add0~201        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~202        ; |cpj|bzjs:comb_6|Add0~202        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~203        ; |cpj|bzjs:comb_6|Add0~203        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~204        ; |cpj|bzjs:comb_6|Add0~204        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~205        ; |cpj|bzjs:comb_6|Add0~205        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~206        ; |cpj|bzjs:comb_6|Add0~206        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~207        ; |cpj|bzjs:comb_6|Add0~207        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~208        ; |cpj|bzjs:comb_6|Add0~208        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~209        ; |cpj|bzjs:comb_6|Add0~209        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~210        ; |cpj|bzjs:comb_6|Add0~210        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~211        ; |cpj|bzjs:comb_6|Add0~211        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~212        ; |cpj|bzjs:comb_6|Add0~212        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~213        ; |cpj|bzjs:comb_6|Add0~213        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~214        ; |cpj|bzjs:comb_6|Add0~214        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~215        ; |cpj|bzjs:comb_6|Add0~215        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~216        ; |cpj|bzjs:comb_6|Add0~216        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~217        ; |cpj|bzjs:comb_6|Add0~217        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~218        ; |cpj|bzjs:comb_6|Add0~218        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~219        ; |cpj|bzjs:comb_6|Add0~219        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~220        ; |cpj|bzjs:comb_6|Add0~220        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~167        ; |cpj|sjzm:comb_5|Add0~167        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~168        ; |cpj|sjzm:comb_5|Add0~168        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~169        ; |cpj|sjzm:comb_5|Add0~169        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~170        ; |cpj|sjzm:comb_5|Add0~170        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~171        ; |cpj|sjzm:comb_5|Add0~171        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~172        ; |cpj|sjzm:comb_5|Add0~172        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~173        ; |cpj|sjzm:comb_5|Add0~173        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~174        ; |cpj|sjzm:comb_5|Add0~174        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~175        ; |cpj|sjzm:comb_5|Add0~175        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~176        ; |cpj|sjzm:comb_5|Add0~176        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~177        ; |cpj|sjzm:comb_5|Add0~177        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~178        ; |cpj|sjzm:comb_5|Add0~178        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~179        ; |cpj|sjzm:comb_5|Add0~179        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~180        ; |cpj|sjzm:comb_5|Add0~180        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~181        ; |cpj|sjzm:comb_5|Add0~181        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~182        ; |cpj|sjzm:comb_5|Add0~182        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~183        ; |cpj|sjzm:comb_5|Add0~183        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~184        ; |cpj|sjzm:comb_5|Add0~184        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~185        ; |cpj|sjzm:comb_5|Add0~185        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~186        ; |cpj|sjzm:comb_5|Add0~186        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~187        ; |cpj|sjzm:comb_5|Add0~187        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~188        ; |cpj|sjzm:comb_5|Add0~188        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~189        ; |cpj|sjzm:comb_5|Add0~189        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~190        ; |cpj|sjzm:comb_5|Add0~190        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~191        ; |cpj|sjzm:comb_5|Add0~191        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~192        ; |cpj|sjzm:comb_5|Add0~192        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~193        ; |cpj|sjzm:comb_5|Add0~193        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~194        ; |cpj|sjzm:comb_5|Add0~194        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~195        ; |cpj|sjzm:comb_5|Add0~195        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~196        ; |cpj|sjzm:comb_5|Add0~196        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~197        ; |cpj|sjzm:comb_5|Add0~197        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~198        ; |cpj|sjzm:comb_5|Add0~198        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~199        ; |cpj|sjzm:comb_5|Add0~199        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~200        ; |cpj|sjzm:comb_5|Add0~200        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~201        ; |cpj|sjzm:comb_5|Add0~201        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~202        ; |cpj|sjzm:comb_5|Add0~202        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~203        ; |cpj|sjzm:comb_5|Add0~203        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~204        ; |cpj|sjzm:comb_5|Add0~204        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~205        ; |cpj|sjzm:comb_5|Add0~205        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~206        ; |cpj|sjzm:comb_5|Add0~206        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~207        ; |cpj|sjzm:comb_5|Add0~207        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~208        ; |cpj|sjzm:comb_5|Add0~208        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~209        ; |cpj|sjzm:comb_5|Add0~209        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~210        ; |cpj|sjzm:comb_5|Add0~210        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~211        ; |cpj|sjzm:comb_5|Add0~211        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~212        ; |cpj|sjzm:comb_5|Add0~212        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~213        ; |cpj|sjzm:comb_5|Add0~213        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~214        ; |cpj|sjzm:comb_5|Add0~214        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~215        ; |cpj|sjzm:comb_5|Add0~215        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~216        ; |cpj|sjzm:comb_5|Add0~216        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~217        ; |cpj|sjzm:comb_5|Add0~217        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~218        ; |cpj|sjzm:comb_5|Add0~218        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~219        ; |cpj|sjzm:comb_5|Add0~219        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~220        ; |cpj|sjzm:comb_5|Add0~220        ; out0             ;
+; |cpj|rmk:comb_4|Add0~173         ; |cpj|rmk:comb_4|Add0~173         ; out0             ;
+; |cpj|rmk:comb_4|Add0~174         ; |cpj|rmk:comb_4|Add0~174         ; out0             ;
+; |cpj|rmk:comb_4|Add0~175         ; |cpj|rmk:comb_4|Add0~175         ; out0             ;
+; |cpj|rmk:comb_4|Add0~176         ; |cpj|rmk:comb_4|Add0~176         ; out0             ;
+; |cpj|rmk:comb_4|Add0~177         ; |cpj|rmk:comb_4|Add0~177         ; out0             ;
+; |cpj|rmk:comb_4|Add0~178         ; |cpj|rmk:comb_4|Add0~178         ; out0             ;
+; |cpj|rmk:comb_4|Add0~179         ; |cpj|rmk:comb_4|Add0~179         ; out0             ;
+; |cpj|rmk:comb_4|Add0~180         ; |cpj|rmk:comb_4|Add0~180         ; out0             ;
+; |cpj|rmk:comb_4|Add0~181         ; |cpj|rmk:comb_4|Add0~181         ; out0             ;
+; |cpj|rmk:comb_4|Add0~182         ; |cpj|rmk:comb_4|Add0~182         ; out0             ;
+; |cpj|rmk:comb_4|Add0~183         ; |cpj|rmk:comb_4|Add0~183         ; out0             ;
+; |cpj|rmk:comb_4|Add0~184         ; |cpj|rmk:comb_4|Add0~184         ; out0             ;
+; |cpj|rmk:comb_4|Add0~185         ; |cpj|rmk:comb_4|Add0~185         ; out0             ;
+; |cpj|rmk:comb_4|Add0~186         ; |cpj|rmk:comb_4|Add0~186         ; out0             ;
+; |cpj|rmk:comb_4|Add0~187         ; |cpj|rmk:comb_4|Add0~187         ; out0             ;
+; |cpj|rmk:comb_4|Add0~188         ; |cpj|rmk:comb_4|Add0~188         ; out0             ;
+; |cpj|rmk:comb_4|Add0~189         ; |cpj|rmk:comb_4|Add0~189         ; out0             ;
+; |cpj|rmk:comb_4|Add0~190         ; |cpj|rmk:comb_4|Add0~190         ; out0             ;
+; |cpj|rmk:comb_4|Add0~191         ; |cpj|rmk:comb_4|Add0~191         ; out0             ;
+; |cpj|rmk:comb_4|Add0~192         ; |cpj|rmk:comb_4|Add0~192         ; out0             ;
+; |cpj|rmk:comb_4|Add0~193         ; |cpj|rmk:comb_4|Add0~193         ; out0             ;
+; |cpj|rmk:comb_4|Add0~194         ; |cpj|rmk:comb_4|Add0~194         ; out0             ;
+; |cpj|rmk:comb_4|Add0~195         ; |cpj|rmk:comb_4|Add0~195         ; out0             ;
+; |cpj|rmk:comb_4|Add0~196         ; |cpj|rmk:comb_4|Add0~196         ; out0             ;
+; |cpj|rmk:comb_4|Add0~197         ; |cpj|rmk:comb_4|Add0~197         ; out0             ;
+; |cpj|rmk:comb_4|Add0~198         ; |cpj|rmk:comb_4|Add0~198         ; out0             ;
+; |cpj|rmk:comb_4|Add0~199         ; |cpj|rmk:comb_4|Add0~199         ; out0             ;
+; |cpj|rmk:comb_4|Add0~200         ; |cpj|rmk:comb_4|Add0~200         ; out0             ;
+; |cpj|rmk:comb_4|Add0~201         ; |cpj|rmk:comb_4|Add0~201         ; out0             ;
+; |cpj|rmk:comb_4|Add0~202         ; |cpj|rmk:comb_4|Add0~202         ; out0             ;
+; |cpj|rmk:comb_4|Add0~203         ; |cpj|rmk:comb_4|Add0~203         ; out0             ;
+; |cpj|rmk:comb_4|Add0~204         ; |cpj|rmk:comb_4|Add0~204         ; out0             ;
+; |cpj|rmk:comb_4|Add0~205         ; |cpj|rmk:comb_4|Add0~205         ; out0             ;
+; |cpj|rmk:comb_4|Add0~206         ; |cpj|rmk:comb_4|Add0~206         ; out0             ;
+; |cpj|rmk:comb_4|Add0~207         ; |cpj|rmk:comb_4|Add0~207         ; out0             ;
+; |cpj|rmk:comb_4|Add0~208         ; |cpj|rmk:comb_4|Add0~208         ; out0             ;
+; |cpj|rmk:comb_4|Add0~209         ; |cpj|rmk:comb_4|Add0~209         ; out0             ;
+; |cpj|rmk:comb_4|Add0~210         ; |cpj|rmk:comb_4|Add0~210         ; out0             ;
+; |cpj|rmk:comb_4|Add0~211         ; |cpj|rmk:comb_4|Add0~211         ; out0             ;
+; |cpj|rmk:comb_4|Add0~212         ; |cpj|rmk:comb_4|Add0~212         ; out0             ;
+; |cpj|rmk:comb_4|Add0~213         ; |cpj|rmk:comb_4|Add0~213         ; out0             ;
+; |cpj|rmk:comb_4|Add0~214         ; |cpj|rmk:comb_4|Add0~214         ; out0             ;
+; |cpj|rmk:comb_4|Add0~215         ; |cpj|rmk:comb_4|Add0~215         ; out0             ;
+; |cpj|rmk:comb_4|Add0~216         ; |cpj|rmk:comb_4|Add0~216         ; out0             ;
+; |cpj|rmk:comb_4|Add0~217         ; |cpj|rmk:comb_4|Add0~217         ; out0             ;
+; |cpj|rmk:comb_4|Add0~218         ; |cpj|rmk:comb_4|Add0~218         ; out0             ;
+; |cpj|rmk:comb_4|Add0~219         ; |cpj|rmk:comb_4|Add0~219         ; out0             ;
+; |cpj|rmk:comb_4|Add0~220         ; |cpj|rmk:comb_4|Add0~220         ; out0             ;
+; |cpj|rmk:comb_4|Equal0~33        ; |cpj|rmk:comb_4|Equal0~33        ; out0             ;
++----------------------------------+----------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++----------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                               ;
++----------------------------------+----------------------------------+------------------+
+; Node Name                        ; Output Port Name                 ; Output Port Type ;
++----------------------------------+----------------------------------+------------------+
+; |cpj|sel[0]                      ; |cpj|sel[0]                      ; out              ;
+; |cpj|sel[1]                      ; |cpj|sel[1]                      ; out              ;
+; |cpj|sel[2]                      ; |cpj|sel[2]                      ; out              ;
+; |cpj|int1                        ; |cpj|int1                        ; pin_out          ;
+; |cpj|out8[0]                     ; |cpj|out8[0]                     ; pin_out          ;
+; |cpj|out8[1]                     ; |cpj|out8[1]                     ; pin_out          ;
+; |cpj|out8[2]                     ; |cpj|out8[2]                     ; pin_out          ;
+; |cpj|out8[3]                     ; |cpj|out8[3]                     ; pin_out          ;
+; |cpj|out8[4]                     ; |cpj|out8[4]                     ; pin_out          ;
+; |cpj|out8[5]                     ; |cpj|out8[5]                     ; pin_out          ;
+; |cpj|out8[6]                     ; |cpj|out8[6]                     ; pin_out          ;
+; |cpj|out8[7]                     ; |cpj|out8[7]                     ; pin_out          ;
+; |cpj|clr                         ; |cpj|clr                         ; out              ;
+; |cpj|y                           ; |cpj|y                           ; pin_out          ;
+; |cpj|y2                          ; |cpj|y2                          ; pin_out          ;
+; |cpj|mux4to1:comb_7|out8[6]      ; |cpj|mux4to1:comb_7|out8[6]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[5]      ; |cpj|mux4to1:comb_7|out8[5]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[4]      ; |cpj|mux4to1:comb_7|out8[4]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[3]      ; |cpj|mux4to1:comb_7|out8[3]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[2]      ; |cpj|mux4to1:comb_7|out8[2]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[1]      ; |cpj|mux4to1:comb_7|out8[1]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[0]      ; |cpj|mux4to1:comb_7|out8[0]      ; out              ;
+; |cpj|mux4to1:comb_7|out8[7]      ; |cpj|mux4to1:comb_7|out8[7]      ; out              ;
+; |cpj|bzjs:comb_6|WideOr0         ; |cpj|bzjs:comb_6|WideOr0         ; out0             ;
+; |cpj|bzjs:comb_6|out2[30]        ; |cpj|bzjs:comb_6|out2[30]        ; out              ;
+; |cpj|bzjs:comb_6|out2[29]        ; |cpj|bzjs:comb_6|out2[29]        ; out              ;
+; |cpj|bzjs:comb_6|out2[28]        ; |cpj|bzjs:comb_6|out2[28]        ; out              ;
+; |cpj|bzjs:comb_6|out2[27]        ; |cpj|bzjs:comb_6|out2[27]        ; out              ;
+; |cpj|bzjs:comb_6|out2[26]        ; |cpj|bzjs:comb_6|out2[26]        ; out              ;
+; |cpj|bzjs:comb_6|out2[25]        ; |cpj|bzjs:comb_6|out2[25]        ; out              ;
+; |cpj|bzjs:comb_6|out2[24]        ; |cpj|bzjs:comb_6|out2[24]        ; out              ;
+; |cpj|bzjs:comb_6|out2[23]        ; |cpj|bzjs:comb_6|out2[23]        ; out              ;
+; |cpj|bzjs:comb_6|out2[22]        ; |cpj|bzjs:comb_6|out2[22]        ; out              ;
+; |cpj|bzjs:comb_6|out2[21]        ; |cpj|bzjs:comb_6|out2[21]        ; out              ;
+; |cpj|bzjs:comb_6|out2[20]        ; |cpj|bzjs:comb_6|out2[20]        ; out              ;
+; |cpj|bzjs:comb_6|out2[19]        ; |cpj|bzjs:comb_6|out2[19]        ; out              ;
+; |cpj|bzjs:comb_6|out2[18]        ; |cpj|bzjs:comb_6|out2[18]        ; out              ;
+; |cpj|bzjs:comb_6|out2[17]        ; |cpj|bzjs:comb_6|out2[17]        ; out              ;
+; |cpj|bzjs:comb_6|out2[16]        ; |cpj|bzjs:comb_6|out2[16]        ; out              ;
+; |cpj|bzjs:comb_6|out2[15]        ; |cpj|bzjs:comb_6|out2[15]        ; out              ;
+; |cpj|bzjs:comb_6|out2[14]        ; |cpj|bzjs:comb_6|out2[14]        ; out              ;
+; |cpj|bzjs:comb_6|out2[13]        ; |cpj|bzjs:comb_6|out2[13]        ; out              ;
+; |cpj|bzjs:comb_6|out2[12]        ; |cpj|bzjs:comb_6|out2[12]        ; out              ;
+; |cpj|bzjs:comb_6|out2[11]        ; |cpj|bzjs:comb_6|out2[11]        ; out              ;
+; |cpj|bzjs:comb_6|out2[10]        ; |cpj|bzjs:comb_6|out2[10]        ; out              ;
+; |cpj|bzjs:comb_6|out2[9]         ; |cpj|bzjs:comb_6|out2[9]         ; out              ;
+; |cpj|bzjs:comb_6|out2[8]         ; |cpj|bzjs:comb_6|out2[8]         ; out              ;
+; |cpj|bzjs:comb_6|out2[7]         ; |cpj|bzjs:comb_6|out2[7]         ; out              ;
+; |cpj|bzjs:comb_6|out2[6]         ; |cpj|bzjs:comb_6|out2[6]         ; out              ;
+; |cpj|bzjs:comb_6|load            ; |cpj|bzjs:comb_6|load            ; out              ;
+; |cpj|bzjs:comb_6|out2[31]        ; |cpj|bzjs:comb_6|out2[31]        ; out              ;
+; |cpj|bzjs:comb_6|load~1          ; |cpj|bzjs:comb_6|load~1          ; out0             ;
+; |cpj|sjzm:comb_5|WideOr0         ; |cpj|sjzm:comb_5|WideOr0         ; out0             ;
+; |cpj|sjzm:comb_5|dcen~0          ; |cpj|sjzm:comb_5|dcen~0          ; out              ;
+; |cpj|sjzm:comb_5|dcen~1          ; |cpj|sjzm:comb_5|dcen~1          ; out              ;
+; |cpj|sjzm:comb_5|out1[30]        ; |cpj|sjzm:comb_5|out1[30]        ; out              ;
+; |cpj|sjzm:comb_5|out1[29]        ; |cpj|sjzm:comb_5|out1[29]        ; out              ;
+; |cpj|sjzm:comb_5|out1[28]        ; |cpj|sjzm:comb_5|out1[28]        ; out              ;
+; |cpj|sjzm:comb_5|out1[27]        ; |cpj|sjzm:comb_5|out1[27]        ; out              ;
+; |cpj|sjzm:comb_5|out1[26]        ; |cpj|sjzm:comb_5|out1[26]        ; out              ;
+; |cpj|sjzm:comb_5|out1[25]        ; |cpj|sjzm:comb_5|out1[25]        ; out              ;
+; |cpj|sjzm:comb_5|out1[24]        ; |cpj|sjzm:comb_5|out1[24]        ; out              ;
+; |cpj|sjzm:comb_5|out1[23]        ; |cpj|sjzm:comb_5|out1[23]        ; out              ;
+; |cpj|sjzm:comb_5|out1[22]        ; |cpj|sjzm:comb_5|out1[22]        ; out              ;
+; |cpj|sjzm:comb_5|out1[21]        ; |cpj|sjzm:comb_5|out1[21]        ; out              ;
+; |cpj|sjzm:comb_5|out1[20]        ; |cpj|sjzm:comb_5|out1[20]        ; out              ;
+; |cpj|sjzm:comb_5|out1[19]        ; |cpj|sjzm:comb_5|out1[19]        ; out              ;
+; |cpj|sjzm:comb_5|out1[18]        ; |cpj|sjzm:comb_5|out1[18]        ; out              ;
+; |cpj|sjzm:comb_5|out1[17]        ; |cpj|sjzm:comb_5|out1[17]        ; out              ;
+; |cpj|sjzm:comb_5|out1[16]        ; |cpj|sjzm:comb_5|out1[16]        ; out              ;
+; |cpj|sjzm:comb_5|out1[15]        ; |cpj|sjzm:comb_5|out1[15]        ; out              ;
+; |cpj|sjzm:comb_5|out1[14]        ; |cpj|sjzm:comb_5|out1[14]        ; out              ;
+; |cpj|sjzm:comb_5|out1[13]        ; |cpj|sjzm:comb_5|out1[13]        ; out              ;
+; |cpj|sjzm:comb_5|out1[12]        ; |cpj|sjzm:comb_5|out1[12]        ; out              ;
+; |cpj|sjzm:comb_5|out1[11]        ; |cpj|sjzm:comb_5|out1[11]        ; out              ;
+; |cpj|sjzm:comb_5|out1[10]        ; |cpj|sjzm:comb_5|out1[10]        ; out              ;
+; |cpj|sjzm:comb_5|out1[9]         ; |cpj|sjzm:comb_5|out1[9]         ; out              ;
+; |cpj|sjzm:comb_5|out1[8]         ; |cpj|sjzm:comb_5|out1[8]         ; out              ;
+; |cpj|sjzm:comb_5|out1[7]         ; |cpj|sjzm:comb_5|out1[7]         ; out              ;
+; |cpj|sjzm:comb_5|out1[6]         ; |cpj|sjzm:comb_5|out1[6]         ; out              ;
+; |cpj|sjzm:comb_5|out1[5]         ; |cpj|sjzm:comb_5|out1[5]         ; out              ;
+; |cpj|sjzm:comb_5|out1[4]         ; |cpj|sjzm:comb_5|out1[4]         ; out              ;
+; |cpj|sjzm:comb_5|out1[3]         ; |cpj|sjzm:comb_5|out1[3]         ; out              ;
+; |cpj|sjzm:comb_5|dcen            ; |cpj|sjzm:comb_5|dcen            ; out              ;
+; |cpj|sjzm:comb_5|y2              ; |cpj|sjzm:comb_5|y2              ; out              ;
+; |cpj|sjzm:comb_5|out1[31]        ; |cpj|sjzm:comb_5|out1[31]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~0         ; |cpj|rmk:comb_4|clkjcq~0         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~1         ; |cpj|rmk:comb_4|clkjcq~1         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~2         ; |cpj|rmk:comb_4|clkjcq~2         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~3         ; |cpj|rmk:comb_4|clkjcq~3         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~4         ; |cpj|rmk:comb_4|clkjcq~4         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~5         ; |cpj|rmk:comb_4|clkjcq~5         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~6         ; |cpj|rmk:comb_4|clkjcq~6         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~7         ; |cpj|rmk:comb_4|clkjcq~7         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~8         ; |cpj|rmk:comb_4|clkjcq~8         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~9         ; |cpj|rmk:comb_4|clkjcq~9         ; out              ;
+; |cpj|rmk:comb_4|clkjcq~10        ; |cpj|rmk:comb_4|clkjcq~10        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~11        ; |cpj|rmk:comb_4|clkjcq~11        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~12        ; |cpj|rmk:comb_4|clkjcq~12        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~13        ; |cpj|rmk:comb_4|clkjcq~13        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~14        ; |cpj|rmk:comb_4|clkjcq~14        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~15        ; |cpj|rmk:comb_4|clkjcq~15        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~16        ; |cpj|rmk:comb_4|clkjcq~16        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~17        ; |cpj|rmk:comb_4|clkjcq~17        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~18        ; |cpj|rmk:comb_4|clkjcq~18        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~19        ; |cpj|rmk:comb_4|clkjcq~19        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~20        ; |cpj|rmk:comb_4|clkjcq~20        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~21        ; |cpj|rmk:comb_4|clkjcq~21        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~22        ; |cpj|rmk:comb_4|clkjcq~22        ; out              ;
+; |cpj|rmk:comb_4|clkjcq~23        ; |cpj|rmk:comb_4|clkjcq~23        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[30]       ; |cpj|rmk:comb_4|clkjcq[30]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[29]       ; |cpj|rmk:comb_4|clkjcq[29]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[28]       ; |cpj|rmk:comb_4|clkjcq[28]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[27]       ; |cpj|rmk:comb_4|clkjcq[27]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[26]       ; |cpj|rmk:comb_4|clkjcq[26]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[25]       ; |cpj|rmk:comb_4|clkjcq[25]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[24]       ; |cpj|rmk:comb_4|clkjcq[24]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[23]       ; |cpj|rmk:comb_4|clkjcq[23]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[22]       ; |cpj|rmk:comb_4|clkjcq[22]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[21]       ; |cpj|rmk:comb_4|clkjcq[21]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[20]       ; |cpj|rmk:comb_4|clkjcq[20]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[19]       ; |cpj|rmk:comb_4|clkjcq[19]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[18]       ; |cpj|rmk:comb_4|clkjcq[18]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[17]       ; |cpj|rmk:comb_4|clkjcq[17]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[16]       ; |cpj|rmk:comb_4|clkjcq[16]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[15]       ; |cpj|rmk:comb_4|clkjcq[15]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[14]       ; |cpj|rmk:comb_4|clkjcq[14]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[13]       ; |cpj|rmk:comb_4|clkjcq[13]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[12]       ; |cpj|rmk:comb_4|clkjcq[12]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[11]       ; |cpj|rmk:comb_4|clkjcq[11]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[10]       ; |cpj|rmk:comb_4|clkjcq[10]       ; out              ;
+; |cpj|rmk:comb_4|clkjcq[9]        ; |cpj|rmk:comb_4|clkjcq[9]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[8]        ; |cpj|rmk:comb_4|clkjcq[8]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[7]        ; |cpj|rmk:comb_4|clkjcq[7]        ; out              ;
+; |cpj|rmk:comb_4|clkjcq[6]        ; |cpj|rmk:comb_4|clkjcq[6]        ; out              ;
+; |cpj|rmk:comb_4|en               ; |cpj|rmk:comb_4|en               ; out              ;
+; |cpj|rmk:comb_4|y                ; |cpj|rmk:comb_4|y                ; out              ;
+; |cpj|rmk:comb_4|clkjcq[31]       ; |cpj|rmk:comb_4|clkjcq[31]       ; out              ;
+; |cpj|mux4to1:comb_7|Selector0~9  ; |cpj|mux4to1:comb_7|Selector0~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~10 ; |cpj|mux4to1:comb_7|Selector0~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~11 ; |cpj|mux4to1:comb_7|Selector0~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~12 ; |cpj|mux4to1:comb_7|Selector0~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~13 ; |cpj|mux4to1:comb_7|Selector0~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~14 ; |cpj|mux4to1:comb_7|Selector0~14 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~15 ; |cpj|mux4to1:comb_7|Selector0~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~16 ; |cpj|mux4to1:comb_7|Selector0~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector0~17 ; |cpj|mux4to1:comb_7|Selector0~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~9  ; |cpj|mux4to1:comb_7|Selector1~9  ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~10 ; |cpj|mux4to1:comb_7|Selector1~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~11 ; |cpj|mux4to1:comb_7|Selector1~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~12 ; |cpj|mux4to1:comb_7|Selector1~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~13 ; |cpj|mux4to1:comb_7|Selector1~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~14 ; |cpj|mux4to1:comb_7|Selector1~14 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~15 ; |cpj|mux4to1:comb_7|Selector1~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~16 ; |cpj|mux4to1:comb_7|Selector1~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector1~17 ; |cpj|mux4to1:comb_7|Selector1~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~10 ; |cpj|mux4to1:comb_7|Selector2~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~11 ; |cpj|mux4to1:comb_7|Selector2~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~12 ; |cpj|mux4to1:comb_7|Selector2~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~13 ; |cpj|mux4to1:comb_7|Selector2~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~15 ; |cpj|mux4to1:comb_7|Selector2~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~16 ; |cpj|mux4to1:comb_7|Selector2~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector2~17 ; |cpj|mux4to1:comb_7|Selector2~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~10 ; |cpj|mux4to1:comb_7|Selector3~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~11 ; |cpj|mux4to1:comb_7|Selector3~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~12 ; |cpj|mux4to1:comb_7|Selector3~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~13 ; |cpj|mux4to1:comb_7|Selector3~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~15 ; |cpj|mux4to1:comb_7|Selector3~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~16 ; |cpj|mux4to1:comb_7|Selector3~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector3~17 ; |cpj|mux4to1:comb_7|Selector3~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~10 ; |cpj|mux4to1:comb_7|Selector4~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~11 ; |cpj|mux4to1:comb_7|Selector4~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~12 ; |cpj|mux4to1:comb_7|Selector4~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~13 ; |cpj|mux4to1:comb_7|Selector4~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~15 ; |cpj|mux4to1:comb_7|Selector4~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~16 ; |cpj|mux4to1:comb_7|Selector4~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector4~17 ; |cpj|mux4to1:comb_7|Selector4~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~10 ; |cpj|mux4to1:comb_7|Selector5~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~11 ; |cpj|mux4to1:comb_7|Selector5~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~12 ; |cpj|mux4to1:comb_7|Selector5~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~13 ; |cpj|mux4to1:comb_7|Selector5~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~15 ; |cpj|mux4to1:comb_7|Selector5~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~16 ; |cpj|mux4to1:comb_7|Selector5~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector5~17 ; |cpj|mux4to1:comb_7|Selector5~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~10 ; |cpj|mux4to1:comb_7|Selector6~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~11 ; |cpj|mux4to1:comb_7|Selector6~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~12 ; |cpj|mux4to1:comb_7|Selector6~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~13 ; |cpj|mux4to1:comb_7|Selector6~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~15 ; |cpj|mux4to1:comb_7|Selector6~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~16 ; |cpj|mux4to1:comb_7|Selector6~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector6~17 ; |cpj|mux4to1:comb_7|Selector6~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~10 ; |cpj|mux4to1:comb_7|Selector7~10 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~11 ; |cpj|mux4to1:comb_7|Selector7~11 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~12 ; |cpj|mux4to1:comb_7|Selector7~12 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~13 ; |cpj|mux4to1:comb_7|Selector7~13 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~15 ; |cpj|mux4to1:comb_7|Selector7~15 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~16 ; |cpj|mux4to1:comb_7|Selector7~16 ; out0             ;
+; |cpj|mux4to1:comb_7|Selector7~17 ; |cpj|mux4to1:comb_7|Selector7~17 ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~8   ; |cpj|mux4to1:comb_7|Decoder0~8   ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~9   ; |cpj|mux4to1:comb_7|Decoder0~9   ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~10  ; |cpj|mux4to1:comb_7|Decoder0~10  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~11  ; |cpj|mux4to1:comb_7|Decoder0~11  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~12  ; |cpj|mux4to1:comb_7|Decoder0~12  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~13  ; |cpj|mux4to1:comb_7|Decoder0~13  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~14  ; |cpj|mux4to1:comb_7|Decoder0~14  ; out0             ;
+; |cpj|mux4to1:comb_7|Decoder0~15  ; |cpj|mux4to1:comb_7|Decoder0~15  ; out0             ;
+; |cpj|bzjs:comb_6|Add0~173        ; |cpj|bzjs:comb_6|Add0~173        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~174        ; |cpj|bzjs:comb_6|Add0~174        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~175        ; |cpj|bzjs:comb_6|Add0~175        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~176        ; |cpj|bzjs:comb_6|Add0~176        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~177        ; |cpj|bzjs:comb_6|Add0~177        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~178        ; |cpj|bzjs:comb_6|Add0~178        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~179        ; |cpj|bzjs:comb_6|Add0~179        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~180        ; |cpj|bzjs:comb_6|Add0~180        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~181        ; |cpj|bzjs:comb_6|Add0~181        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~182        ; |cpj|bzjs:comb_6|Add0~182        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~183        ; |cpj|bzjs:comb_6|Add0~183        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~184        ; |cpj|bzjs:comb_6|Add0~184        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~185        ; |cpj|bzjs:comb_6|Add0~185        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~186        ; |cpj|bzjs:comb_6|Add0~186        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~187        ; |cpj|bzjs:comb_6|Add0~187        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~188        ; |cpj|bzjs:comb_6|Add0~188        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~189        ; |cpj|bzjs:comb_6|Add0~189        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~190        ; |cpj|bzjs:comb_6|Add0~190        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~191        ; |cpj|bzjs:comb_6|Add0~191        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~192        ; |cpj|bzjs:comb_6|Add0~192        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~193        ; |cpj|bzjs:comb_6|Add0~193        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~194        ; |cpj|bzjs:comb_6|Add0~194        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~195        ; |cpj|bzjs:comb_6|Add0~195        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~196        ; |cpj|bzjs:comb_6|Add0~196        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~197        ; |cpj|bzjs:comb_6|Add0~197        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~198        ; |cpj|bzjs:comb_6|Add0~198        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~199        ; |cpj|bzjs:comb_6|Add0~199        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~200        ; |cpj|bzjs:comb_6|Add0~200        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~201        ; |cpj|bzjs:comb_6|Add0~201        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~202        ; |cpj|bzjs:comb_6|Add0~202        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~203        ; |cpj|bzjs:comb_6|Add0~203        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~204        ; |cpj|bzjs:comb_6|Add0~204        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~205        ; |cpj|bzjs:comb_6|Add0~205        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~206        ; |cpj|bzjs:comb_6|Add0~206        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~207        ; |cpj|bzjs:comb_6|Add0~207        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~208        ; |cpj|bzjs:comb_6|Add0~208        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~209        ; |cpj|bzjs:comb_6|Add0~209        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~210        ; |cpj|bzjs:comb_6|Add0~210        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~211        ; |cpj|bzjs:comb_6|Add0~211        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~212        ; |cpj|bzjs:comb_6|Add0~212        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~213        ; |cpj|bzjs:comb_6|Add0~213        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~214        ; |cpj|bzjs:comb_6|Add0~214        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~215        ; |cpj|bzjs:comb_6|Add0~215        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~216        ; |cpj|bzjs:comb_6|Add0~216        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~217        ; |cpj|bzjs:comb_6|Add0~217        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~218        ; |cpj|bzjs:comb_6|Add0~218        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~219        ; |cpj|bzjs:comb_6|Add0~219        ; out0             ;
+; |cpj|bzjs:comb_6|Add0~220        ; |cpj|bzjs:comb_6|Add0~220        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~167        ; |cpj|sjzm:comb_5|Add0~167        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~168        ; |cpj|sjzm:comb_5|Add0~168        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~169        ; |cpj|sjzm:comb_5|Add0~169        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~170        ; |cpj|sjzm:comb_5|Add0~170        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~171        ; |cpj|sjzm:comb_5|Add0~171        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~172        ; |cpj|sjzm:comb_5|Add0~172        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~173        ; |cpj|sjzm:comb_5|Add0~173        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~174        ; |cpj|sjzm:comb_5|Add0~174        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~175        ; |cpj|sjzm:comb_5|Add0~175        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~176        ; |cpj|sjzm:comb_5|Add0~176        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~177        ; |cpj|sjzm:comb_5|Add0~177        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~178        ; |cpj|sjzm:comb_5|Add0~178        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~179        ; |cpj|sjzm:comb_5|Add0~179        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~180        ; |cpj|sjzm:comb_5|Add0~180        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~181        ; |cpj|sjzm:comb_5|Add0~181        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~182        ; |cpj|sjzm:comb_5|Add0~182        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~183        ; |cpj|sjzm:comb_5|Add0~183        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~184        ; |cpj|sjzm:comb_5|Add0~184        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~185        ; |cpj|sjzm:comb_5|Add0~185        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~186        ; |cpj|sjzm:comb_5|Add0~186        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~187        ; |cpj|sjzm:comb_5|Add0~187        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~188        ; |cpj|sjzm:comb_5|Add0~188        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~189        ; |cpj|sjzm:comb_5|Add0~189        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~190        ; |cpj|sjzm:comb_5|Add0~190        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~191        ; |cpj|sjzm:comb_5|Add0~191        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~192        ; |cpj|sjzm:comb_5|Add0~192        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~193        ; |cpj|sjzm:comb_5|Add0~193        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~194        ; |cpj|sjzm:comb_5|Add0~194        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~195        ; |cpj|sjzm:comb_5|Add0~195        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~196        ; |cpj|sjzm:comb_5|Add0~196        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~197        ; |cpj|sjzm:comb_5|Add0~197        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~198        ; |cpj|sjzm:comb_5|Add0~198        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~199        ; |cpj|sjzm:comb_5|Add0~199        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~200        ; |cpj|sjzm:comb_5|Add0~200        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~201        ; |cpj|sjzm:comb_5|Add0~201        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~202        ; |cpj|sjzm:comb_5|Add0~202        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~203        ; |cpj|sjzm:comb_5|Add0~203        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~204        ; |cpj|sjzm:comb_5|Add0~204        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~205        ; |cpj|sjzm:comb_5|Add0~205        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~206        ; |cpj|sjzm:comb_5|Add0~206        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~207        ; |cpj|sjzm:comb_5|Add0~207        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~208        ; |cpj|sjzm:comb_5|Add0~208        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~209        ; |cpj|sjzm:comb_5|Add0~209        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~210        ; |cpj|sjzm:comb_5|Add0~210        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~211        ; |cpj|sjzm:comb_5|Add0~211        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~212        ; |cpj|sjzm:comb_5|Add0~212        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~213        ; |cpj|sjzm:comb_5|Add0~213        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~214        ; |cpj|sjzm:comb_5|Add0~214        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~215        ; |cpj|sjzm:comb_5|Add0~215        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~216        ; |cpj|sjzm:comb_5|Add0~216        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~217        ; |cpj|sjzm:comb_5|Add0~217        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~218        ; |cpj|sjzm:comb_5|Add0~218        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~219        ; |cpj|sjzm:comb_5|Add0~219        ; out0             ;
+; |cpj|sjzm:comb_5|Add0~220        ; |cpj|sjzm:comb_5|Add0~220        ; out0             ;
+; |cpj|rmk:comb_4|Add0~173         ; |cpj|rmk:comb_4|Add0~173         ; out0             ;
+; |cpj|rmk:comb_4|Add0~174         ; |cpj|rmk:comb_4|Add0~174         ; out0             ;
+; |cpj|rmk:comb_4|Add0~175         ; |cpj|rmk:comb_4|Add0~175         ; out0             ;
+; |cpj|rmk:comb_4|Add0~176         ; |cpj|rmk:comb_4|Add0~176         ; out0             ;
+; |cpj|rmk:comb_4|Add0~177         ; |cpj|rmk:comb_4|Add0~177         ; out0             ;
+; |cpj|rmk:comb_4|Add0~178         ; |cpj|rmk:comb_4|Add0~178         ; out0             ;
+; |cpj|rmk:comb_4|Add0~179         ; |cpj|rmk:comb_4|Add0~179         ; out0             ;
+; |cpj|rmk:comb_4|Add0~180         ; |cpj|rmk:comb_4|Add0~180         ; out0             ;
+; |cpj|rmk:comb_4|Add0~181         ; |cpj|rmk:comb_4|Add0~181         ; out0             ;
+; |cpj|rmk:comb_4|Add0~182         ; |cpj|rmk:comb_4|Add0~182         ; out0             ;
+; |cpj|rmk:comb_4|Add0~183         ; |cpj|rmk:comb_4|Add0~183         ; out0             ;
+; |cpj|rmk:comb_4|Add0~184         ; |cpj|rmk:comb_4|Add0~184         ; out0             ;
+; |cpj|rmk:comb_4|Add0~185         ; |cpj|rmk:comb_4|Add0~185         ; out0             ;
+; |cpj|rmk:comb_4|Add0~186         ; |cpj|rmk:comb_4|Add0~186         ; out0             ;
+; |cpj|rmk:comb_4|Add0~187         ; |cpj|rmk:comb_4|Add0~187         ; out0             ;
+; |cpj|rmk:comb_4|Add0~188         ; |cpj|rmk:comb_4|Add0~188         ; out0             ;
+; |cpj|rmk:comb_4|Add0~189         ; |cpj|rmk:comb_4|Add0~189         ; out0             ;
+; |cpj|rmk:comb_4|Add0~190         ; |cpj|rmk:comb_4|Add0~190         ; out0             ;
+; |cpj|rmk:comb_4|Add0~191         ; |cpj|rmk:comb_4|Add0~191         ; out0             ;
+; |cpj|rmk:comb_4|Add0~192         ; |cpj|rmk:comb_4|Add0~192         ; out0             ;
+; |cpj|rmk:comb_4|Add0~193         ; |cpj|rmk:comb_4|Add0~193         ; out0             ;
+; |cpj|rmk:comb_4|Add0~194         ; |cpj|rmk:comb_4|Add0~194         ; out0             ;
+; |cpj|rmk:comb_4|Add0~195         ; |cpj|rmk:comb_4|Add0~195         ; out0             ;
+; |cpj|rmk:comb_4|Add0~196         ; |cpj|rmk:comb_4|Add0~196         ; out0             ;
+; |cpj|rmk:comb_4|Add0~197         ; |cpj|rmk:comb_4|Add0~197         ; out0             ;
+; |cpj|rmk:comb_4|Add0~198         ; |cpj|rmk:comb_4|Add0~198         ; out0             ;
+; |cpj|rmk:comb_4|Add0~199         ; |cpj|rmk:comb_4|Add0~199         ; out0             ;
+; |cpj|rmk:comb_4|Add0~200         ; |cpj|rmk:comb_4|Add0~200         ; out0             ;
+; |cpj|rmk:comb_4|Add0~201         ; |cpj|rmk:comb_4|Add0~201         ; out0             ;
+; |cpj|rmk:comb_4|Add0~202         ; |cpj|rmk:comb_4|Add0~202         ; out0             ;
+; |cpj|rmk:comb_4|Add0~203         ; |cpj|rmk:comb_4|Add0~203         ; out0             ;
+; |cpj|rmk:comb_4|Add0~204         ; |cpj|rmk:comb_4|Add0~204         ; out0             ;
+; |cpj|rmk:comb_4|Add0~205         ; |cpj|rmk:comb_4|Add0~205         ; out0             ;
+; |cpj|rmk:comb_4|Add0~206         ; |cpj|rmk:comb_4|Add0~206         ; out0             ;
+; |cpj|rmk:comb_4|Add0~207         ; |cpj|rmk:comb_4|Add0~207         ; out0             ;
+; |cpj|rmk:comb_4|Add0~208         ; |cpj|rmk:comb_4|Add0~208         ; out0             ;
+; |cpj|rmk:comb_4|Add0~209         ; |cpj|rmk:comb_4|Add0~209         ; out0             ;
+; |cpj|rmk:comb_4|Add0~210         ; |cpj|rmk:comb_4|Add0~210         ; out0             ;
+; |cpj|rmk:comb_4|Add0~211         ; |cpj|rmk:comb_4|Add0~211         ; out0             ;
+; |cpj|rmk:comb_4|Add0~212         ; |cpj|rmk:comb_4|Add0~212         ; out0             ;
+; |cpj|rmk:comb_4|Add0~213         ; |cpj|rmk:comb_4|Add0~213         ; out0             ;
+; |cpj|rmk:comb_4|Add0~214         ; |cpj|rmk:comb_4|Add0~214         ; out0             ;
+; |cpj|rmk:comb_4|Add0~215         ; |cpj|rmk:comb_4|Add0~215         ; out0             ;
+; |cpj|rmk:comb_4|Add0~216         ; |cpj|rmk:comb_4|Add0~216         ; out0             ;
+; |cpj|rmk:comb_4|Add0~217         ; |cpj|rmk:comb_4|Add0~217         ; out0             ;
+; |cpj|rmk:comb_4|Add0~218         ; |cpj|rmk:comb_4|Add0~218         ; out0             ;
+; |cpj|rmk:comb_4|Add0~219         ; |cpj|rmk:comb_4|Add0~219         ; out0             ;
+; |cpj|rmk:comb_4|Add0~220         ; |cpj|rmk:comb_4|Add0~220         ; out0             ;
+; |cpj|rmk:comb_4|Equal0~33        ; |cpj|rmk:comb_4|Equal0~33        ; out0             ;
++----------------------------------+----------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 6.0 Build 178 04/27/2006 SJ Full Version
+    Info: Processing started: Tue Jul 26 19:09:35 2011
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off cpj -c cpj
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      16.39 %
+Info: Number of transitions in simulation is 2570
+Info: Vector file cpj.sim.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Processing ended: Tue Jul 26 19:09:35 2011
+    Info: Elapsed time: 00:00:01
+
+

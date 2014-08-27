@@ -1,0 +1,88 @@
+module Frequency_Control(
+						input				CLK,		//板载时钟
+						input				RST_n,		//系统复位清零信号	
+						
+						input				Fb,			//基准源（50M Hz）
+						input				Fx,			//被测信号频率	
+						//对Fx上升沿检测，实现与Fx上升沿同步，从而保证计数器2对被测信号刚好为整数个周期,0误差
+						
+							
+						output		[29:0]	CLK_Data	//LCD 1602 数据总线
+						);								//999999999=27'h5f5e0ff
+//reg			EN;			//计数器门控制信号，通过D触发器与时钟达到同
+reg			Finish;		//The Measure of the frequency is finished 
+reg	[31:0]	cnt_Fb;		//基准源	Fb 	计数器
+reg	[31:0]	cnt_Fx;		//被测信号	Fx	计数器
+
+assign	CLK_Data = Finish ? (26'd50_000000/cnt_Fb * cnt_Fx) : 0;
+//Frequency	=	(cnt_Fx * CLK) / cnt_Fb
+
+//等精度频率计门控制信号
+//Gate的宽度Tc和发生的时间都不会直接影响计数使能信号EN，EN总是在被测信号fx上升沿改变，
+//从而保证了被测信号被计数的周期总是整数个周期nTx，而与被测信号的频率无关
+//always@(posedge Fx or negedge RST_n)		//D触发器实现对被测信号fx上升沿检测，实现门控信号与fx上升沿同步，
+//begin									//从而保证计数器2对被测信号计数刚好为整数个周期，零误差。
+//	if(!RST_n)
+//		EN <= 0;
+//	else								//在被测信号fb上升沿到来t2时刻D触发器Q端才被置1，
+//		EN <= Gate;						//使计数器1和计数器2的EN同时为1，计数器开始计数，系统进入计数允许周期。
+//end
+
+//Fb 基准源计数模块
+always@(posedge Fb or negedge RST_n)		
+begin
+	if(!RST_n)
+		cnt_Fb <= 0;
+	else
+		begin
+		if(flag_1s==1'b1)//if(EN==1'b1)
+			cnt_Fb <= cnt_Fb+1'b1;
+		else
+			cnt_Fb <= cnt_Fb;	//Locked		
+		end
+end
+
+//FX 被测信号计数模块
+always@(posedge Fx or negedge RST_n)		
+begin
+	if(!RST_n)
+		cnt_Fx <= 0;
+	else
+		begin
+		if(flag_1s==1'b1)//if(EN==1'b1)
+			cnt_Fx <= cnt_Fx+1'b1;
+		else
+			cnt_Fx <= cnt_Fx;	//Locked		
+		end
+end
+
+reg	[26:0]	cnt_1s;		
+reg			flag_1s;
+always@(posedge CLK or negedge RST_n)
+begin
+	if(!RST_n)
+		begin
+		cnt_1s <= 0;
+		flag_1s <= 0;
+		Finish <= 0;
+		end
+	else
+		begin
+		if(cnt_1s < 27'd50_000000)	//1s
+			begin
+			cnt_1s <= cnt_1s+1'b1;
+			flag_1s <= 1;
+			Finish	<= 0;
+			end
+		else
+			begin
+			cnt_1s <= cnt_1s;
+			flag_1s <= 0;		//The signal means that it has reach the time of 1S
+			Finish <= 1;		//Lock the signal Finish for math calculation
+			end
+		end
+end
+
+
+
+endmodule

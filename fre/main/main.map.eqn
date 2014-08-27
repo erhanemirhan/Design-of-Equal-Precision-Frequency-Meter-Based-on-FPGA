@@ -1,0 +1,2185 @@
+--J7L6 is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[1]~1311
+J7L6_p1_out = !J7_dffs[23] & !J7_dffs[15] & !J7_dffs[2] & !J7_dffs[3] & !J7_dffs[24] & !J7_dffs[28] & !J7_dffs[6] & !J7_dffs[7] & !J7_dffs[8] & !J7_dffs[20] & !J7_dffs[27] & !J7_dffs[14] & !J7_dffs[19] & !J7_dffs[29] & !J7_dffs[26] & !J7_dffs[9];
+J7L6_or_out = J7L6_p1_out;
+J7L6 = J7L6_or_out;
+
+
+--C1L1 is fdiv:inst1|LessThan~580
+C1L1_p1_out = J7L6 & !J7_dffs[21] & !J7_dffs[12] & !J7_dffs[1] & !J7_dffs[16] & !J7_dffs[30] & !J7_dffs[17] & !J7_dffs[10] & !J7_dffs[11] & !J7_dffs[22] & !J7_dffs[13] & !J7_dffs[25] & !J7_dffs[4] & !J7_dffs[18] & !J7_dffs[5];
+C1L1_or_out = C1L1_p1_out # J7_dffs[31];
+C1L1 = C1L1_or_out;
+
+
+--J7_dffs[0] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[0]
+J7_dffs[0]_p1_out = C1L1 & !J7_dffs[0];
+J7_dffs[0]_or_out = J7_dffs[0]_p1_out;
+J7_dffs[0]_reg_input = J7_dffs[0]_or_out;
+J7_dffs[0] = DFFE(J7_dffs[0]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[1] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[1]
+J7_dffs[1]_p1_out = C1L1 & J7_dffs[1] & !J7_dffs[0];
+J7_dffs[1]_p2_out = C1L1 & !J7_dffs[1] & J7_dffs[0];
+J7_dffs[1]_or_out = J7_dffs[1]_p1_out # J7_dffs[1]_p2_out;
+J7_dffs[1]_reg_input = J7_dffs[1]_or_out;
+J7_dffs[1] = DFFE(J7_dffs[1]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[2] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[2]
+J7_dffs[2]_p1_out = J7_dffs[31] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[2]_p2_out = !J7_dffs[31] & J7_dffs[2];
+J7_dffs[2]_or_out = J7_dffs[2]_p1_out # J7_dffs[2]_p2_out;
+J7_dffs[2]_reg_input = J7_dffs[2]_or_out;
+J7_dffs[2] = TFFE(J7_dffs[2]_reg_input, GLOBAL(Clock), , , );
+
+
+--E1L3 is gate_control:inst3|dp_s10hz~40
+E1L3_p0_out = !SW2 & SW1;
+E1L3_p1_out = !SW2 & SW1 & SW0;
+E1L3_p2_out = E1L3 & !SW2 & !SW1 & !SW0;
+E1L3_p3_out = E1L3 & !SW2 & SW1;
+E1L3_or_out = E1L3_p0_out # E1L3_p1_out # E1L3_p2_out # E1L3_p3_out # GND;
+E1L3 = E1L3_or_out;
+
+
+--E1L2 is gate_control:inst3|dp_s1hz~24
+E1L2_p1_out = !SW2 & !SW1 & E1L1;
+E1L2_p2_out = E1L2 & !SW2 & !SW1 & !SW0;
+E1L2_p3_out = E1L2 & !SW2 & !SW1;
+E1L2_or_out = E1L2_p1_out # E1L2_p2_out # E1L2_p3_out;
+E1L2 = E1L2_or_out;
+
+
+--E1L4 is gate_control:inst3|dp_s100hz~25
+E1L4_p0_out = SW2 & SW1;
+E1L4_p1_out = SW2 & SW0;
+E1L4_p2_out = !SW2 & E1L4 & !SW0 & !SW1;
+E1L4_p3_out = SW2 & E1L4;
+E1L4_or_out = E1L4_p0_out # E1L4_p1_out # E1L4_p2_out # E1L4_p3_out # SW2;
+E1L4 = E1L4_or_out;
+
+
+--J7_dffs[3] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[3]
+J7_dffs[3]_p1_out = J7_dffs[31] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[3]_p2_out = !J7_dffs[31] & J7_dffs[3];
+J7_dffs[3]_or_out = J7_dffs[3]_p1_out # J7_dffs[3]_p2_out;
+J7_dffs[3]_reg_input = J7_dffs[3]_or_out;
+J7_dffs[3] = TFFE(J7_dffs[3]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[4] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[4]
+J7_dffs[4]_p1_out = J7_dffs[31] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[4]_p2_out = !J7_dffs[31] & J7_dffs[4];
+J7_dffs[4]_or_out = J7_dffs[4]_p1_out # J7_dffs[4]_p2_out;
+J7_dffs[4]_reg_input = J7_dffs[4]_or_out;
+J7_dffs[4] = TFFE(J7_dffs[4]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[5] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[5]
+J7_dffs[5]_p1_out = J7_dffs[31] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[5]_p2_out = !J7_dffs[31] & J7_dffs[5];
+J7_dffs[5]_or_out = J7_dffs[5]_p1_out # J7_dffs[5]_p2_out;
+J7_dffs[5]_reg_input = J7_dffs[5]_or_out;
+J7_dffs[5] = TFFE(J7_dffs[5]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[6] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[6]
+J7_dffs[6]_p1_out = J7_dffs[31] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[6]_p2_out = !J7_dffs[31] & J7_dffs[6];
+J7_dffs[6]_or_out = J7_dffs[6]_p1_out # J7_dffs[6]_p2_out;
+J7_dffs[6]_reg_input = J7_dffs[6]_or_out;
+J7_dffs[6] = TFFE(J7_dffs[6]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[7] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[7]
+J7_dffs[7]_p1_out = J7_dffs[31] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[7]_p2_out = !J7_dffs[31] & J7_dffs[7];
+J7_dffs[7]_or_out = J7_dffs[7]_p1_out # J7_dffs[7]_p2_out;
+J7_dffs[7]_reg_input = J7_dffs[7]_or_out;
+J7_dffs[7] = TFFE(J7_dffs[7]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[8] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[8]
+J7_dffs[8]_p1_out = J7_dffs[31] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[8]_p2_out = !J7_dffs[31] & J7_dffs[8];
+J7_dffs[8]_or_out = J7_dffs[8]_p1_out # J7_dffs[8]_p2_out;
+J7_dffs[8]_reg_input = J7_dffs[8]_or_out;
+J7_dffs[8] = TFFE(J7_dffs[8]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[9] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[9]
+J7_dffs[9]_p1_out = J7_dffs[31] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[9]_p2_out = !J7_dffs[31] & J7_dffs[9];
+J7_dffs[9]_or_out = J7_dffs[9]_p1_out # J7_dffs[9]_p2_out;
+J7_dffs[9]_reg_input = J7_dffs[9]_or_out;
+J7_dffs[9] = TFFE(J7_dffs[9]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[10] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[10]
+J7_dffs[10]_p1_out = J7_dffs[31] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[10]_p2_out = !J7_dffs[31] & J7_dffs[10];
+J7_dffs[10]_or_out = J7_dffs[10]_p1_out # J7_dffs[10]_p2_out;
+J7_dffs[10]_reg_input = J7_dffs[10]_or_out;
+J7_dffs[10] = TFFE(J7_dffs[10]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[11] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[11]
+J7_dffs[11]_p1_out = J7_dffs[31] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[11]_p2_out = !J7_dffs[31] & J7_dffs[11];
+J7_dffs[11]_or_out = J7_dffs[11]_p1_out # J7_dffs[11]_p2_out;
+J7_dffs[11]_reg_input = J7_dffs[11]_or_out;
+J7_dffs[11] = TFFE(J7_dffs[11]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[12] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[12]
+J7_dffs[12]_p1_out = J7_dffs[31] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[12]_p2_out = !J7_dffs[31] & J7_dffs[12];
+J7_dffs[12]_or_out = J7_dffs[12]_p1_out # J7_dffs[12]_p2_out;
+J7_dffs[12]_reg_input = J7_dffs[12]_or_out;
+J7_dffs[12] = TFFE(J7_dffs[12]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[13] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[13]
+J7_dffs[13]_p1_out = J7_dffs[31] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[13]_p2_out = !J7_dffs[31] & J7_dffs[13];
+J7_dffs[13]_or_out = J7_dffs[13]_p1_out # J7_dffs[13]_p2_out;
+J7_dffs[13]_reg_input = J7_dffs[13]_or_out;
+J7_dffs[13] = TFFE(J7_dffs[13]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[14] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[14]
+J7_dffs[14]_p1_out = J7_dffs[31] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[14]_p2_out = !J7_dffs[31] & J7_dffs[14];
+J7_dffs[14]_or_out = J7_dffs[14]_p1_out # J7_dffs[14]_p2_out;
+J7_dffs[14]_reg_input = J7_dffs[14]_or_out;
+J7_dffs[14] = TFFE(J7_dffs[14]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[15] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[15]
+J7_dffs[15]_p1_out = J7_dffs[31] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[15]_p2_out = !J7_dffs[31] & J7_dffs[15];
+J7_dffs[15]_or_out = J7_dffs[15]_p1_out # J7_dffs[15]_p2_out;
+J7_dffs[15]_reg_input = J7_dffs[15]_or_out;
+J7_dffs[15] = TFFE(J7_dffs[15]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[16] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[16]
+J7_dffs[16]_p1_out = J7_dffs[31] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[16]_p2_out = !J7_dffs[31] & J7_dffs[16];
+J7_dffs[16]_or_out = J7_dffs[16]_p1_out # J7_dffs[16]_p2_out;
+J7_dffs[16]_reg_input = J7_dffs[16]_or_out;
+J7_dffs[16] = TFFE(J7_dffs[16]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[17] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[17]
+J7_dffs[17]_p1_out = J7_dffs[31] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[17]_p2_out = !J7_dffs[31] & J7_dffs[17];
+J7_dffs[17]_or_out = J7_dffs[17]_p1_out # J7_dffs[17]_p2_out;
+J7_dffs[17]_reg_input = J7_dffs[17]_or_out;
+J7_dffs[17] = TFFE(J7_dffs[17]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[18] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[18]
+J7_dffs[18]_p1_out = J7_dffs[31] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[18]_p2_out = !J7_dffs[31] & J7_dffs[18];
+J7_dffs[18]_or_out = J7_dffs[18]_p1_out # J7_dffs[18]_p2_out;
+J7_dffs[18]_reg_input = J7_dffs[18]_or_out;
+J7_dffs[18] = TFFE(J7_dffs[18]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[19] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[19]
+J7_dffs[19]_p1_out = J7_dffs[31] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[19]_p2_out = !J7_dffs[31] & J7_dffs[19];
+J7_dffs[19]_or_out = J7_dffs[19]_p1_out # J7_dffs[19]_p2_out;
+J7_dffs[19]_reg_input = J7_dffs[19]_or_out;
+J7_dffs[19] = TFFE(J7_dffs[19]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[20] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[20]
+J7_dffs[20]_p1_out = J7_dffs[31] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[20]_p2_out = !J7_dffs[31] & J7_dffs[20];
+J7_dffs[20]_or_out = J7_dffs[20]_p1_out # J7_dffs[20]_p2_out;
+J7_dffs[20]_reg_input = J7_dffs[20]_or_out;
+J7_dffs[20] = TFFE(J7_dffs[20]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[21] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[21]
+J7_dffs[21]_p1_out = J7_dffs[31] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[21]_p2_out = !J7_dffs[31] & J7_dffs[21];
+J7_dffs[21]_or_out = J7_dffs[21]_p1_out # J7_dffs[21]_p2_out;
+J7_dffs[21]_reg_input = J7_dffs[21]_or_out;
+J7_dffs[21] = TFFE(J7_dffs[21]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[22] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[22]
+J7_dffs[22]_p1_out = J7_dffs[31] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[22]_p2_out = !J7_dffs[31] & J7_dffs[22];
+J7_dffs[22]_or_out = J7_dffs[22]_p1_out # J7_dffs[22]_p2_out;
+J7_dffs[22]_reg_input = J7_dffs[22]_or_out;
+J7_dffs[22] = TFFE(J7_dffs[22]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[23] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[23]
+J7_dffs[23]_p1_out = J7_dffs[31] & J7_dffs[22] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[23]_p2_out = !J7_dffs[31] & J7_dffs[23];
+J7_dffs[23]_or_out = J7_dffs[23]_p1_out # J7_dffs[23]_p2_out;
+J7_dffs[23]_reg_input = J7_dffs[23]_or_out;
+J7_dffs[23] = TFFE(J7_dffs[23]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[24] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[24]
+J7_dffs[24]_p1_out = J7_dffs[31] & J7_dffs[23] & J7_dffs[22] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[24]_p2_out = !J7_dffs[31] & J7_dffs[24];
+J7_dffs[24]_or_out = J7_dffs[24]_p1_out # J7_dffs[24]_p2_out;
+J7_dffs[24]_reg_input = J7_dffs[24]_or_out;
+J7_dffs[24] = TFFE(J7_dffs[24]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[25] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[25]
+J7_dffs[25]_p1_out = J7_dffs[31] & J7_dffs[24] & J7_dffs[23] & J7_dffs[22] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[25]_p2_out = !J7_dffs[31] & J7_dffs[25];
+J7_dffs[25]_or_out = J7_dffs[25]_p1_out # J7_dffs[25]_p2_out;
+J7_dffs[25]_reg_input = J7_dffs[25]_or_out;
+J7_dffs[25] = TFFE(J7_dffs[25]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[26] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[26]
+J7_dffs[26]_p1_out = J7_dffs[31] & J7_dffs[25] & J7_dffs[24] & J7_dffs[23] & J7_dffs[22] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[26]_p2_out = !J7_dffs[31] & J7_dffs[26];
+J7_dffs[26]_or_out = J7_dffs[26]_p1_out # J7_dffs[26]_p2_out;
+J7_dffs[26]_reg_input = J7_dffs[26]_or_out;
+J7_dffs[26] = TFFE(J7_dffs[26]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7L33 is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[27]~1417
+J7L33 = EXP(J7_dffs[26] & J7_dffs[25] & J7_dffs[24] & J7_dffs[23] & J7_dffs[22] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0]);
+
+
+--J7_dffs[27] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[27]
+J7_dffs[27]_p1_out = J7_dffs[31] & !J7_dffs[27] & J7_dffs[26] & J7_dffs[25] & J7_dffs[24] & J7_dffs[23] & J7_dffs[22] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7_dffs[27]_p2_out = J7_dffs[31] & J7_dffs[27] & J7L33;
+J7_dffs[27]_or_out = J7_dffs[27]_p1_out # J7_dffs[27]_p2_out;
+J7_dffs[27]_reg_input = J7_dffs[27]_or_out;
+J7_dffs[27] = DFFE(J7_dffs[27]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7L1 is fdiv:inst1|lpm_counter:cnt1_rtl_6|and_a[27]~269
+J7L1_p1_out = J7_dffs[27] & J7_dffs[26] & J7_dffs[25] & J7_dffs[24] & J7_dffs[23] & J7_dffs[22] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7L1_or_out = J7L1_p1_out;
+J7L1 = J7L1_or_out;
+
+
+--J7_dffs[28] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[28]
+J7_dffs[28]_p1_out = C1L1 & J7_dffs[28] & !J7L1;
+J7_dffs[28]_p2_out = C1L1 & !J7_dffs[28] & J7L1;
+J7_dffs[28]_or_out = J7_dffs[28]_p1_out # J7_dffs[28]_p2_out;
+J7_dffs[28]_reg_input = J7_dffs[28]_or_out;
+J7_dffs[28] = DFFE(J7_dffs[28]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7L2 is fdiv:inst1|lpm_counter:cnt1_rtl_6|and_a[28]~271
+J7L2_p1_out = J7_dffs[28] & J7_dffs[27] & J7_dffs[26] & J7_dffs[25] & J7_dffs[24] & J7_dffs[23] & J7_dffs[22] & J7_dffs[21] & J7_dffs[20] & J7_dffs[19] & J7_dffs[18] & J7_dffs[17] & J7_dffs[16] & J7_dffs[15] & J7_dffs[14] & J7_dffs[13] & J7_dffs[12] & J7_dffs[11] & J7_dffs[10] & J7_dffs[9] & J7_dffs[8] & J7_dffs[7] & J7_dffs[6] & J7_dffs[5] & J7_dffs[4] & J7_dffs[3] & J7_dffs[2] & J7_dffs[1] & J7_dffs[0];
+J7L2_or_out = J7L2_p1_out;
+J7L2 = J7L2_or_out;
+
+
+--J7_dffs[29] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[29]
+J7_dffs[29]_p1_out = C1L1 & J7_dffs[29] & !J7L2;
+J7_dffs[29]_p2_out = C1L1 & !J7_dffs[29] & J7L2;
+J7_dffs[29]_or_out = J7_dffs[29]_p1_out # J7_dffs[29]_p2_out;
+J7_dffs[29]_reg_input = J7_dffs[29]_or_out;
+J7_dffs[29] = DFFE(J7_dffs[29]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[30] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[30]
+J7_dffs[30]_p1_out = C1L1 & J7_dffs[29] & J7L2;
+J7_dffs[30]_p2_out = !C1L1 & J7_dffs[30];
+J7_dffs[30]_or_out = J7_dffs[30]_p1_out # J7_dffs[30]_p2_out;
+J7_dffs[30]_reg_input = J7_dffs[30]_or_out;
+J7_dffs[30] = TFFE(J7_dffs[30]_reg_input, GLOBAL(Clock), , , );
+
+
+--J7_dffs[31] is fdiv:inst1|lpm_counter:cnt1_rtl_6|dffs[31]
+J7_dffs[31]_p1_out = C1L1 & J7_dffs[30] & J7_dffs[29] & J7L2;
+J7_dffs[31]_p2_out = !C1L1 & J7_dffs[31];
+J7_dffs[31]_or_out = J7_dffs[31]_p1_out # J7_dffs[31]_p2_out;
+J7_dffs[31]_reg_input = J7_dffs[31]_or_out;
+J7_dffs[31] = TFFE(J7_dffs[31]_reg_input, GLOBAL(Clock), , , );
+
+
+--C1_f1khz is fdiv:inst1|f1khz
+C1_f1khz_p1_out = J7L6 & !J7_dffs[21] & !J7_dffs[12] & !J7_dffs[1] & !J7_dffs[16] & !J7_dffs[30] & !J7_dffs[17] & !J7_dffs[10] & !J7_dffs[11] & !J7_dffs[22] & !J7_dffs[13] & !J7_dffs[25] & !J7_dffs[4] & !J7_dffs[18] & !J7_dffs[5];
+C1_f1khz_or_out = C1_f1khz_p1_out # J7_dffs[31];
+C1_f1khz_reg_input = !(C1_f1khz_or_out);
+C1_f1khz = DFFE(C1_f1khz_reg_input, GLOBAL(Clock), , , );
+
+
+--G1_disp_select[1] is dispselect:inst7|disp_select[1]
+G1_disp_select[1]_p1_out = !G1_disp_select[2] & G1_disp_select[0] & !G1_disp_select[1];
+G1_disp_select[1]_p2_out = !G1_disp_select[2] & !G1_disp_select[0] & G1_disp_select[1];
+G1_disp_select[1]_or_out = G1_disp_select[1]_p1_out # G1_disp_select[1]_p2_out;
+G1_disp_select[1]_reg_input = G1_disp_select[1]_or_out;
+G1_disp_select[1] = DFFE(G1_disp_select[1]_reg_input, C1_f1khz, , , );
+
+
+--J8L7 is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[1]~1343
+J8L7_p1_out = !J8_dffs[23] & !J8_dffs[15] & !J8_dffs[2] & !J8_dffs[3] & !J8_dffs[24] & !J8_dffs[28] & !J8_dffs[6] & !J8_dffs[7] & !J8_dffs[8] & !J8_dffs[20] & !J8_dffs[27] & !J8_dffs[14] & !J8_dffs[19] & !J8_dffs[29] & !J8_dffs[26] & !J8_dffs[9];
+J8L7_or_out = J8L7_p1_out;
+J8L7 = J8L7_or_out;
+
+
+--C1L2 is fdiv:inst1|LessThan~587
+C1L2_p1_out = J8L7 & !J8_dffs[21] & !J8_dffs[12] & !J8_dffs[1] & !J8_dffs[16] & !J8_dffs[30] & !J8_dffs[17] & !J8_dffs[10] & !J8_dffs[11] & !J8_dffs[22] & !J8_dffs[13] & !J8_dffs[25] & !J8_dffs[4] & !J8_dffs[18] & !J8_dffs[5];
+C1L2_or_out = C1L2_p1_out # J8_dffs[31];
+C1L2 = C1L2_or_out;
+
+
+--J8_dffs[0] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[0]
+J8_dffs[0]_p1_out = C1L2 & !J8_dffs[0];
+J8_dffs[0]_or_out = J8_dffs[0]_p1_out;
+J8_dffs[0]_reg_input = J8_dffs[0]_or_out;
+J8_dffs[0] = DFFE(J8_dffs[0]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[1] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[1]
+J8_dffs[1]_p1_out = C1L2 & J8_dffs[1] & !J8_dffs[0];
+J8_dffs[1]_p2_out = C1L2 & !J8_dffs[1] & J8_dffs[0];
+J8_dffs[1]_or_out = J8_dffs[1]_p1_out # J8_dffs[1]_p2_out;
+J8_dffs[1]_reg_input = J8_dffs[1]_or_out;
+J8_dffs[1] = DFFE(J8_dffs[1]_reg_input, C1_f1khz, , , );
+
+
+--G1_disp_select[2] is dispselect:inst7|disp_select[2]
+G1_disp_select[2]_p1_out = !G1_disp_select[0] & !G1_disp_select[2];
+G1_disp_select[2]_p2_out = !G1_disp_select[2] & !G1_disp_select[1];
+G1_disp_select[2]_p4_out = !G1_disp_select[0] & !G1_disp_select[1];
+G1_disp_select[2]_or_out = G1_disp_select[2]_p1_out # G1_disp_select[2]_p2_out # G1_disp_select[2]_p4_out;
+G1_disp_select[2]_reg_input = !G1_disp_select[2]_or_out;
+G1_disp_select[2] = TFFE(G1_disp_select[2]_reg_input, C1_f1khz, , , );
+
+
+--G1_Q[5] is dispselect:inst7|Q[5]
+G1_Q[5]_p1_out = !G1_disp_select[2] & !G1_disp_select[0] & !G1_disp_select[1];
+G1_Q[5]_or_out = G1_Q[5]_p1_out;
+G1_Q[5]_reg_input = G1_Q[5]_or_out;
+G1_Q[5] = DFFE(G1_Q[5]_reg_input, C1_f1khz, , , );
+
+
+--G1_disp_select[0] is dispselect:inst7|disp_select[0]
+G1_disp_select[0]_p1_out = G1_disp_select[2] & G1_disp_select[1] & !G1_disp_select[0];
+G1_disp_select[0]_or_out = G1_disp_select[0]_p1_out;
+G1_disp_select[0]_reg_input = !G1_disp_select[0]_or_out;
+G1_disp_select[0] = TFFE(G1_disp_select[0]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[2] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[2]
+J8_dffs[2]_p1_out = J8_dffs[31] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[2]_p2_out = !J8_dffs[31] & J8_dffs[2];
+J8_dffs[2]_or_out = J8_dffs[2]_p1_out # J8_dffs[2]_p2_out;
+J8_dffs[2]_reg_input = J8_dffs[2]_or_out;
+J8_dffs[2] = TFFE(J8_dffs[2]_reg_input, C1_f1khz, , , );
+
+
+--F1L1 is dispdecoder:inst5|always1~195
+F1L1_p1_out = E1L3 & G1_disp_select[0] & G1_disp_select[1] & !G1_disp_select[2];
+F1L1_p2_out = G1_disp_select[0] & !G1_disp_select[1] & G1_disp_select[2] & E1L2;
+F1L1_p3_out = G1_disp_select[0] & !G1_disp_select[1] & !G1_disp_select[2] & E1L4;
+F1L1_or_out = F1L1_p1_out # F1L1_p2_out # F1L1_p3_out;
+F1L1 = F1L1_or_out;
+
+
+--G1_Q[4] is dispselect:inst7|Q[4]
+G1_Q[4]_p1_out = G1_disp_select[0] & !G1_disp_select[1] & !G1_disp_select[2];
+G1_Q[4]_or_out = G1_Q[4]_p1_out;
+G1_Q[4]_reg_input = G1_Q[4]_or_out;
+G1_Q[4] = DFFE(G1_Q[4]_reg_input, C1_f1khz, , , );
+
+
+--G1_Q[3] is dispselect:inst7|Q[3]
+G1_Q[3]_p1_out = !G1_disp_select[0] & G1_disp_select[1] & !G1_disp_select[2];
+G1_Q[3]_or_out = G1_Q[3]_p1_out;
+G1_Q[3]_reg_input = G1_Q[3]_or_out;
+G1_Q[3] = DFFE(G1_Q[3]_reg_input, C1_f1khz, , , );
+
+
+--G1_Q[2] is dispselect:inst7|Q[2]
+G1_Q[2]_p1_out = G1_disp_select[0] & G1_disp_select[1] & !G1_disp_select[2];
+G1_Q[2]_or_out = G1_Q[2]_p1_out;
+G1_Q[2]_reg_input = G1_Q[2]_or_out;
+G1_Q[2] = DFFE(G1_Q[2]_reg_input, C1_f1khz, , , );
+
+
+--G1_Q[1] is dispselect:inst7|Q[1]
+G1_Q[1]_p1_out = !G1_disp_select[0] & !G1_disp_select[1] & G1_disp_select[2];
+G1_Q[1]_or_out = G1_Q[1]_p1_out;
+G1_Q[1]_reg_input = G1_Q[1]_or_out;
+G1_Q[1] = DFFE(G1_Q[1]_reg_input, C1_f1khz, , , );
+
+
+--G1_Q[0] is dispselect:inst7|Q[0]
+G1_Q[0]_p1_out = G1_disp_select[0] & !G1_disp_select[1] & G1_disp_select[2];
+G1_Q[0]_or_out = G1_Q[0]_p1_out;
+G1_Q[0]_reg_input = G1_Q[0]_or_out;
+G1_Q[0] = DFFE(G1_Q[0]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[3] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[3]
+J8_dffs[3]_p1_out = J8_dffs[31] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[3]_p2_out = !J8_dffs[31] & J8_dffs[3];
+J8_dffs[3]_or_out = J8_dffs[3]_p1_out # J8_dffs[3]_p2_out;
+J8_dffs[3]_reg_input = J8_dffs[3]_or_out;
+J8_dffs[3] = TFFE(J8_dffs[3]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[4] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[4]
+J8_dffs[4]_p1_out = J8_dffs[31] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[4]_p2_out = !J8_dffs[31] & J8_dffs[4];
+J8_dffs[4]_or_out = J8_dffs[4]_p1_out # J8_dffs[4]_p2_out;
+J8_dffs[4]_reg_input = J8_dffs[4]_or_out;
+J8_dffs[4] = TFFE(J8_dffs[4]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[5] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[5]
+J8_dffs[5]_p1_out = J8_dffs[31] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[5]_p2_out = !J8_dffs[31] & J8_dffs[5];
+J8_dffs[5]_or_out = J8_dffs[5]_p1_out # J8_dffs[5]_p2_out;
+J8_dffs[5]_reg_input = J8_dffs[5]_or_out;
+J8_dffs[5] = TFFE(J8_dffs[5]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[6] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[6]
+J8_dffs[6]_p1_out = J8_dffs[31] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[6]_p2_out = !J8_dffs[31] & J8_dffs[6];
+J8_dffs[6]_or_out = J8_dffs[6]_p1_out # J8_dffs[6]_p2_out;
+J8_dffs[6]_reg_input = J8_dffs[6]_or_out;
+J8_dffs[6] = TFFE(J8_dffs[6]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[7] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[7]
+J8_dffs[7]_p1_out = J8_dffs[31] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[7]_p2_out = !J8_dffs[31] & J8_dffs[7];
+J8_dffs[7]_or_out = J8_dffs[7]_p1_out # J8_dffs[7]_p2_out;
+J8_dffs[7]_reg_input = J8_dffs[7]_or_out;
+J8_dffs[7] = TFFE(J8_dffs[7]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[8] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[8]
+J8_dffs[8]_p1_out = J8_dffs[31] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[8]_p2_out = !J8_dffs[31] & J8_dffs[8];
+J8_dffs[8]_or_out = J8_dffs[8]_p1_out # J8_dffs[8]_p2_out;
+J8_dffs[8]_reg_input = J8_dffs[8]_or_out;
+J8_dffs[8] = TFFE(J8_dffs[8]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[9] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[9]
+J8_dffs[9]_p1_out = J8_dffs[31] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[9]_p2_out = !J8_dffs[31] & J8_dffs[9];
+J8_dffs[9]_or_out = J8_dffs[9]_p1_out # J8_dffs[9]_p2_out;
+J8_dffs[9]_reg_input = J8_dffs[9]_or_out;
+J8_dffs[9] = TFFE(J8_dffs[9]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[10] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[10]
+J8_dffs[10]_p1_out = J8_dffs[31] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[10]_p2_out = !J8_dffs[31] & J8_dffs[10];
+J8_dffs[10]_or_out = J8_dffs[10]_p1_out # J8_dffs[10]_p2_out;
+J8_dffs[10]_reg_input = J8_dffs[10]_or_out;
+J8_dffs[10] = TFFE(J8_dffs[10]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[11] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[11]
+J8_dffs[11]_p1_out = J8_dffs[31] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[11]_p2_out = !J8_dffs[31] & J8_dffs[11];
+J8_dffs[11]_or_out = J8_dffs[11]_p1_out # J8_dffs[11]_p2_out;
+J8_dffs[11]_reg_input = J8_dffs[11]_or_out;
+J8_dffs[11] = TFFE(J8_dffs[11]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[12] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[12]
+J8_dffs[12]_p1_out = J8_dffs[31] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[12]_p2_out = !J8_dffs[31] & J8_dffs[12];
+J8_dffs[12]_or_out = J8_dffs[12]_p1_out # J8_dffs[12]_p2_out;
+J8_dffs[12]_reg_input = J8_dffs[12]_or_out;
+J8_dffs[12] = TFFE(J8_dffs[12]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[13] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[13]
+J8_dffs[13]_p1_out = J8_dffs[31] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[13]_p2_out = !J8_dffs[31] & J8_dffs[13];
+J8_dffs[13]_or_out = J8_dffs[13]_p1_out # J8_dffs[13]_p2_out;
+J8_dffs[13]_reg_input = J8_dffs[13]_or_out;
+J8_dffs[13] = TFFE(J8_dffs[13]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[14] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[14]
+J8_dffs[14]_p1_out = J8_dffs[31] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[14]_p2_out = !J8_dffs[31] & J8_dffs[14];
+J8_dffs[14]_or_out = J8_dffs[14]_p1_out # J8_dffs[14]_p2_out;
+J8_dffs[14]_reg_input = J8_dffs[14]_or_out;
+J8_dffs[14] = TFFE(J8_dffs[14]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[15] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[15]
+J8_dffs[15]_p1_out = J8_dffs[31] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[15]_p2_out = !J8_dffs[31] & J8_dffs[15];
+J8_dffs[15]_or_out = J8_dffs[15]_p1_out # J8_dffs[15]_p2_out;
+J8_dffs[15]_reg_input = J8_dffs[15]_or_out;
+J8_dffs[15] = TFFE(J8_dffs[15]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[16] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[16]
+J8_dffs[16]_p1_out = J8_dffs[31] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[16]_p2_out = !J8_dffs[31] & J8_dffs[16];
+J8_dffs[16]_or_out = J8_dffs[16]_p1_out # J8_dffs[16]_p2_out;
+J8_dffs[16]_reg_input = J8_dffs[16]_or_out;
+J8_dffs[16] = TFFE(J8_dffs[16]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[17] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[17]
+J8_dffs[17]_p1_out = J8_dffs[31] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[17]_p2_out = !J8_dffs[31] & J8_dffs[17];
+J8_dffs[17]_or_out = J8_dffs[17]_p1_out # J8_dffs[17]_p2_out;
+J8_dffs[17]_reg_input = J8_dffs[17]_or_out;
+J8_dffs[17] = TFFE(J8_dffs[17]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[18] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[18]
+J8_dffs[18]_p1_out = J8_dffs[31] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[18]_p2_out = !J8_dffs[31] & J8_dffs[18];
+J8_dffs[18]_or_out = J8_dffs[18]_p1_out # J8_dffs[18]_p2_out;
+J8_dffs[18]_reg_input = J8_dffs[18]_or_out;
+J8_dffs[18] = TFFE(J8_dffs[18]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[19] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[19]
+J8_dffs[19]_p1_out = J8_dffs[31] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[19]_p2_out = !J8_dffs[31] & J8_dffs[19];
+J8_dffs[19]_or_out = J8_dffs[19]_p1_out # J8_dffs[19]_p2_out;
+J8_dffs[19]_reg_input = J8_dffs[19]_or_out;
+J8_dffs[19] = TFFE(J8_dffs[19]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[20] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[20]
+J8_dffs[20]_p1_out = J8_dffs[31] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[20]_p2_out = !J8_dffs[31] & J8_dffs[20];
+J8_dffs[20]_or_out = J8_dffs[20]_p1_out # J8_dffs[20]_p2_out;
+J8_dffs[20]_reg_input = J8_dffs[20]_or_out;
+J8_dffs[20] = TFFE(J8_dffs[20]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[21] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[21]
+J8_dffs[21]_p1_out = J8_dffs[31] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[21]_p2_out = !J8_dffs[31] & J8_dffs[21];
+J8_dffs[21]_or_out = J8_dffs[21]_p1_out # J8_dffs[21]_p2_out;
+J8_dffs[21]_reg_input = J8_dffs[21]_or_out;
+J8_dffs[21] = TFFE(J8_dffs[21]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[22] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[22]
+J8_dffs[22]_p1_out = J8_dffs[31] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[22]_p2_out = !J8_dffs[31] & J8_dffs[22];
+J8_dffs[22]_or_out = J8_dffs[22]_p1_out # J8_dffs[22]_p2_out;
+J8_dffs[22]_reg_input = J8_dffs[22]_or_out;
+J8_dffs[22] = TFFE(J8_dffs[22]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[23] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[23]
+J8_dffs[23]_p1_out = J8_dffs[31] & J8_dffs[22] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[23]_p2_out = !J8_dffs[31] & J8_dffs[23];
+J8_dffs[23]_or_out = J8_dffs[23]_p1_out # J8_dffs[23]_p2_out;
+J8_dffs[23]_reg_input = J8_dffs[23]_or_out;
+J8_dffs[23] = TFFE(J8_dffs[23]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[24] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[24]
+J8_dffs[24]_p1_out = J8_dffs[31] & J8_dffs[23] & J8_dffs[22] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[24]_p2_out = !J8_dffs[31] & J8_dffs[24];
+J8_dffs[24]_or_out = J8_dffs[24]_p1_out # J8_dffs[24]_p2_out;
+J8_dffs[24]_reg_input = J8_dffs[24]_or_out;
+J8_dffs[24] = TFFE(J8_dffs[24]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[25] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[25]
+J8_dffs[25]_p1_out = J8_dffs[31] & J8_dffs[24] & J8_dffs[23] & J8_dffs[22] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[25]_p2_out = !J8_dffs[31] & J8_dffs[25];
+J8_dffs[25]_or_out = J8_dffs[25]_p1_out # J8_dffs[25]_p2_out;
+J8_dffs[25]_reg_input = J8_dffs[25]_or_out;
+J8_dffs[25] = TFFE(J8_dffs[25]_reg_input, C1_f1khz, , , );
+
+
+--J8L33 is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[26]~1471
+J8L33 = EXP(J8_dffs[25] & J8_dffs[24] & J8_dffs[23] & J8_dffs[22] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0]);
+
+
+--J8_dffs[26] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[26]
+J8_dffs[26]_p1_out = J8_dffs[31] & !J8_dffs[26] & J8_dffs[25] & J8_dffs[24] & J8_dffs[23] & J8_dffs[22] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8_dffs[26]_p2_out = J8_dffs[31] & J8_dffs[26] & J8L33;
+J8_dffs[26]_or_out = J8_dffs[26]_p1_out # J8_dffs[26]_p2_out;
+J8_dffs[26]_reg_input = J8_dffs[26]_or_out;
+J8_dffs[26] = DFFE(J8_dffs[26]_reg_input, C1_f1khz, , , );
+
+
+--J8L1 is fdiv:inst1|lpm_counter:cnt2_rtl_7|and_a[26]~269
+J8L1_p1_out = J8_dffs[26] & J8_dffs[25] & J8_dffs[24] & J8_dffs[23] & J8_dffs[22] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8L1_or_out = J8L1_p1_out;
+J8L1 = J8L1_or_out;
+
+
+--J8_dffs[27] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[27]
+J8_dffs[27]_p1_out = C1L2 & J8_dffs[27] & !J8L1;
+J8_dffs[27]_p2_out = C1L2 & !J8_dffs[27] & J8L1;
+J8_dffs[27]_or_out = J8_dffs[27]_p1_out # J8_dffs[27]_p2_out;
+J8_dffs[27]_reg_input = J8_dffs[27]_or_out;
+J8_dffs[27] = DFFE(J8_dffs[27]_reg_input, C1_f1khz, , , );
+
+
+--J8L2 is fdiv:inst1|lpm_counter:cnt2_rtl_7|and_a[27]~271
+J8L2_p1_out = J8_dffs[27] & J8_dffs[26] & J8_dffs[25] & J8_dffs[24] & J8_dffs[23] & J8_dffs[22] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8L2_or_out = J8L2_p1_out;
+J8L2 = J8L2_or_out;
+
+
+--J8_dffs[28] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[28]
+J8_dffs[28]_p1_out = C1L2 & J8_dffs[28] & !J8L2;
+J8_dffs[28]_p2_out = C1L2 & !J8_dffs[28] & J8L2;
+J8_dffs[28]_or_out = J8_dffs[28]_p1_out # J8_dffs[28]_p2_out;
+J8_dffs[28]_reg_input = J8_dffs[28]_or_out;
+J8_dffs[28] = DFFE(J8_dffs[28]_reg_input, C1_f1khz, , , );
+
+
+--J8L3 is fdiv:inst1|lpm_counter:cnt2_rtl_7|and_a[28]~273
+J8L3_p1_out = J8_dffs[28] & J8_dffs[27] & J8_dffs[26] & J8_dffs[25] & J8_dffs[24] & J8_dffs[23] & J8_dffs[22] & J8_dffs[21] & J8_dffs[20] & J8_dffs[19] & J8_dffs[18] & J8_dffs[17] & J8_dffs[16] & J8_dffs[15] & J8_dffs[14] & J8_dffs[13] & J8_dffs[12] & J8_dffs[11] & J8_dffs[10] & J8_dffs[9] & J8_dffs[8] & J8_dffs[7] & J8_dffs[6] & J8_dffs[5] & J8_dffs[4] & J8_dffs[3] & J8_dffs[2] & J8_dffs[1] & J8_dffs[0];
+J8L3_or_out = J8L3_p1_out;
+J8L3 = J8L3_or_out;
+
+
+--J8_dffs[29] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[29]
+J8_dffs[29]_p1_out = C1L2 & J8_dffs[29] & !J8L3;
+J8_dffs[29]_p2_out = C1L2 & !J8_dffs[29] & J8L3;
+J8_dffs[29]_or_out = J8_dffs[29]_p1_out # J8_dffs[29]_p2_out;
+J8_dffs[29]_reg_input = J8_dffs[29]_or_out;
+J8_dffs[29] = DFFE(J8_dffs[29]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[30] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[30]
+J8_dffs[30]_p1_out = C1L2 & J8_dffs[29] & J8L3;
+J8_dffs[30]_p2_out = !C1L2 & J8_dffs[30];
+J8_dffs[30]_or_out = J8_dffs[30]_p1_out # J8_dffs[30]_p2_out;
+J8_dffs[30]_reg_input = J8_dffs[30]_or_out;
+J8_dffs[30] = TFFE(J8_dffs[30]_reg_input, C1_f1khz, , , );
+
+
+--J8_dffs[31] is fdiv:inst1|lpm_counter:cnt2_rtl_7|dffs[31]
+J8_dffs[31]_p1_out = C1L2 & J8_dffs[30] & J8_dffs[29] & J8L3;
+J8_dffs[31]_p2_out = !C1L2 & J8_dffs[31];
+J8_dffs[31]_or_out = J8_dffs[31]_p1_out # J8_dffs[31]_p2_out;
+J8_dffs[31]_reg_input = J8_dffs[31]_or_out;
+J8_dffs[31] = TFFE(J8_dffs[31]_reg_input, C1_f1khz, , , );
+
+
+--C1_f100hz is fdiv:inst1|f100hz
+C1_f100hz_p1_out = J8L7 & !J8_dffs[21] & !J8_dffs[12] & !J8_dffs[1] & !J8_dffs[16] & !J8_dffs[30] & !J8_dffs[17] & !J8_dffs[10] & !J8_dffs[11] & !J8_dffs[22] & !J8_dffs[13] & !J8_dffs[25] & !J8_dffs[4] & !J8_dffs[18] & !J8_dffs[5];
+C1_f100hz_or_out = C1_f100hz_p1_out # J8_dffs[31];
+C1_f100hz_reg_input = !(C1_f100hz_or_out);
+C1_f100hz = DFFE(C1_f100hz_reg_input, C1_f1khz, , , );
+
+
+--J9L7 is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[1]~1343
+J9L7_p1_out = !J9_dffs[23] & !J9_dffs[15] & !J9_dffs[2] & !J9_dffs[3] & !J9_dffs[24] & !J9_dffs[28] & !J9_dffs[6] & !J9_dffs[7] & !J9_dffs[8] & !J9_dffs[20] & !J9_dffs[27] & !J9_dffs[14] & !J9_dffs[19] & !J9_dffs[29] & !J9_dffs[26] & !J9_dffs[9];
+J9L7_or_out = J9L7_p1_out;
+J9L7 = J9L7_or_out;
+
+
+--C1L3 is fdiv:inst1|LessThan~595
+C1L3_p1_out = J9L7 & !J9_dffs[21] & !J9_dffs[12] & !J9_dffs[1] & !J9_dffs[16] & !J9_dffs[30] & !J9_dffs[17] & !J9_dffs[10] & !J9_dffs[11] & !J9_dffs[22] & !J9_dffs[13] & !J9_dffs[25] & !J9_dffs[4] & !J9_dffs[18] & !J9_dffs[5];
+C1L3_or_out = C1L3_p1_out # J9_dffs[31];
+C1L3 = C1L3_or_out;
+
+
+--J9_dffs[0] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[0]
+J9_dffs[0]_p1_out = C1L3 & !J9_dffs[0];
+J9_dffs[0]_or_out = J9_dffs[0]_p1_out;
+J9_dffs[0]_reg_input = J9_dffs[0]_or_out;
+J9_dffs[0] = DFFE(J9_dffs[0]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[1] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[1]
+J9_dffs[1]_p1_out = C1L3 & J9_dffs[1] & !J9_dffs[0];
+J9_dffs[1]_p2_out = C1L3 & !J9_dffs[1] & J9_dffs[0];
+J9_dffs[1]_or_out = J9_dffs[1]_p1_out # J9_dffs[1]_p2_out;
+J9_dffs[1]_reg_input = J9_dffs[1]_or_out;
+J9_dffs[1] = DFFE(J9_dffs[1]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[2] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[2]
+J9_dffs[2]_p1_out = J9_dffs[31] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[2]_p2_out = !J9_dffs[31] & J9_dffs[2];
+J9_dffs[2]_or_out = J9_dffs[2]_p1_out # J9_dffs[2]_p2_out;
+J9_dffs[2]_reg_input = J9_dffs[2]_or_out;
+J9_dffs[2] = TFFE(J9_dffs[2]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[3] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[3]
+J9_dffs[3]_p1_out = J9_dffs[31] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[3]_p2_out = !J9_dffs[31] & J9_dffs[3];
+J9_dffs[3]_or_out = J9_dffs[3]_p1_out # J9_dffs[3]_p2_out;
+J9_dffs[3]_reg_input = J9_dffs[3]_or_out;
+J9_dffs[3] = TFFE(J9_dffs[3]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[4] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[4]
+J9_dffs[4]_p1_out = J9_dffs[31] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[4]_p2_out = !J9_dffs[31] & J9_dffs[4];
+J9_dffs[4]_or_out = J9_dffs[4]_p1_out # J9_dffs[4]_p2_out;
+J9_dffs[4]_reg_input = J9_dffs[4]_or_out;
+J9_dffs[4] = TFFE(J9_dffs[4]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[5] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[5]
+J9_dffs[5]_p1_out = J9_dffs[31] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[5]_p2_out = !J9_dffs[31] & J9_dffs[5];
+J9_dffs[5]_or_out = J9_dffs[5]_p1_out # J9_dffs[5]_p2_out;
+J9_dffs[5]_reg_input = J9_dffs[5]_or_out;
+J9_dffs[5] = TFFE(J9_dffs[5]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[6] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[6]
+J9_dffs[6]_p1_out = J9_dffs[31] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[6]_p2_out = !J9_dffs[31] & J9_dffs[6];
+J9_dffs[6]_or_out = J9_dffs[6]_p1_out # J9_dffs[6]_p2_out;
+J9_dffs[6]_reg_input = J9_dffs[6]_or_out;
+J9_dffs[6] = TFFE(J9_dffs[6]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[7] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[7]
+J9_dffs[7]_p1_out = J9_dffs[31] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[7]_p2_out = !J9_dffs[31] & J9_dffs[7];
+J9_dffs[7]_or_out = J9_dffs[7]_p1_out # J9_dffs[7]_p2_out;
+J9_dffs[7]_reg_input = J9_dffs[7]_or_out;
+J9_dffs[7] = TFFE(J9_dffs[7]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[8] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[8]
+J9_dffs[8]_p1_out = J9_dffs[31] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[8]_p2_out = !J9_dffs[31] & J9_dffs[8];
+J9_dffs[8]_or_out = J9_dffs[8]_p1_out # J9_dffs[8]_p2_out;
+J9_dffs[8]_reg_input = J9_dffs[8]_or_out;
+J9_dffs[8] = TFFE(J9_dffs[8]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[9] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[9]
+J9_dffs[9]_p1_out = J9_dffs[31] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[9]_p2_out = !J9_dffs[31] & J9_dffs[9];
+J9_dffs[9]_or_out = J9_dffs[9]_p1_out # J9_dffs[9]_p2_out;
+J9_dffs[9]_reg_input = J9_dffs[9]_or_out;
+J9_dffs[9] = TFFE(J9_dffs[9]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[10] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[10]
+J9_dffs[10]_p1_out = J9_dffs[31] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[10]_p2_out = !J9_dffs[31] & J9_dffs[10];
+J9_dffs[10]_or_out = J9_dffs[10]_p1_out # J9_dffs[10]_p2_out;
+J9_dffs[10]_reg_input = J9_dffs[10]_or_out;
+J9_dffs[10] = TFFE(J9_dffs[10]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[11] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[11]
+J9_dffs[11]_p1_out = J9_dffs[31] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[11]_p2_out = !J9_dffs[31] & J9_dffs[11];
+J9_dffs[11]_or_out = J9_dffs[11]_p1_out # J9_dffs[11]_p2_out;
+J9_dffs[11]_reg_input = J9_dffs[11]_or_out;
+J9_dffs[11] = TFFE(J9_dffs[11]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[12] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[12]
+J9_dffs[12]_p1_out = J9_dffs[31] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[12]_p2_out = !J9_dffs[31] & J9_dffs[12];
+J9_dffs[12]_or_out = J9_dffs[12]_p1_out # J9_dffs[12]_p2_out;
+J9_dffs[12]_reg_input = J9_dffs[12]_or_out;
+J9_dffs[12] = TFFE(J9_dffs[12]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[13] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[13]
+J9_dffs[13]_p1_out = J9_dffs[31] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[13]_p2_out = !J9_dffs[31] & J9_dffs[13];
+J9_dffs[13]_or_out = J9_dffs[13]_p1_out # J9_dffs[13]_p2_out;
+J9_dffs[13]_reg_input = J9_dffs[13]_or_out;
+J9_dffs[13] = TFFE(J9_dffs[13]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[14] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[14]
+J9_dffs[14]_p1_out = J9_dffs[31] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[14]_p2_out = !J9_dffs[31] & J9_dffs[14];
+J9_dffs[14]_or_out = J9_dffs[14]_p1_out # J9_dffs[14]_p2_out;
+J9_dffs[14]_reg_input = J9_dffs[14]_or_out;
+J9_dffs[14] = TFFE(J9_dffs[14]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[15] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[15]
+J9_dffs[15]_p1_out = J9_dffs[31] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[15]_p2_out = !J9_dffs[31] & J9_dffs[15];
+J9_dffs[15]_or_out = J9_dffs[15]_p1_out # J9_dffs[15]_p2_out;
+J9_dffs[15]_reg_input = J9_dffs[15]_or_out;
+J9_dffs[15] = TFFE(J9_dffs[15]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[16] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[16]
+J9_dffs[16]_p1_out = J9_dffs[31] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[16]_p2_out = !J9_dffs[31] & J9_dffs[16];
+J9_dffs[16]_or_out = J9_dffs[16]_p1_out # J9_dffs[16]_p2_out;
+J9_dffs[16]_reg_input = J9_dffs[16]_or_out;
+J9_dffs[16] = TFFE(J9_dffs[16]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[17] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[17]
+J9_dffs[17]_p1_out = J9_dffs[31] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[17]_p2_out = !J9_dffs[31] & J9_dffs[17];
+J9_dffs[17]_or_out = J9_dffs[17]_p1_out # J9_dffs[17]_p2_out;
+J9_dffs[17]_reg_input = J9_dffs[17]_or_out;
+J9_dffs[17] = TFFE(J9_dffs[17]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[18] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[18]
+J9_dffs[18]_p1_out = J9_dffs[31] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[18]_p2_out = !J9_dffs[31] & J9_dffs[18];
+J9_dffs[18]_or_out = J9_dffs[18]_p1_out # J9_dffs[18]_p2_out;
+J9_dffs[18]_reg_input = J9_dffs[18]_or_out;
+J9_dffs[18] = TFFE(J9_dffs[18]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[19] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[19]
+J9_dffs[19]_p1_out = J9_dffs[31] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[19]_p2_out = !J9_dffs[31] & J9_dffs[19];
+J9_dffs[19]_or_out = J9_dffs[19]_p1_out # J9_dffs[19]_p2_out;
+J9_dffs[19]_reg_input = J9_dffs[19]_or_out;
+J9_dffs[19] = TFFE(J9_dffs[19]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[20] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[20]
+J9_dffs[20]_p1_out = J9_dffs[31] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[20]_p2_out = !J9_dffs[31] & J9_dffs[20];
+J9_dffs[20]_or_out = J9_dffs[20]_p1_out # J9_dffs[20]_p2_out;
+J9_dffs[20]_reg_input = J9_dffs[20]_or_out;
+J9_dffs[20] = TFFE(J9_dffs[20]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[21] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[21]
+J9_dffs[21]_p1_out = J9_dffs[31] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[21]_p2_out = !J9_dffs[31] & J9_dffs[21];
+J9_dffs[21]_or_out = J9_dffs[21]_p1_out # J9_dffs[21]_p2_out;
+J9_dffs[21]_reg_input = J9_dffs[21]_or_out;
+J9_dffs[21] = TFFE(J9_dffs[21]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[22] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[22]
+J9_dffs[22]_p1_out = J9_dffs[31] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[22]_p2_out = !J9_dffs[31] & J9_dffs[22];
+J9_dffs[22]_or_out = J9_dffs[22]_p1_out # J9_dffs[22]_p2_out;
+J9_dffs[22]_reg_input = J9_dffs[22]_or_out;
+J9_dffs[22] = TFFE(J9_dffs[22]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[23] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[23]
+J9_dffs[23]_p1_out = J9_dffs[31] & J9_dffs[22] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[23]_p2_out = !J9_dffs[31] & J9_dffs[23];
+J9_dffs[23]_or_out = J9_dffs[23]_p1_out # J9_dffs[23]_p2_out;
+J9_dffs[23]_reg_input = J9_dffs[23]_or_out;
+J9_dffs[23] = TFFE(J9_dffs[23]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[24] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[24]
+J9_dffs[24]_p1_out = J9_dffs[31] & J9_dffs[23] & J9_dffs[22] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[24]_p2_out = !J9_dffs[31] & J9_dffs[24];
+J9_dffs[24]_or_out = J9_dffs[24]_p1_out # J9_dffs[24]_p2_out;
+J9_dffs[24]_reg_input = J9_dffs[24]_or_out;
+J9_dffs[24] = TFFE(J9_dffs[24]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[25] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[25]
+J9_dffs[25]_p1_out = J9_dffs[31] & J9_dffs[24] & J9_dffs[23] & J9_dffs[22] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[25]_p2_out = !J9_dffs[31] & J9_dffs[25];
+J9_dffs[25]_or_out = J9_dffs[25]_p1_out # J9_dffs[25]_p2_out;
+J9_dffs[25]_reg_input = J9_dffs[25]_or_out;
+J9_dffs[25] = TFFE(J9_dffs[25]_reg_input, C1_f100hz, , , );
+
+
+--J9L33 is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[26]~1471
+J9L33 = EXP(J9_dffs[25] & J9_dffs[24] & J9_dffs[23] & J9_dffs[22] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0]);
+
+
+--J9_dffs[26] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[26]
+J9_dffs[26]_p1_out = J9_dffs[31] & !J9_dffs[26] & J9_dffs[25] & J9_dffs[24] & J9_dffs[23] & J9_dffs[22] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9_dffs[26]_p2_out = J9_dffs[31] & J9_dffs[26] & J9L33;
+J9_dffs[26]_or_out = J9_dffs[26]_p1_out # J9_dffs[26]_p2_out;
+J9_dffs[26]_reg_input = J9_dffs[26]_or_out;
+J9_dffs[26] = DFFE(J9_dffs[26]_reg_input, C1_f100hz, , , );
+
+
+--J9L1 is fdiv:inst1|lpm_counter:cnt3_rtl_9|and_a[26]~269
+J9L1_p1_out = J9_dffs[26] & J9_dffs[25] & J9_dffs[24] & J9_dffs[23] & J9_dffs[22] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9L1_or_out = J9L1_p1_out;
+J9L1 = J9L1_or_out;
+
+
+--J9_dffs[27] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[27]
+J9_dffs[27]_p1_out = C1L3 & J9_dffs[27] & !J9L1;
+J9_dffs[27]_p2_out = C1L3 & !J9_dffs[27] & J9L1;
+J9_dffs[27]_or_out = J9_dffs[27]_p1_out # J9_dffs[27]_p2_out;
+J9_dffs[27]_reg_input = J9_dffs[27]_or_out;
+J9_dffs[27] = DFFE(J9_dffs[27]_reg_input, C1_f100hz, , , );
+
+
+--J9L2 is fdiv:inst1|lpm_counter:cnt3_rtl_9|and_a[27]~271
+J9L2_p1_out = J9_dffs[27] & J9_dffs[26] & J9_dffs[25] & J9_dffs[24] & J9_dffs[23] & J9_dffs[22] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9L2_or_out = J9L2_p1_out;
+J9L2 = J9L2_or_out;
+
+
+--J9_dffs[28] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[28]
+J9_dffs[28]_p1_out = C1L3 & J9_dffs[28] & !J9L2;
+J9_dffs[28]_p2_out = C1L3 & !J9_dffs[28] & J9L2;
+J9_dffs[28]_or_out = J9_dffs[28]_p1_out # J9_dffs[28]_p2_out;
+J9_dffs[28]_reg_input = J9_dffs[28]_or_out;
+J9_dffs[28] = DFFE(J9_dffs[28]_reg_input, C1_f100hz, , , );
+
+
+--J9L3 is fdiv:inst1|lpm_counter:cnt3_rtl_9|and_a[28]~273
+J9L3_p1_out = J9_dffs[28] & J9_dffs[27] & J9_dffs[26] & J9_dffs[25] & J9_dffs[24] & J9_dffs[23] & J9_dffs[22] & J9_dffs[21] & J9_dffs[20] & J9_dffs[19] & J9_dffs[18] & J9_dffs[17] & J9_dffs[16] & J9_dffs[15] & J9_dffs[14] & J9_dffs[13] & J9_dffs[12] & J9_dffs[11] & J9_dffs[10] & J9_dffs[9] & J9_dffs[8] & J9_dffs[7] & J9_dffs[6] & J9_dffs[5] & J9_dffs[4] & J9_dffs[3] & J9_dffs[2] & J9_dffs[1] & J9_dffs[0];
+J9L3_or_out = J9L3_p1_out;
+J9L3 = J9L3_or_out;
+
+
+--J9_dffs[29] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[29]
+J9_dffs[29]_p1_out = C1L3 & J9_dffs[29] & !J9L3;
+J9_dffs[29]_p2_out = C1L3 & !J9_dffs[29] & J9L3;
+J9_dffs[29]_or_out = J9_dffs[29]_p1_out # J9_dffs[29]_p2_out;
+J9_dffs[29]_reg_input = J9_dffs[29]_or_out;
+J9_dffs[29] = DFFE(J9_dffs[29]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[30] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[30]
+J9_dffs[30]_p1_out = C1L3 & J9_dffs[29] & J9L3;
+J9_dffs[30]_p2_out = !C1L3 & J9_dffs[30];
+J9_dffs[30]_or_out = J9_dffs[30]_p1_out # J9_dffs[30]_p2_out;
+J9_dffs[30]_reg_input = J9_dffs[30]_or_out;
+J9_dffs[30] = TFFE(J9_dffs[30]_reg_input, C1_f100hz, , , );
+
+
+--J9_dffs[31] is fdiv:inst1|lpm_counter:cnt3_rtl_9|dffs[31]
+J9_dffs[31]_p1_out = C1L3 & J9_dffs[30] & J9_dffs[29] & J9L3;
+J9_dffs[31]_p2_out = !C1L3 & J9_dffs[31];
+J9_dffs[31]_or_out = J9_dffs[31]_p1_out # J9_dffs[31]_p2_out;
+J9_dffs[31]_reg_input = J9_dffs[31]_or_out;
+J9_dffs[31] = TFFE(J9_dffs[31]_reg_input, C1_f100hz, , , );
+
+
+--C1_f10hz is fdiv:inst1|f10hz
+C1_f10hz_p1_out = J9L7 & !J9_dffs[21] & !J9_dffs[12] & !J9_dffs[1] & !J9_dffs[16] & !J9_dffs[30] & !J9_dffs[17] & !J9_dffs[10] & !J9_dffs[11] & !J9_dffs[22] & !J9_dffs[13] & !J9_dffs[25] & !J9_dffs[4] & !J9_dffs[18] & !J9_dffs[5];
+C1_f10hz_or_out = C1_f10hz_p1_out # J9_dffs[31];
+C1_f10hz_reg_input = !(C1_f10hz_or_out);
+C1_f10hz = DFFE(C1_f10hz_reg_input, C1_f100hz, , , );
+
+
+--J01L7 is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[1]~1343
+J01L7_p1_out = !J01_dffs[23] & !J01_dffs[15] & !J01_dffs[2] & !J01_dffs[3] & !J01_dffs[24] & !J01_dffs[28] & !J01_dffs[6] & !J01_dffs[7] & !J01_dffs[8] & !J01_dffs[20] & !J01_dffs[27] & !J01_dffs[14] & !J01_dffs[19] & !J01_dffs[29] & !J01_dffs[26] & !J01_dffs[9];
+J01L7_or_out = J01L7_p1_out;
+J01L7 = J01L7_or_out;
+
+
+--C1L4 is fdiv:inst1|LessThan~603
+C1L4_p1_out = J01L7 & !J01_dffs[21] & !J01_dffs[12] & !J01_dffs[1] & !J01_dffs[16] & !J01_dffs[30] & !J01_dffs[17] & !J01_dffs[10] & !J01_dffs[11] & !J01_dffs[22] & !J01_dffs[13] & !J01_dffs[25] & !J01_dffs[4] & !J01_dffs[18] & !J01_dffs[5];
+C1L4_or_out = C1L4_p1_out # J01_dffs[31];
+C1L4 = C1L4_or_out;
+
+
+--J01_dffs[0] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[0]
+J01_dffs[0]_p1_out = C1L4 & !J01_dffs[0];
+J01_dffs[0]_or_out = J01_dffs[0]_p1_out;
+J01_dffs[0]_reg_input = J01_dffs[0]_or_out;
+J01_dffs[0] = DFFE(J01_dffs[0]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[1] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[1]
+J01_dffs[1]_p1_out = C1L4 & J01_dffs[1] & !J01_dffs[0];
+J01_dffs[1]_p2_out = C1L4 & !J01_dffs[1] & J01_dffs[0];
+J01_dffs[1]_or_out = J01_dffs[1]_p1_out # J01_dffs[1]_p2_out;
+J01_dffs[1]_reg_input = J01_dffs[1]_or_out;
+J01_dffs[1] = DFFE(J01_dffs[1]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[2] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[2]
+J01_dffs[2]_p1_out = J01_dffs[31] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[2]_p2_out = !J01_dffs[31] & J01_dffs[2];
+J01_dffs[2]_or_out = J01_dffs[2]_p1_out # J01_dffs[2]_p2_out;
+J01_dffs[2]_reg_input = J01_dffs[2]_or_out;
+J01_dffs[2] = TFFE(J01_dffs[2]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[3] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[3]
+J01_dffs[3]_p1_out = J01_dffs[31] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[3]_p2_out = !J01_dffs[31] & J01_dffs[3];
+J01_dffs[3]_or_out = J01_dffs[3]_p1_out # J01_dffs[3]_p2_out;
+J01_dffs[3]_reg_input = J01_dffs[3]_or_out;
+J01_dffs[3] = TFFE(J01_dffs[3]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[4] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[4]
+J01_dffs[4]_p1_out = J01_dffs[31] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[4]_p2_out = !J01_dffs[31] & J01_dffs[4];
+J01_dffs[4]_or_out = J01_dffs[4]_p1_out # J01_dffs[4]_p2_out;
+J01_dffs[4]_reg_input = J01_dffs[4]_or_out;
+J01_dffs[4] = TFFE(J01_dffs[4]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[5] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[5]
+J01_dffs[5]_p1_out = J01_dffs[31] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[5]_p2_out = !J01_dffs[31] & J01_dffs[5];
+J01_dffs[5]_or_out = J01_dffs[5]_p1_out # J01_dffs[5]_p2_out;
+J01_dffs[5]_reg_input = J01_dffs[5]_or_out;
+J01_dffs[5] = TFFE(J01_dffs[5]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[6] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[6]
+J01_dffs[6]_p1_out = J01_dffs[31] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[6]_p2_out = !J01_dffs[31] & J01_dffs[6];
+J01_dffs[6]_or_out = J01_dffs[6]_p1_out # J01_dffs[6]_p2_out;
+J01_dffs[6]_reg_input = J01_dffs[6]_or_out;
+J01_dffs[6] = TFFE(J01_dffs[6]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[7] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[7]
+J01_dffs[7]_p1_out = J01_dffs[31] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[7]_p2_out = !J01_dffs[31] & J01_dffs[7];
+J01_dffs[7]_or_out = J01_dffs[7]_p1_out # J01_dffs[7]_p2_out;
+J01_dffs[7]_reg_input = J01_dffs[7]_or_out;
+J01_dffs[7] = TFFE(J01_dffs[7]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[8] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[8]
+J01_dffs[8]_p1_out = J01_dffs[31] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[8]_p2_out = !J01_dffs[31] & J01_dffs[8];
+J01_dffs[8]_or_out = J01_dffs[8]_p1_out # J01_dffs[8]_p2_out;
+J01_dffs[8]_reg_input = J01_dffs[8]_or_out;
+J01_dffs[8] = TFFE(J01_dffs[8]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[9] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[9]
+J01_dffs[9]_p1_out = J01_dffs[31] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[9]_p2_out = !J01_dffs[31] & J01_dffs[9];
+J01_dffs[9]_or_out = J01_dffs[9]_p1_out # J01_dffs[9]_p2_out;
+J01_dffs[9]_reg_input = J01_dffs[9]_or_out;
+J01_dffs[9] = TFFE(J01_dffs[9]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[10] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[10]
+J01_dffs[10]_p1_out = J01_dffs[31] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[10]_p2_out = !J01_dffs[31] & J01_dffs[10];
+J01_dffs[10]_or_out = J01_dffs[10]_p1_out # J01_dffs[10]_p2_out;
+J01_dffs[10]_reg_input = J01_dffs[10]_or_out;
+J01_dffs[10] = TFFE(J01_dffs[10]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[11] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[11]
+J01_dffs[11]_p1_out = J01_dffs[31] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[11]_p2_out = !J01_dffs[31] & J01_dffs[11];
+J01_dffs[11]_or_out = J01_dffs[11]_p1_out # J01_dffs[11]_p2_out;
+J01_dffs[11]_reg_input = J01_dffs[11]_or_out;
+J01_dffs[11] = TFFE(J01_dffs[11]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[12] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[12]
+J01_dffs[12]_p1_out = J01_dffs[31] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[12]_p2_out = !J01_dffs[31] & J01_dffs[12];
+J01_dffs[12]_or_out = J01_dffs[12]_p1_out # J01_dffs[12]_p2_out;
+J01_dffs[12]_reg_input = J01_dffs[12]_or_out;
+J01_dffs[12] = TFFE(J01_dffs[12]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[13] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[13]
+J01_dffs[13]_p1_out = J01_dffs[31] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[13]_p2_out = !J01_dffs[31] & J01_dffs[13];
+J01_dffs[13]_or_out = J01_dffs[13]_p1_out # J01_dffs[13]_p2_out;
+J01_dffs[13]_reg_input = J01_dffs[13]_or_out;
+J01_dffs[13] = TFFE(J01_dffs[13]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[14] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[14]
+J01_dffs[14]_p1_out = J01_dffs[31] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[14]_p2_out = !J01_dffs[31] & J01_dffs[14];
+J01_dffs[14]_or_out = J01_dffs[14]_p1_out # J01_dffs[14]_p2_out;
+J01_dffs[14]_reg_input = J01_dffs[14]_or_out;
+J01_dffs[14] = TFFE(J01_dffs[14]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[15] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[15]
+J01_dffs[15]_p1_out = J01_dffs[31] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[15]_p2_out = !J01_dffs[31] & J01_dffs[15];
+J01_dffs[15]_or_out = J01_dffs[15]_p1_out # J01_dffs[15]_p2_out;
+J01_dffs[15]_reg_input = J01_dffs[15]_or_out;
+J01_dffs[15] = TFFE(J01_dffs[15]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[16] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[16]
+J01_dffs[16]_p1_out = J01_dffs[31] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[16]_p2_out = !J01_dffs[31] & J01_dffs[16];
+J01_dffs[16]_or_out = J01_dffs[16]_p1_out # J01_dffs[16]_p2_out;
+J01_dffs[16]_reg_input = J01_dffs[16]_or_out;
+J01_dffs[16] = TFFE(J01_dffs[16]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[17] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[17]
+J01_dffs[17]_p1_out = J01_dffs[31] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[17]_p2_out = !J01_dffs[31] & J01_dffs[17];
+J01_dffs[17]_or_out = J01_dffs[17]_p1_out # J01_dffs[17]_p2_out;
+J01_dffs[17]_reg_input = J01_dffs[17]_or_out;
+J01_dffs[17] = TFFE(J01_dffs[17]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[18] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[18]
+J01_dffs[18]_p1_out = J01_dffs[31] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[18]_p2_out = !J01_dffs[31] & J01_dffs[18];
+J01_dffs[18]_or_out = J01_dffs[18]_p1_out # J01_dffs[18]_p2_out;
+J01_dffs[18]_reg_input = J01_dffs[18]_or_out;
+J01_dffs[18] = TFFE(J01_dffs[18]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[19] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[19]
+J01_dffs[19]_p1_out = J01_dffs[31] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[19]_p2_out = !J01_dffs[31] & J01_dffs[19];
+J01_dffs[19]_or_out = J01_dffs[19]_p1_out # J01_dffs[19]_p2_out;
+J01_dffs[19]_reg_input = J01_dffs[19]_or_out;
+J01_dffs[19] = TFFE(J01_dffs[19]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[20] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[20]
+J01_dffs[20]_p1_out = J01_dffs[31] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[20]_p2_out = !J01_dffs[31] & J01_dffs[20];
+J01_dffs[20]_or_out = J01_dffs[20]_p1_out # J01_dffs[20]_p2_out;
+J01_dffs[20]_reg_input = J01_dffs[20]_or_out;
+J01_dffs[20] = TFFE(J01_dffs[20]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[21] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[21]
+J01_dffs[21]_p1_out = J01_dffs[31] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[21]_p2_out = !J01_dffs[31] & J01_dffs[21];
+J01_dffs[21]_or_out = J01_dffs[21]_p1_out # J01_dffs[21]_p2_out;
+J01_dffs[21]_reg_input = J01_dffs[21]_or_out;
+J01_dffs[21] = TFFE(J01_dffs[21]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[22] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[22]
+J01_dffs[22]_p1_out = J01_dffs[31] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[22]_p2_out = !J01_dffs[31] & J01_dffs[22];
+J01_dffs[22]_or_out = J01_dffs[22]_p1_out # J01_dffs[22]_p2_out;
+J01_dffs[22]_reg_input = J01_dffs[22]_or_out;
+J01_dffs[22] = TFFE(J01_dffs[22]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[23] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[23]
+J01_dffs[23]_p1_out = J01_dffs[31] & J01_dffs[22] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[23]_p2_out = !J01_dffs[31] & J01_dffs[23];
+J01_dffs[23]_or_out = J01_dffs[23]_p1_out # J01_dffs[23]_p2_out;
+J01_dffs[23]_reg_input = J01_dffs[23]_or_out;
+J01_dffs[23] = TFFE(J01_dffs[23]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[24] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[24]
+J01_dffs[24]_p1_out = J01_dffs[31] & J01_dffs[23] & J01_dffs[22] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[24]_p2_out = !J01_dffs[31] & J01_dffs[24];
+J01_dffs[24]_or_out = J01_dffs[24]_p1_out # J01_dffs[24]_p2_out;
+J01_dffs[24]_reg_input = J01_dffs[24]_or_out;
+J01_dffs[24] = TFFE(J01_dffs[24]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[25] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[25]
+J01_dffs[25]_p1_out = J01_dffs[31] & J01_dffs[24] & J01_dffs[23] & J01_dffs[22] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[25]_p2_out = !J01_dffs[31] & J01_dffs[25];
+J01_dffs[25]_or_out = J01_dffs[25]_p1_out # J01_dffs[25]_p2_out;
+J01_dffs[25]_reg_input = J01_dffs[25]_or_out;
+J01_dffs[25] = TFFE(J01_dffs[25]_reg_input, C1_f10hz, , , );
+
+
+--J01L33 is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[26]~1471
+J01L33 = EXP(J01_dffs[25] & J01_dffs[24] & J01_dffs[23] & J01_dffs[22] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0]);
+
+
+--J01_dffs[26] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[26]
+J01_dffs[26]_p1_out = J01_dffs[31] & !J01_dffs[26] & J01_dffs[25] & J01_dffs[24] & J01_dffs[23] & J01_dffs[22] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01_dffs[26]_p2_out = J01_dffs[31] & J01_dffs[26] & J01L33;
+J01_dffs[26]_or_out = J01_dffs[26]_p1_out # J01_dffs[26]_p2_out;
+J01_dffs[26]_reg_input = J01_dffs[26]_or_out;
+J01_dffs[26] = DFFE(J01_dffs[26]_reg_input, C1_f10hz, , , );
+
+
+--J01L1 is fdiv:inst1|lpm_counter:cnt4_rtl_8|and_a[26]~269
+J01L1_p1_out = J01_dffs[26] & J01_dffs[25] & J01_dffs[24] & J01_dffs[23] & J01_dffs[22] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01L1_or_out = J01L1_p1_out;
+J01L1 = J01L1_or_out;
+
+
+--J01_dffs[27] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[27]
+J01_dffs[27]_p1_out = C1L4 & J01_dffs[27] & !J01L1;
+J01_dffs[27]_p2_out = C1L4 & !J01_dffs[27] & J01L1;
+J01_dffs[27]_or_out = J01_dffs[27]_p1_out # J01_dffs[27]_p2_out;
+J01_dffs[27]_reg_input = J01_dffs[27]_or_out;
+J01_dffs[27] = DFFE(J01_dffs[27]_reg_input, C1_f10hz, , , );
+
+
+--J01L2 is fdiv:inst1|lpm_counter:cnt4_rtl_8|and_a[27]~271
+J01L2_p1_out = J01_dffs[27] & J01_dffs[26] & J01_dffs[25] & J01_dffs[24] & J01_dffs[23] & J01_dffs[22] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01L2_or_out = J01L2_p1_out;
+J01L2 = J01L2_or_out;
+
+
+--J01_dffs[28] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[28]
+J01_dffs[28]_p1_out = C1L4 & J01_dffs[28] & !J01L2;
+J01_dffs[28]_p2_out = C1L4 & !J01_dffs[28] & J01L2;
+J01_dffs[28]_or_out = J01_dffs[28]_p1_out # J01_dffs[28]_p2_out;
+J01_dffs[28]_reg_input = J01_dffs[28]_or_out;
+J01_dffs[28] = DFFE(J01_dffs[28]_reg_input, C1_f10hz, , , );
+
+
+--J01L3 is fdiv:inst1|lpm_counter:cnt4_rtl_8|and_a[28]~273
+J01L3_p1_out = J01_dffs[28] & J01_dffs[27] & J01_dffs[26] & J01_dffs[25] & J01_dffs[24] & J01_dffs[23] & J01_dffs[22] & J01_dffs[21] & J01_dffs[20] & J01_dffs[19] & J01_dffs[18] & J01_dffs[17] & J01_dffs[16] & J01_dffs[15] & J01_dffs[14] & J01_dffs[13] & J01_dffs[12] & J01_dffs[11] & J01_dffs[10] & J01_dffs[9] & J01_dffs[8] & J01_dffs[7] & J01_dffs[6] & J01_dffs[5] & J01_dffs[4] & J01_dffs[3] & J01_dffs[2] & J01_dffs[1] & J01_dffs[0];
+J01L3_or_out = J01L3_p1_out;
+J01L3 = J01L3_or_out;
+
+
+--J01_dffs[29] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[29]
+J01_dffs[29]_p1_out = C1L4 & J01_dffs[29] & !J01L3;
+J01_dffs[29]_p2_out = C1L4 & !J01_dffs[29] & J01L3;
+J01_dffs[29]_or_out = J01_dffs[29]_p1_out # J01_dffs[29]_p2_out;
+J01_dffs[29]_reg_input = J01_dffs[29]_or_out;
+J01_dffs[29] = DFFE(J01_dffs[29]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[30] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[30]
+J01_dffs[30]_p1_out = C1L4 & J01_dffs[29] & J01L3;
+J01_dffs[30]_p2_out = !C1L4 & J01_dffs[30];
+J01_dffs[30]_or_out = J01_dffs[30]_p1_out # J01_dffs[30]_p2_out;
+J01_dffs[30]_reg_input = J01_dffs[30]_or_out;
+J01_dffs[30] = TFFE(J01_dffs[30]_reg_input, C1_f10hz, , , );
+
+
+--J01_dffs[31] is fdiv:inst1|lpm_counter:cnt4_rtl_8|dffs[31]
+J01_dffs[31]_p1_out = C1L4 & J01_dffs[30] & J01_dffs[29] & J01L3;
+J01_dffs[31]_p2_out = !C1L4 & J01_dffs[31];
+J01_dffs[31]_or_out = J01_dffs[31]_p1_out # J01_dffs[31]_p2_out;
+J01_dffs[31]_reg_input = J01_dffs[31]_or_out;
+J01_dffs[31] = TFFE(J01_dffs[31]_reg_input, C1_f10hz, , , );
+
+
+--C1_f1hz is fdiv:inst1|f1hz
+C1_f1hz_p1_out = J01L7 & !J01_dffs[21] & !J01_dffs[12] & !J01_dffs[1] & !J01_dffs[16] & !J01_dffs[30] & !J01_dffs[17] & !J01_dffs[10] & !J01_dffs[11] & !J01_dffs[22] & !J01_dffs[13] & !J01_dffs[25] & !J01_dffs[4] & !J01_dffs[18] & !J01_dffs[5];
+C1_f1hz_or_out = C1_f1hz_p1_out # J01_dffs[31];
+C1_f1hz_reg_input = !(C1_f1hz_or_out);
+C1_f1hz = DFFE(C1_f1hz_reg_input, C1_f10hz, , , );
+
+
+--E1L6 is gate_control:inst3|fref~120
+E1L6_p1_out = SW1 & C1_f10hz;
+E1L6_p2_out = !SW1 & C1_f1hz;
+E1L6_or_out = E1L6_p1_out # E1L6_p2_out;
+E1L6 = E1L6_or_out;
+
+
+--E1L5 is gate_control:inst3|fref~114
+E1L5_p1_out = SW2 & C1_f100hz;
+E1L5_p2_out = !SW2 & E1L6;
+E1L5_or_out = E1L5_p1_out # E1L5_p2_out;
+E1L5 = E1L5_or_out;
+
+
+--E1L7 is gate_control:inst3|fref~126
+E1L7_p1_out = E1L5 & E1L1;
+E1L7_p2_out = E1L7 & !SW0 & !SW2 & !SW1;
+E1L7_p3_out = E1L5 & E1L7;
+E1L7_or_out = E1L7_p1_out # E1L7_p2_out # E1L7_p3_out;
+E1L7 = E1L7_or_out;
+
+
+--E1_wire_1 is gate_control:inst3|wire_1
+E1_wire_1_reg_input = VCC;
+E1_wire_1 = TFFE(E1_wire_1_reg_input, E1L7, , , );
+
+
+--E1_wire_2 is gate_control:inst3|wire_2
+E1_wire_2_or_out = E1_wire_1;
+E1_wire_2_reg_input = E1_wire_2_or_out;
+E1_wire_2 = DFFE(E1_wire_2_reg_input, !E1L7, , , );
+
+
+--J1_dffs[0] is counter:inst|lpm_counter:Q0_rtl_1|dffs[0]
+J1_dffs[0]_p1_out = !J1_dffs[0] & E1_wire_1 & !J1_dffs[3];
+J1_dffs[0]_p2_out = !J1_dffs[0] & E1_wire_1 & !J1_dffs[2] & !J1_dffs[1];
+J1_dffs[0]_or_out = J1_dffs[0]_p1_out # J1_dffs[0]_p2_out;
+J1_dffs[0]_reg_input = J1_dffs[0]_or_out;
+J1_dffs[0] = DFFE(J1_dffs[0]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q0[0] is flip_latch:inst2|Q0[0]
+D1_Q0[0]_or_out = J1_dffs[0];
+D1_Q0[0]_reg_input = D1_Q0[0]_or_out;
+D1_Q0[0]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q0[0] = DFFE(D1_Q0[0]_reg_input, D1_Q0[0]_p3_out, , , );
+
+
+--J1_dffs[1] is counter:inst|lpm_counter:Q0_rtl_1|dffs[1]
+J1_dffs[1]_p1_out = E1_wire_1 & !J1_dffs[3] & J1_dffs[1] & !J1_dffs[0];
+J1_dffs[1]_p2_out = E1_wire_1 & !J1_dffs[3] & !J1_dffs[1] & J1_dffs[0];
+J1_dffs[1]_or_out = J1_dffs[1]_p1_out # J1_dffs[1]_p2_out;
+J1_dffs[1]_reg_input = J1_dffs[1]_or_out;
+J1_dffs[1] = DFFE(J1_dffs[1]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q0[1] is flip_latch:inst2|Q0[1]
+D1_Q0[1]_or_out = J1_dffs[1];
+D1_Q0[1]_reg_input = D1_Q0[1]_or_out;
+D1_Q0[1]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q0[1] = DFFE(D1_Q0[1]_reg_input, D1_Q0[1]_p3_out, , , );
+
+
+--J1_dffs[2] is counter:inst|lpm_counter:Q0_rtl_1|dffs[2]
+J1_dffs[2]_p1_out = E1_wire_1 & !J1_dffs[3] & J1_dffs[2] & !J1_dffs[1];
+J1_dffs[2]_p2_out = E1_wire_1 & !J1_dffs[3] & J1_dffs[2] & !J1_dffs[0];
+J1_dffs[2]_p3_out = E1_wire_1 & !J1_dffs[3] & !J1_dffs[2] & J1_dffs[1] & J1_dffs[0];
+J1_dffs[2]_or_out = J1_dffs[2]_p1_out # J1_dffs[2]_p2_out # J1_dffs[2]_p3_out;
+J1_dffs[2]_reg_input = J1_dffs[2]_or_out;
+J1_dffs[2] = DFFE(J1_dffs[2]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q0[2] is flip_latch:inst2|Q0[2]
+D1_Q0[2]_or_out = J1_dffs[2];
+D1_Q0[2]_reg_input = D1_Q0[2]_or_out;
+D1_Q0[2]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q0[2] = DFFE(D1_Q0[2]_reg_input, D1_Q0[2]_p3_out, , , );
+
+
+--J1_dffs[3] is counter:inst|lpm_counter:Q0_rtl_1|dffs[3]
+J1_dffs[3]_p1_out = E1_wire_1 & J1_dffs[2] & J1_dffs[0] & J1_dffs[1] & !J1_dffs[3];
+J1_dffs[3]_p2_out = E1_wire_1 & !J1_dffs[2] & !J1_dffs[0] & !J1_dffs[1] & J1_dffs[3];
+J1_dffs[3]_or_out = J1_dffs[3]_p1_out # J1_dffs[3]_p2_out;
+J1_dffs[3]_reg_input = J1_dffs[3]_or_out;
+J1_dffs[3] = DFFE(J1_dffs[3]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q0[3] is flip_latch:inst2|Q0[3]
+D1_Q0[3]_or_out = J1_dffs[3];
+D1_Q0[3]_reg_input = D1_Q0[3]_or_out;
+D1_Q0[3]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q0[3] = DFFE(D1_Q0[3]_reg_input, D1_Q0[3]_p3_out, , , );
+
+
+--J2_dffs[0] is counter:inst|lpm_counter:Q1_rtl_2|dffs[0]
+J2_dffs[0]_p0_out = !E1_wire_1 & !J2_dffs[0];
+J2_dffs[0]_p1_out = !J1_dffs[3] & E1_wire_1;
+J2_dffs[0]_p2_out = E1_wire_1 & !J1_dffs[2] & !J1_dffs[0] & !J1_dffs[1];
+J2_dffs[0]_p3_out = J2_dffs[2] & J2_dffs[3] & !J2_dffs[0];
+J2_dffs[0]_p4_out = J2_dffs[3] & !J2_dffs[0] & J2_dffs[1];
+J2_dffs[0]_or_out = J2_dffs[0]_p0_out # J2_dffs[0]_p1_out # J2_dffs[0]_p2_out # J2_dffs[0]_p3_out # J2_dffs[0]_p4_out;
+J2_dffs[0]_reg_input = !J2_dffs[0]_or_out;
+J2_dffs[0] = TFFE(J2_dffs[0]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q1[0] is flip_latch:inst2|Q1[0]
+D1_Q1[0]_or_out = J2_dffs[0];
+D1_Q1[0]_reg_input = D1_Q1[0]_or_out;
+D1_Q1[0]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q1[0] = DFFE(D1_Q1[0]_reg_input, D1_Q1[0]_p3_out, , , );
+
+
+--J2L4 is counter:inst|lpm_counter:Q1_rtl_2|dffs[1]~235
+J2L4 = EXP(!J1_dffs[2] & !J1_dffs[0] & !J1_dffs[1]);
+
+
+--J2_dffs[1] is counter:inst|lpm_counter:Q1_rtl_2|dffs[1]
+J2_dffs[1]_p1_out = !J2_dffs[3] & !J2_dffs[0] & E1_wire_1 & J2_dffs[1];
+J2_dffs[1]_p2_out = E1_wire_1 & J2_dffs[1] & !J1_dffs[3];
+J2_dffs[1]_p3_out = E1_wire_1 & J2_dffs[1] & !J1_dffs[2] & !J1_dffs[0] & !J1_dffs[1];
+J2_dffs[1]_p4_out = !J2_dffs[3] & J2_dffs[0] & E1_wire_1 & !J2_dffs[1] & J1_dffs[3] & J2L4;
+J2_dffs[1]_or_out = J2_dffs[1]_p1_out # J2_dffs[1]_p2_out # J2_dffs[1]_p3_out # J2_dffs[1]_p4_out;
+J2_dffs[1]_reg_input = J2_dffs[1]_or_out;
+J2_dffs[1] = DFFE(J2_dffs[1]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q1[1] is flip_latch:inst2|Q1[1]
+D1_Q1[1]_or_out = J2_dffs[1];
+D1_Q1[1]_reg_input = D1_Q1[1]_or_out;
+D1_Q1[1]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q1[1] = DFFE(D1_Q1[1]_reg_input, D1_Q1[1]_p3_out, , , );
+
+
+--J2_dffs[2] is counter:inst|lpm_counter:Q1_rtl_2|dffs[2]
+J2_dffs[2]_p1_out = E1_wire_1 & !J2_dffs[3] & J2_dffs[2] & !J2_dffs[1];
+J2_dffs[2]_p2_out = E1_wire_1 & !J2_dffs[3] & J2_dffs[2] & !J2_dffs[0];
+J2_dffs[2]_p4_out = E1_wire_1 & !J2_dffs[3] & !J2_dffs[2] & J2_dffs[1] & J2_dffs[0];
+J2_dffs[2]_or_out = J2_dffs[2]_p1_out # J2_dffs[2]_p2_out # J2_dffs[2]_p4_out;
+J2_dffs[2]_reg_input = J2_dffs[2]_or_out;
+J2_dffs[2]_p3_out = B1L9 & B1L01;
+J2_dffs[2] = DFFE(J2_dffs[2]_reg_input, GLOBAL(F_in), , , J2_dffs[2]_p3_out);
+
+
+--B1L9 is counter:inst|always0~118
+B1L9 = EXP(E1_wire_1 & !J1_dffs[3]);
+
+
+--B1L01 is counter:inst|always0~119
+B1L01 = EXP(E1_wire_1 & !J1_dffs[2] & !J1_dffs[0] & !J1_dffs[1]);
+
+
+--D1_Q1[2] is flip_latch:inst2|Q1[2]
+D1_Q1[2]_or_out = J2_dffs[2];
+D1_Q1[2]_reg_input = D1_Q1[2]_or_out;
+D1_Q1[2]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q1[2] = DFFE(D1_Q1[2]_reg_input, D1_Q1[2]_p3_out, , , );
+
+
+--J2_dffs[3] is counter:inst|lpm_counter:Q1_rtl_2|dffs[3]
+J2_dffs[3]_p1_out = !J2_dffs[2] & !J2_dffs[1] & !J2_dffs[0] & E1_wire_1 & J2_dffs[3];
+J2_dffs[3]_p2_out = E1_wire_1 & J2_dffs[3] & !J1_dffs[3];
+J2_dffs[3]_p3_out = E1_wire_1 & J2_dffs[3] & !J1_dffs[2] & !J1_dffs[0] & !J1_dffs[1];
+J2_dffs[3]_p4_out = J2_dffs[2] & J2_dffs[1] & J2_dffs[0] & E1_wire_1 & !J2_dffs[3] & J1_dffs[3] & J2L4;
+J2_dffs[3]_or_out = J2_dffs[3]_p1_out # J2_dffs[3]_p2_out # J2_dffs[3]_p3_out # J2_dffs[3]_p4_out;
+J2_dffs[3]_reg_input = J2_dffs[3]_or_out;
+J2_dffs[3] = DFFE(J2_dffs[3]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q1[3] is flip_latch:inst2|Q1[3]
+D1_Q1[3]_or_out = J2_dffs[3];
+D1_Q1[3]_reg_input = D1_Q1[3]_or_out;
+D1_Q1[3]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q1[3] = DFFE(D1_Q1[3]_reg_input, D1_Q1[3]_p3_out, , , );
+
+
+--J3_dffs[0] is counter:inst|lpm_counter:Q2_rtl_3|dffs[0]
+J3_dffs[0]_p1_out = !J3_dffs[0] & E1_wire_1 & !J3_dffs[3];
+J3_dffs[0]_p2_out = !J3_dffs[0] & E1_wire_1 & !J3_dffs[2] & !J3_dffs[1];
+J3_dffs[0]_or_out = J3_dffs[0]_p1_out # J3_dffs[0]_p2_out;
+J3_dffs[0]_reg_input = J3_dffs[0]_or_out;
+J3_dffs[0] = DFFE(J3_dffs[0]_reg_input, GLOBAL(F_in), , , B1L4);
+
+
+--B1L4 is counter:inst|Q2~72
+B1L4 = EXP(E1_wire_1 & B1L5);
+
+
+--B1L5 is counter:inst|Q2~75
+B1L5_p1_out = !J1_dffs[2] & !J1_dffs[0] & !J1_dffs[1];
+B1L5_p2_out = !J2_dffs[2] & !J2_dffs[0] & !J2_dffs[1];
+B1L5_or_out = B1L5_p1_out # B1L5_p2_out # !J1_dffs[3] # !J2_dffs[3];
+B1L5 = B1L5_or_out;
+
+
+--D1_Q2[0] is flip_latch:inst2|Q2[0]
+D1_Q2[0]_or_out = J3_dffs[0];
+D1_Q2[0]_reg_input = D1_Q2[0]_or_out;
+D1_Q2[0]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q2[0] = DFFE(D1_Q2[0]_reg_input, D1_Q2[0]_p3_out, , , );
+
+
+--J3_dffs[1] is counter:inst|lpm_counter:Q2_rtl_3|dffs[1]
+J3_dffs[1]_p1_out = !J3_dffs[3] & !J3_dffs[0] & E1_wire_1 & J3_dffs[1];
+J3_dffs[1]_p2_out = !J3_dffs[3] & J3_dffs[0] & E1_wire_1 & !J3_dffs[1] & !B1L5;
+J3_dffs[1]_p3_out = E1_wire_1 & J3_dffs[1] & B1L5;
+J3_dffs[1]_or_out = J3_dffs[1]_p1_out # J3_dffs[1]_p2_out # J3_dffs[1]_p3_out;
+J3_dffs[1]_reg_input = J3_dffs[1]_or_out;
+J3_dffs[1] = DFFE(J3_dffs[1]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q2[1] is flip_latch:inst2|Q2[1]
+D1_Q2[1]_or_out = J3_dffs[1];
+D1_Q2[1]_reg_input = D1_Q2[1]_or_out;
+D1_Q2[1]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q2[1] = DFFE(D1_Q2[1]_reg_input, D1_Q2[1]_p3_out, , , );
+
+
+--J3_dffs[2] is counter:inst|lpm_counter:Q2_rtl_3|dffs[2]
+J3_dffs[2]_p1_out = !J3_dffs[3] & J3_dffs[1] & J3_dffs[0] & !B1L5 & E1_wire_1;
+J3_dffs[2]_p2_out = J3_dffs[3] & !B1L5 & J3_dffs[2];
+J3_dffs[2]_p3_out = !E1_wire_1 & J3_dffs[2];
+J3_dffs[2]_or_out = J3_dffs[2]_p1_out # J3_dffs[2]_p2_out # J3_dffs[2]_p3_out;
+J3_dffs[2]_reg_input = J3_dffs[2]_or_out;
+J3_dffs[2] = TFFE(J3_dffs[2]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q2[2] is flip_latch:inst2|Q2[2]
+D1_Q2[2]_or_out = J3_dffs[2];
+D1_Q2[2]_reg_input = D1_Q2[2]_or_out;
+D1_Q2[2]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q2[2] = DFFE(D1_Q2[2]_reg_input, D1_Q2[2]_p3_out, , , );
+
+
+--J3_dffs[3] is counter:inst|lpm_counter:Q2_rtl_3|dffs[3]
+J3_dffs[3]_p1_out = !J3_dffs[2] & !J3_dffs[1] & !J3_dffs[0] & E1_wire_1 & J3_dffs[3];
+J3_dffs[3]_p2_out = J3_dffs[2] & J3_dffs[1] & J3_dffs[0] & E1_wire_1 & !J3_dffs[3] & !B1L5;
+J3_dffs[3]_p3_out = E1_wire_1 & J3_dffs[3] & B1L5;
+J3_dffs[3]_or_out = J3_dffs[3]_p1_out # J3_dffs[3]_p2_out # J3_dffs[3]_p3_out;
+J3_dffs[3]_reg_input = J3_dffs[3]_or_out;
+J3_dffs[3] = DFFE(J3_dffs[3]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q2[3] is flip_latch:inst2|Q2[3]
+D1_Q2[3]_or_out = J3_dffs[3];
+D1_Q2[3]_reg_input = D1_Q2[3]_or_out;
+D1_Q2[3]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q2[3] = DFFE(D1_Q2[3]_reg_input, D1_Q2[3]_p3_out, , , );
+
+
+--J4_dffs[0] is counter:inst|lpm_counter:Q3_rtl_4|dffs[0]
+J4_dffs[0]_p1_out = !J4_dffs[0] & E1_wire_1 & !J4_dffs[3];
+J4_dffs[0]_p2_out = !J4_dffs[0] & E1_wire_1 & !J4_dffs[2] & !J4_dffs[1];
+J4_dffs[0]_or_out = J4_dffs[0]_p1_out # J4_dffs[0]_p2_out;
+J4_dffs[0]_reg_input = J4_dffs[0]_or_out;
+J4_dffs[0] = DFFE(J4_dffs[0]_reg_input, GLOBAL(F_in), , , B1L6);
+
+
+--B1L6 is counter:inst|Q3~93
+B1L6 = EXP(E1_wire_1 & !B1L2);
+
+
+--B1L2 is counter:inst|F_OUT~201
+B1L2_p1_out = J3_dffs[3] & J1_dffs[3] & J2_dffs[3];
+B1L2_p2_out = J3_dffs[3] & J1_dffs[3] & J2_dffs[3] & !J3_dffs[2] & !J3_dffs[0] & !J3_dffs[1];
+B1L2_p3_out = J3_dffs[3] & J1_dffs[3] & J2_dffs[3] & !J1_dffs[2] & !J1_dffs[0] & !J1_dffs[1];
+B1L2_p4_out = J3_dffs[3] & J1_dffs[3] & J2_dffs[3] & !J2_dffs[2] & !J2_dffs[0] & !J2_dffs[1];
+B1L2_or_out = B1L2_p2_out # B1L2_p3_out # B1L2_p4_out;
+B1L2 = B1L2_p1_out $ B1L2_or_out;
+
+
+--D1_Q3[0] is flip_latch:inst2|Q3[0]
+D1_Q3[0]_or_out = J4_dffs[0];
+D1_Q3[0]_reg_input = D1_Q3[0]_or_out;
+D1_Q3[0]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q3[0] = DFFE(D1_Q3[0]_reg_input, D1_Q3[0]_p3_out, , , );
+
+
+--J4_dffs[1] is counter:inst|lpm_counter:Q3_rtl_4|dffs[1]
+J4_dffs[1]_p1_out = !J4_dffs[3] & !J4_dffs[0] & E1_wire_1 & J4_dffs[1];
+J4_dffs[1]_p2_out = !J4_dffs[3] & J4_dffs[0] & E1_wire_1 & !J4_dffs[1] & B1L2;
+J4_dffs[1]_p3_out = E1_wire_1 & J4_dffs[1] & !B1L2;
+J4_dffs[1]_or_out = J4_dffs[1]_p1_out # J4_dffs[1]_p2_out # J4_dffs[1]_p3_out;
+J4_dffs[1]_reg_input = J4_dffs[1]_or_out;
+J4_dffs[1] = DFFE(J4_dffs[1]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q3[1] is flip_latch:inst2|Q3[1]
+D1_Q3[1]_or_out = J4_dffs[1];
+D1_Q3[1]_reg_input = D1_Q3[1]_or_out;
+D1_Q3[1]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q3[1] = DFFE(D1_Q3[1]_reg_input, D1_Q3[1]_p3_out, , , );
+
+
+--J4_dffs[2] is counter:inst|lpm_counter:Q3_rtl_4|dffs[2]
+J4_dffs[2]_p1_out = !J4_dffs[3] & J4_dffs[1] & J4_dffs[0] & B1L2 & E1_wire_1;
+J4_dffs[2]_p2_out = J4_dffs[3] & B1L2 & J4_dffs[2];
+J4_dffs[2]_p3_out = !E1_wire_1 & J4_dffs[2];
+J4_dffs[2]_or_out = J4_dffs[2]_p1_out # J4_dffs[2]_p2_out # J4_dffs[2]_p3_out;
+J4_dffs[2]_reg_input = J4_dffs[2]_or_out;
+J4_dffs[2] = TFFE(J4_dffs[2]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q3[2] is flip_latch:inst2|Q3[2]
+D1_Q3[2]_or_out = J4_dffs[2];
+D1_Q3[2]_reg_input = D1_Q3[2]_or_out;
+D1_Q3[2]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q3[2] = DFFE(D1_Q3[2]_reg_input, D1_Q3[2]_p3_out, , , );
+
+
+--J4_dffs[3] is counter:inst|lpm_counter:Q3_rtl_4|dffs[3]
+J4_dffs[3]_p1_out = !J4_dffs[2] & !J4_dffs[1] & !J4_dffs[0] & E1_wire_1 & J4_dffs[3];
+J4_dffs[3]_p2_out = J4_dffs[2] & J4_dffs[1] & J4_dffs[0] & E1_wire_1 & !J4_dffs[3] & B1L2;
+J4_dffs[3]_p3_out = E1_wire_1 & J4_dffs[3] & !B1L2;
+J4_dffs[3]_or_out = J4_dffs[3]_p1_out # J4_dffs[3]_p2_out # J4_dffs[3]_p3_out;
+J4_dffs[3]_reg_input = J4_dffs[3]_or_out;
+J4_dffs[3] = DFFE(J4_dffs[3]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q3[3] is flip_latch:inst2|Q3[3]
+D1_Q3[3]_or_out = J4_dffs[3];
+D1_Q3[3]_reg_input = D1_Q3[3]_or_out;
+D1_Q3[3]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q3[3] = DFFE(D1_Q3[3]_reg_input, D1_Q3[3]_p3_out, , , );
+
+
+--J5L3 is counter:inst|lpm_counter:Q4_rtl_5|dffs[0]~248
+J5L3 = EXP(!J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1]);
+
+
+--J5L4 is counter:inst|lpm_counter:Q4_rtl_5|dffs[0]~249
+J5L4 = EXP(J4_dffs[3] & B1L2);
+
+
+--J5_dffs[0] is counter:inst|lpm_counter:Q4_rtl_5|dffs[0]
+J5_dffs[0]_p1_out = !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1] & E1_wire_1 & J5_dffs[0];
+J5_dffs[0]_p2_out = E1_wire_1 & !J5_dffs[0] & J5L3 & !J5_dffs[3] & J4_dffs[3] & B1L2;
+J5_dffs[0]_p3_out = E1_wire_1 & !J5_dffs[0] & J5L3 & J4_dffs[3] & B1L2 & !J5_dffs[2] & !J5_dffs[1];
+J5_dffs[0]_p4_out = E1_wire_1 & J5_dffs[0] & J5L4;
+J5_dffs[0]_or_out = J5_dffs[0]_p1_out # J5_dffs[0]_p2_out # J5_dffs[0]_p3_out # J5_dffs[0]_p4_out;
+J5_dffs[0]_reg_input = J5_dffs[0]_or_out;
+J5_dffs[0] = DFFE(J5_dffs[0]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q4[0] is flip_latch:inst2|Q4[0]
+D1_Q4[0]_or_out = J5_dffs[0];
+D1_Q4[0]_reg_input = D1_Q4[0]_or_out;
+D1_Q4[0]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q4[0] = DFFE(D1_Q4[0]_reg_input, D1_Q4[0]_p3_out, , , );
+
+
+--J5_dffs[1] is counter:inst|lpm_counter:Q4_rtl_5|dffs[1]
+J5_dffs[1]_p1_out = !J5_dffs[3] & !J5_dffs[0] & E1_wire_1 & J5_dffs[1];
+J5_dffs[1]_p2_out = E1_wire_1 & J5_dffs[1] & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1];
+J5_dffs[1]_p3_out = !J5_dffs[3] & J5_dffs[0] & E1_wire_1 & !J5_dffs[1] & J5L3 & J4_dffs[3] & B1L2;
+J5_dffs[1]_p4_out = E1_wire_1 & J5_dffs[1] & J5L4;
+J5_dffs[1]_or_out = J5_dffs[1]_p1_out # J5_dffs[1]_p2_out # J5_dffs[1]_p3_out # J5_dffs[1]_p4_out;
+J5_dffs[1]_reg_input = J5_dffs[1]_or_out;
+J5_dffs[1] = DFFE(J5_dffs[1]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q4[1] is flip_latch:inst2|Q4[1]
+D1_Q4[1]_or_out = J5_dffs[1];
+D1_Q4[1]_reg_input = D1_Q4[1]_or_out;
+D1_Q4[1]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q4[1] = DFFE(D1_Q4[1]_reg_input, D1_Q4[1]_p3_out, , , );
+
+
+--J5_dffs[2] is counter:inst|lpm_counter:Q4_rtl_5|dffs[2]
+J5_dffs[2]_p1_out = E1_wire_1 & !J5_dffs[3] & J5_dffs[2] & !J5_dffs[1];
+J5_dffs[2]_p2_out = E1_wire_1 & !J5_dffs[3] & J5_dffs[2] & !J5_dffs[0];
+J5_dffs[2]_p4_out = E1_wire_1 & !J5_dffs[3] & !J5_dffs[2] & J5_dffs[1] & J5_dffs[0];
+J5_dffs[2]_or_out = J5_dffs[2]_p1_out # J5_dffs[2]_p2_out # J5_dffs[2]_p4_out;
+J5_dffs[2]_reg_input = J5_dffs[2]_or_out;
+J5_dffs[2]_p3_out = B1L7 & B1L8 & B1L6;
+J5_dffs[2] = DFFE(J5_dffs[2]_reg_input, GLOBAL(F_in), , , J5_dffs[2]_p3_out);
+
+
+--B1L7 is counter:inst|Q4~104
+B1L7 = EXP(!J4_dffs[3] & E1_wire_1);
+
+
+--B1L8 is counter:inst|Q4~105
+B1L8 = EXP(!J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1] & E1_wire_1);
+
+
+--D1_Q4[2] is flip_latch:inst2|Q4[2]
+D1_Q4[2]_or_out = J5_dffs[2];
+D1_Q4[2]_reg_input = D1_Q4[2]_or_out;
+D1_Q4[2]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q4[2] = DFFE(D1_Q4[2]_reg_input, D1_Q4[2]_p3_out, , , );
+
+
+--J5_dffs[3] is counter:inst|lpm_counter:Q4_rtl_5|dffs[3]
+J5_dffs[3]_p1_out = !J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1] & E1_wire_1 & J5_dffs[3];
+J5_dffs[3]_p2_out = E1_wire_1 & J5_dffs[3] & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1];
+J5_dffs[3]_p3_out = J5_dffs[2] & J5_dffs[0] & J5_dffs[1] & E1_wire_1 & !J5_dffs[3] & J5L3 & J4_dffs[3] & B1L2;
+J5_dffs[3]_p4_out = E1_wire_1 & J5_dffs[3] & J5L4;
+J5_dffs[3]_or_out = J5_dffs[3]_p1_out # J5_dffs[3]_p2_out # J5_dffs[3]_p3_out # J5_dffs[3]_p4_out;
+J5_dffs[3]_reg_input = J5_dffs[3]_or_out;
+J5_dffs[3] = DFFE(J5_dffs[3]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q4[3] is flip_latch:inst2|Q4[3]
+D1_Q4[3]_or_out = J5_dffs[3];
+D1_Q4[3]_reg_input = D1_Q4[3]_or_out;
+D1_Q4[3]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q4[3] = DFFE(D1_Q4[3]_reg_input, D1_Q4[3]_p3_out, , , );
+
+
+--J6L3 is counter:inst|lpm_counter:Q5_rtl_0|dffs[0]~246
+J6L3 = EXP(J5_dffs[3] & J4_dffs[3] & B1L2);
+
+
+--J6L4 is counter:inst|lpm_counter:Q5_rtl_0|dffs[0]~247
+J6L4 = EXP(!J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1]);
+
+
+--J6_dffs[0] is counter:inst|lpm_counter:Q5_rtl_0|dffs[0]
+J6_dffs[0]_p0_out = E1_wire_1 & !J6_dffs[0] & J6L4 & J5L3 & J5_dffs[3] & J4_dffs[3] & B1L2 & !J6_dffs[2] & !J6_dffs[1];
+J6_dffs[0]_p1_out = !J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1] & E1_wire_1 & J6_dffs[0];
+J6_dffs[0]_p2_out = E1_wire_1 & J6_dffs[0] & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1];
+J6_dffs[0]_p3_out = E1_wire_1 & J6_dffs[0] & J6L3;
+J6_dffs[0]_p4_out = E1_wire_1 & !J6_dffs[0] & J6L4 & J5L3 & !J6_dffs[3] & J5_dffs[3] & J4_dffs[3] & B1L2;
+J6_dffs[0]_or_out = J6_dffs[0]_p0_out # J6_dffs[0]_p1_out # J6_dffs[0]_p2_out # J6_dffs[0]_p3_out # J6_dffs[0]_p4_out;
+J6_dffs[0]_reg_input = J6_dffs[0]_or_out;
+J6_dffs[0] = DFFE(J6_dffs[0]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q5[0] is flip_latch:inst2|Q5[0]
+D1_Q5[0]_or_out = J6_dffs[0];
+D1_Q5[0]_reg_input = D1_Q5[0]_or_out;
+D1_Q5[0]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q5[0] = DFFE(D1_Q5[0]_reg_input, D1_Q5[0]_p3_out, , , );
+
+
+--J6_dffs[1] is counter:inst|lpm_counter:Q5_rtl_0|dffs[1]
+J6_dffs[1]_p0_out = !J6_dffs[3] & J6_dffs[0] & E1_wire_1 & !J6_dffs[1] & J6L4 & J5L3 & J5_dffs[3] & J4_dffs[3] & B1L2;
+J6_dffs[1]_p1_out = !J6_dffs[3] & !J6_dffs[0] & E1_wire_1 & J6_dffs[1];
+J6_dffs[1]_p2_out = E1_wire_1 & J6_dffs[1] & !J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1];
+J6_dffs[1]_p3_out = E1_wire_1 & J6_dffs[1] & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1];
+J6_dffs[1]_p4_out = E1_wire_1 & J6_dffs[1] & J6L3;
+J6_dffs[1]_or_out = J6_dffs[1]_p0_out # J6_dffs[1]_p1_out # J6_dffs[1]_p2_out # J6_dffs[1]_p3_out # J6_dffs[1]_p4_out;
+J6_dffs[1]_reg_input = J6_dffs[1]_or_out;
+J6_dffs[1] = DFFE(J6_dffs[1]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q5[1] is flip_latch:inst2|Q5[1]
+D1_Q5[1]_or_out = J6_dffs[1];
+D1_Q5[1]_reg_input = D1_Q5[1]_or_out;
+D1_Q5[1]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q5[1] = DFFE(D1_Q5[1]_reg_input, D1_Q5[1]_p3_out, , , );
+
+
+--J6L7 is counter:inst|lpm_counter:Q5_rtl_0|dffs[2]~271
+J6L7 = EXP(J6_dffs[1] & J6_dffs[0]);
+
+
+--J6_dffs[2] is counter:inst|lpm_counter:Q5_rtl_0|dffs[2]
+J6_dffs[2]_p0_out = E1_wire_1 & !J6_dffs[2] & !J6_dffs[3] & J6L4 & J5L3 & J6_dffs[1] & J6_dffs[0] & J5_dffs[3] & J4_dffs[3] & B1L2;
+J6_dffs[2]_p1_out = !J5_dffs[2] & E1_wire_1 & J6_dffs[2] & !J5_dffs[0] & !J5_dffs[1];
+J6_dffs[2]_p2_out = E1_wire_1 & J6_dffs[2] & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1];
+J6_dffs[2]_p3_out = E1_wire_1 & J6_dffs[2] & J6L3;
+J6_dffs[2]_p4_out = E1_wire_1 & J6_dffs[2] & J6L7 & !J6_dffs[3];
+J6_dffs[2]_or_out = J6_dffs[2]_p0_out # J6_dffs[2]_p1_out # J6_dffs[2]_p2_out # J6_dffs[2]_p3_out # J6_dffs[2]_p4_out;
+J6_dffs[2]_reg_input = J6_dffs[2]_or_out;
+J6_dffs[2] = DFFE(J6_dffs[2]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q5[2] is flip_latch:inst2|Q5[2]
+D1_Q5[2]_or_out = J6_dffs[2];
+D1_Q5[2]_reg_input = D1_Q5[2]_or_out;
+D1_Q5[2]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q5[2] = DFFE(D1_Q5[2]_reg_input, D1_Q5[2]_p3_out, , , );
+
+
+--J6_dffs[3] is counter:inst|lpm_counter:Q5_rtl_0|dffs[3]
+J6_dffs[3]_p0_out = J6_dffs[2] & J6_dffs[0] & J6_dffs[1] & E1_wire_1 & !J6_dffs[3] & J6L4 & J5L3 & J5_dffs[3] & J4_dffs[3] & B1L2;
+J6_dffs[3]_p1_out = !J6_dffs[2] & !J6_dffs[0] & !J6_dffs[1] & E1_wire_1 & J6_dffs[3];
+J6_dffs[3]_p2_out = E1_wire_1 & J6_dffs[3] & !J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1];
+J6_dffs[3]_p3_out = E1_wire_1 & J6_dffs[3] & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1];
+J6_dffs[3]_p4_out = E1_wire_1 & J6_dffs[3] & J6L3;
+J6_dffs[3]_or_out = J6_dffs[3]_p0_out # J6_dffs[3]_p1_out # J6_dffs[3]_p2_out # J6_dffs[3]_p3_out # J6_dffs[3]_p4_out;
+J6_dffs[3]_reg_input = J6_dffs[3]_or_out;
+J6_dffs[3] = DFFE(J6_dffs[3]_reg_input, GLOBAL(F_in), , , );
+
+
+--D1_Q5[3] is flip_latch:inst2|Q5[3]
+D1_Q5[3]_or_out = J6_dffs[3];
+D1_Q5[3]_reg_input = D1_Q5[3]_or_out;
+D1_Q5[3]_p3_out = !E1_wire_1 & E1_wire_2;
+D1_Q5[3] = DFFE(D1_Q5[3]_reg_input, D1_Q5[3]_p3_out, , , );
+
+
+--B1L3 is counter:inst|F_OUT~204
+B1L3 = EXP(J5_dffs[3] & J4_dffs[3] & B1L2 & J6_dffs[3]);
+
+
+--B1_F_OUT is counter:inst|F_OUT
+B1_F_OUT_p1_out = !J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1] & E1_wire_1;
+B1_F_OUT_p2_out = E1_wire_1 & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1];
+B1_F_OUT_p3_out = E1_wire_1 & !J6_dffs[2] & !J6_dffs[0] & !J6_dffs[1];
+B1_F_OUT_p4_out = E1_wire_1 & B1L3;
+B1_F_OUT_or_out = B1_F_OUT_p1_out # B1_F_OUT_p2_out # B1_F_OUT_p3_out # B1_F_OUT_p4_out;
+B1_F_OUT_reg_input = !(B1_F_OUT_or_out);
+B1_F_OUT = DFFE(B1_F_OUT_reg_input, GLOBAL(F_in), , , );
+
+
+--F1L01 is dispdecoder:inst5|hide~400
+F1L01_p1_out = !J2_dffs[2] & !J2_dffs[0] & !J2_dffs[1] & !J2_dffs[3] & !G1_disp_select[0] & !G1_disp_select[1];
+F1L01_or_out = F1L01_p1_out # !G1_disp_select[2];
+F1L01 = F1L01_or_out;
+
+
+--F1L9 is dispdecoder:inst5|hide~386
+F1L9_p1_out = !G1_disp_select[2] & !G1_disp_select[0] & !G1_disp_select[1] & !J6_dffs[3] & !B1_F_OUT & !J6_dffs[2] & !J6_dffs[0] & !J6_dffs[1];
+F1L9_p2_out = !J5_dffs[3] & !E1L4 & !G1_disp_select[2] & !G1_disp_select[1] & !J6_dffs[3] & !B1_F_OUT & !J6_dffs[2] & !J6_dffs[0] & !J6_dffs[1] & !J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1];
+F1L9_p3_out = !J5_dffs[3] & !E1L4 & !G1_disp_select[2] & !G1_disp_select[0] & !J6_dffs[3] & !B1_F_OUT & !J6_dffs[2] & !J6_dffs[0] & !J6_dffs[1] & !J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1] & !J4_dffs[3] & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1];
+F1L9_p4_out = !J5_dffs[3] & !E1L4 & F1L01 & !J3_dffs[3] & !E1L3 & !J6_dffs[3] & !B1_F_OUT & !J6_dffs[2] & !J6_dffs[0] & !J6_dffs[1] & !J5_dffs[2] & !J5_dffs[0] & !J5_dffs[1] & !J4_dffs[3] & !J4_dffs[2] & !J4_dffs[0] & !J4_dffs[1] & !J3_dffs[2] & !J3_dffs[0] & !J3_dffs[1];
+F1L9_or_out = F1L9_p1_out # F1L9_p2_out # F1L9_p3_out # F1L9_p4_out;
+F1L9 = F1L9_or_out;
+
+
+--H1L5 is data_mux:inst8|Q[2]~1480
+H1L5_p0_out = !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0] & D1_Q1[2];
+H1L5_p1_out = D1_Q2[2] & G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0];
+H1L5_p2_out = !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q5[2];
+H1L5_p3_out = G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q3[2];
+H1L5_p4_out = !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0] & D1_Q0[2];
+H1L5_or_out = H1L6 # H1L5_p0_out # H1L5_p1_out # H1L5_p2_out # H1L5_p3_out # H1L5_p4_out;
+H1L5 = H1L5_or_out;
+
+
+--H1L7 is data_mux:inst8|Q[3]~1486
+H1L7_p0_out = !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0] & D1_Q1[3];
+H1L7_p1_out = D1_Q4[3] & !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0];
+H1L7_p2_out = G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q2[3];
+H1L7_p3_out = G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q3[3];
+H1L7_p4_out = !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0] & D1_Q0[3];
+H1L7_or_out = H1L8 # H1L7_p0_out # H1L7_p1_out # H1L7_p2_out # H1L7_p3_out # H1L7_p4_out;
+H1L7 = H1L7_or_out;
+
+
+--H1L3 is data_mux:inst8|Q[1]~1492
+H1L3_p0_out = !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0] & D1_Q1[1];
+H1L3_p1_out = D1_Q4[1] & !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0];
+H1L3_p2_out = G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q2[1];
+H1L3_p3_out = G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q3[1];
+H1L3_p4_out = !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0] & D1_Q0[1];
+H1L3_or_out = H1L4 # H1L3_p0_out # H1L3_p1_out # H1L3_p2_out # H1L3_p3_out # H1L3_p4_out;
+H1L3 = H1L3_or_out;
+
+
+--F1L91 is dispdecoder:inst5|reduce_or~1847
+F1L91_p0_out = !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q5[0] & D1_Q5[2] & !D1_Q5[3];
+F1L91_p1_out = D1_Q0[0] & D1_Q0[2] & !D1_Q0[3] & !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0];
+F1L91_p2_out = G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & !D1_Q3[3] & D1_Q3[0] & D1_Q3[2];
+F1L91_p3_out = G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q2[0] & D1_Q2[2] & !D1_Q2[3];
+F1L91_p4_out = !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q4[0] & D1_Q4[2] & !D1_Q4[3];
+F1L91_or_out = F1L82 # F1L91_p0_out # F1L91_p1_out # F1L91_p2_out # F1L91_p3_out # F1L91_p4_out;
+F1L91 = F1L91_or_out;
+
+
+--F1L02 is dispdecoder:inst5|reduce_or~1853
+F1L02_p0_out = G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q3[0] & D1_Q3[2];
+F1L02_p1_out = D1_Q4[0] & D1_Q4[2] & !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0];
+F1L02_p2_out = !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0] & D1_Q0[0] & D1_Q0[2];
+F1L02_p3_out = !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0] & D1_Q1[0] & D1_Q1[2];
+F1L02_p4_out = G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q2[0] & D1_Q2[2];
+F1L02_or_out = F1L92 # F1L02_p0_out # F1L02_p1_out # F1L02_p2_out # F1L02_p3_out # F1L02_p4_out;
+F1L02 = F1L02_or_out;
+
+
+--F1L12 is dispdecoder:inst5|reduce_or~1859
+F1L12_p0_out = !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & !D1_Q5[3] & !D1_Q5[1] & D1_Q5[2] & !D1_Q5[0];
+F1L12_p1_out = D1_Q0[2] & !D1_Q0[0] & !D1_Q0[1] & !D1_Q0[3] & !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0];
+F1L12_p2_out = G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q3[2] & !D1_Q3[0] & !D1_Q3[1] & !D1_Q3[3];
+F1L12_p3_out = G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q2[2] & !D1_Q2[0] & !D1_Q2[1] & !D1_Q2[3];
+F1L12_p4_out = !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q4[2] & !D1_Q4[0] & !D1_Q4[1] & !D1_Q4[3];
+F1L12_or_out = F1L03 # F1L12_p0_out # F1L12_p1_out # F1L12_p2_out # F1L12_p3_out # F1L12_p4_out;
+F1L12 = F1L12_or_out;
+
+
+--F1L81 is dispdecoder:inst5|reduce_or~1841
+F1L81_p1_out = !H1L5 & H1L7 & !H1L3;
+F1L81_p2_out = !H1L3 & F1L91;
+F1L81_p3_out = !H1L7 & H1L3 & !F1L02;
+F1L81_or_out = F1L81_p1_out # F1L81_p2_out # F1L81_p3_out # F1L12;
+F1L81 = F1L81_or_out;
+
+
+--F1L22 is dispdecoder:inst5|reduce_or~1870
+F1L22_p0_out = !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0] & D1_Q1[3] & !D1_Q1[0] & D1_Q1[2] & !D1_Q1[1];
+F1L22_p1_out = D1_Q4[3] & D1_Q4[2] & !D1_Q4[0] & !D1_Q4[1] & !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0];
+F1L22_p2_out = G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q2[3] & D1_Q2[2] & !D1_Q2[0] & !D1_Q2[1];
+F1L22_p3_out = G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q3[3] & D1_Q3[2] & !D1_Q3[0] & !D1_Q3[1];
+F1L22_p4_out = !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0] & D1_Q0[3] & D1_Q0[2] & !D1_Q0[0] & !D1_Q0[1];
+F1L22_or_out = F1L13 # F1L22_p0_out # F1L22_p1_out # F1L22_p2_out # F1L22_p3_out # F1L22_p4_out;
+F1L22 = F1L22_or_out;
+
+
+--F1L32 is dispdecoder:inst5|reduce_or~1876
+F1L32_p0_out = !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q5[2] & !D1_Q5[0];
+F1L32_p1_out = D1_Q2[2] & !D1_Q2[0] & G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0];
+F1L32_p2_out = !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0] & !D1_Q1[0] & D1_Q1[2];
+F1L32_p3_out = !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0] & D1_Q0[2] & !D1_Q0[0];
+F1L32_p4_out = !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q4[2] & !D1_Q4[0];
+F1L32_or_out = F1L23 # F1L32_p0_out # F1L32_p1_out # F1L32_p2_out # F1L32_p3_out # F1L32_p4_out;
+F1L32 = F1L32_or_out;
+
+
+--H1L1 is data_mux:inst8|Q[0]~1498
+H1L1_p0_out = G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0] & D1_Q3[0];
+H1L1_p1_out = D1_Q4[0] & !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0];
+H1L1_p2_out = !G1_disp_select[1] & G1_disp_select[2] & G1_disp_select[0] & D1_Q0[0];
+H1L1_p3_out = !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0] & D1_Q1[0];
+H1L1_p4_out = G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0] & D1_Q2[0];
+H1L1_or_out = H1L2 # H1L1_p0_out # H1L1_p1_out # H1L1_p2_out # H1L1_p3_out # H1L1_p4_out;
+H1L1 = H1L1_or_out;
+
+
+--F1L21 is dispdecoder:inst5|reduce_or~1836
+F1L21_p0_out = !F1L22 & !H1L7 & !H1L5;
+F1L21_p1_out = !F1L02 & !H1L3 & !F1L22 & H1L7;
+F1L21_p2_out = !F1L02 & !F1L22 & H1L7 & H1L5 & !F1L32;
+F1L21_p3_out = !H1L3 & !F1L22 & !H1L7 & !H1L1;
+F1L21_p4_out = H1L3 & !F1L22 & !H1L7 & H1L1;
+F1L21_or_out = F1L21_p0_out # F1L21_p1_out # F1L21_p2_out # F1L21_p3_out # F1L21_p4_out;
+F1L21 = F1L21_or_out;
+
+
+--F1L11 is dispdecoder:inst5|reduce_or~1835
+F1L11_p0_out = H1L7 & !F1L12 & !H1L3 & !F1L22 & !F1L02;
+F1L11_p1_out = !H1L7 & !F1L12 & H1L3 & !F1L22;
+F1L11_p2_out = !H1L7 & !F1L12 & !F1L22 & !H1L1;
+F1L11_p3_out = !H1L7 & !F1L12 & !F1L22 & H1L5;
+F1L11_p4_out = !F1L12 & !F1L22 & H1L5 & !F1L32 & !F1L02;
+F1L11_or_out = F1L11_p0_out # F1L11_p1_out # F1L11_p2_out # F1L11_p3_out # F1L11_p4_out;
+F1L11 = F1L11_or_out;
+
+
+--F1L71 is dispdecoder:inst5|reduce_or~1840
+F1L71_p0_out = !F1L02 & !F1L22 & H1L7 & !H1L3;
+F1L71_p1_out = H1L5 & !F1L32 & !F1L02 & !F1L22 & H1L7;
+F1L71_p2_out = !F1L22 & !H1L7 & !H1L1 & !H1L3;
+F1L71_p3_out = H1L5 & !F1L22 & !H1L7 & !H1L3;
+F1L71_p4_out = F1L32 & !F1L22 & !H1L7 & H1L3;
+F1L71_or_out = F1L71_p0_out # F1L71_p1_out # F1L71_p2_out # F1L71_p3_out # F1L71_p4_out;
+F1L71 = F1L71_or_out;
+
+
+--F1L7 is dispdecoder:inst5|data_out[5]~142
+F1L7_p1_out = F1L21 & !F1L9;
+F1L7_p2_out = F1L9 & F1L7;
+F1L7_p3_out = F1L21 & F1L7;
+F1L7_or_out = F1L7_p1_out # F1L7_p2_out # F1L7_p3_out;
+F1L7 = F1L7_or_out;
+
+
+--F1L6 is dispdecoder:inst5|data_out[4]~146
+F1L6_p1_out = !F1L9 & F1L31 & F1L41 & F1L51 & F1L61 & !F1L22;
+F1L6_p2_out = F1L9 & F1L6;
+F1L6_p3_out = F1L6 & F1L31 & F1L41 & F1L51 & F1L61 & !F1L22;
+F1L6_or_out = F1L6_p1_out # F1L6_p2_out # F1L6_p3_out;
+F1L6 = F1L6_or_out;
+
+
+--F1L2 is dispdecoder:inst5|data_out[0]~150
+F1L2_p1_out = F1L81 & !F1L9;
+F1L2_p2_out = F1L9 & F1L2;
+F1L2_p3_out = F1L81 & F1L2;
+F1L2_or_out = F1L2_p1_out # F1L2_p2_out # F1L2_p3_out;
+F1L2 = F1L2_or_out;
+
+
+--F1L8 is dispdecoder:inst5|data_out[6]~154
+F1L8_p1_out = F1L11 & !F1L9;
+F1L8_p2_out = F1L9 & F1L8;
+F1L8_p3_out = F1L11 & F1L8;
+F1L8_or_out = F1L8_p1_out # F1L8_p2_out # F1L8_p3_out;
+F1L8 = F1L8_or_out;
+
+
+--F1L3 is dispdecoder:inst5|data_out[1]~158
+F1L3_p1_out = F1L71 & !F1L9;
+F1L3_p2_out = F1L9 & F1L3;
+F1L3_p3_out = F1L71 & F1L3;
+F1L3_or_out = F1L3_p1_out # F1L3_p2_out # F1L3_p3_out;
+F1L3 = F1L3_or_out;
+
+
+--F1L5 is dispdecoder:inst5|data_out[3]~162
+F1L5_p1_out = !F1L9 & F1L11 & F1L42 & F1L52;
+F1L5_p2_out = F1L9 & F1L5;
+F1L5_p3_out = F1L5 & F1L11 & F1L42 & F1L52;
+F1L5_or_out = F1L5_p1_out # F1L5_p2_out # F1L5_p3_out;
+F1L5 = F1L5_or_out;
+
+
+--F1L4 is dispdecoder:inst5|data_out[2]~166
+F1L4_p1_out = !F1L9 & F1L11 & F1L52 & F1L62 & F1L72;
+F1L4_p2_out = F1L9 & F1L4;
+F1L4_p3_out = F1L4 & F1L11 & F1L52 & F1L62 & F1L72;
+F1L4_or_out = F1L4_p1_out # F1L4_p2_out # F1L4_p3_out;
+F1L4 = F1L4_or_out;
+
+
+--H1L6 is data_mux:inst8|Q[2]~1499
+H1L6_p1_out = D1_Q4[2] & !G1_disp_select[1] & !G1_disp_select[2] & G1_disp_select[0];
+H1L6 = H1L6_p1_out;
+
+
+--H1L8 is data_mux:inst8|Q[3]~1501
+H1L8_p1_out = D1_Q5[3] & !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0];
+H1L8 = H1L8_p1_out;
+
+
+--H1L4 is data_mux:inst8|Q[1]~1503
+H1L4_p1_out = D1_Q5[1] & !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0];
+H1L4 = H1L4_p1_out;
+
+
+--F1L82 is dispdecoder:inst5|reduce_or~1912
+F1L82_p1_out = D1_Q1[0] & D1_Q1[2] & !D1_Q1[3] & !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0];
+F1L82 = F1L82_p1_out;
+
+
+--F1L92 is dispdecoder:inst5|reduce_or~1914
+F1L92_p1_out = D1_Q5[0] & D1_Q5[2] & !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0];
+F1L92 = F1L92_p1_out;
+
+
+--F1L03 is dispdecoder:inst5|reduce_or~1916
+F1L03_p1_out = !D1_Q1[0] & D1_Q1[2] & !D1_Q1[1] & !D1_Q1[3] & !G1_disp_select[1] & G1_disp_select[2] & !G1_disp_select[0];
+F1L03 = F1L03_p1_out;
+
+
+--F1L13 is dispdecoder:inst5|reduce_or~1918
+F1L13_p1_out = D1_Q5[3] & !D1_Q5[1] & D1_Q5[2] & !D1_Q5[0] & !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0];
+F1L13 = F1L13_p1_out;
+
+
+--F1L23 is dispdecoder:inst5|reduce_or~1920
+F1L23_p1_out = D1_Q3[2] & !D1_Q3[0] & G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0];
+F1L23 = F1L23_p1_out;
+
+
+--H1L2 is data_mux:inst8|Q[0]~1505
+H1L2_p1_out = D1_Q5[0] & !G1_disp_select[1] & !G1_disp_select[2] & !G1_disp_select[0];
+H1L2 = H1L2_p1_out;
+
+
+--E1L1 is gate_control:inst3|always0~29sexp
+E1L1 = EXP(!SW0 & !SW2 & !SW1);
+
+
+--F1L31 is dispdecoder:inst5|reduce_or~1837sexp2
+F1L31 = EXP(H1L3 & H1L7 & !H1L5);
+
+
+--F1L41 is dispdecoder:inst5|reduce_or~1837sexp3
+F1L41 = EXP(F1L32 & H1L3 & H1L7);
+
+
+--F1L51 is dispdecoder:inst5|reduce_or~1837sexp4
+F1L51 = EXP(F1L02 & H1L7);
+
+
+--F1L61 is dispdecoder:inst5|reduce_or~1837sexp5
+F1L61 = EXP(H1L3 & !H1L1 & !H1L5);
+
+
+--F1L42 is dispdecoder:inst5|reduce_or~1903sexp1
+F1L42 = EXP(H1L1 & H1L5 & !H1L7 & H1L3);
+
+
+--F1L52 is dispdecoder:inst5|reduce_or~1903sexp2
+F1L52 = EXP(H1L1 & !H1L3 & H1L7 & !H1L5);
+
+
+--F1L62 is dispdecoder:inst5|reduce_or~1909sexp2
+F1L62 = EXP(H1L3 & H1L1 & !H1L7);
+
+
+--F1L72 is dispdecoder:inst5|reduce_or~1909sexp3
+F1L72 = EXP(H1L1 & !H1L7 & H1L5);
+
+
+--F_in is F_in
+--operation mode is input
+
+F_in = INPUT();
+
+
+--SW2 is SW2
+--operation mode is input
+
+SW2 = INPUT();
+
+
+--SW1 is SW1
+--operation mode is input
+
+SW1 = INPUT();
+
+
+--SW0 is SW0
+--operation mode is input
+
+SW0 = INPUT();
+
+
+--Clock is Clock
+--operation mode is input
+
+Clock = INPUT();
+
+
+--disp_select[5] is disp_select[5]
+--operation mode is output
+
+disp_select[5] = OUTPUT(G1_Q[5]);
+
+
+--dp is dp
+--operation mode is output
+
+dp = OUTPUT(F1L1);
+
+
+--disp_select[4] is disp_select[4]
+--operation mode is output
+
+disp_select[4] = OUTPUT(G1_Q[4]);
+
+
+--disp_select[3] is disp_select[3]
+--operation mode is output
+
+disp_select[3] = OUTPUT(G1_Q[3]);
+
+
+--disp_select[2] is disp_select[2]
+--operation mode is output
+
+disp_select[2] = OUTPUT(G1_Q[2]);
+
+
+--disp_select[1] is disp_select[1]
+--operation mode is output
+
+disp_select[1] = OUTPUT(G1_Q[1]);
+
+
+--disp_select[0] is disp_select[0]
+--operation mode is output
+
+disp_select[0] = OUTPUT(G1_Q[0]);
+
+
+--over_alarm is over_alarm
+--operation mode is output
+
+over_alarm = OUTPUT(B1_F_OUT);
+
+
+--disp_data[5] is disp_data[5]
+--operation mode is output
+
+disp_data[5] = OUTPUT(F1L7);
+
+
+--disp_data[4] is disp_data[4]
+--operation mode is output
+
+disp_data[4] = OUTPUT(F1L6);
+
+
+--disp_data[0] is disp_data[0]
+--operation mode is output
+
+disp_data[0] = OUTPUT(F1L2);
+
+
+--disp_data[6] is disp_data[6]
+--operation mode is output
+
+disp_data[6] = OUTPUT(F1L8);
+
+
+--disp_data[1] is disp_data[1]
+--operation mode is output
+
+disp_data[1] = OUTPUT(F1L3);
+
+
+--disp_data[3] is disp_data[3]
+--operation mode is output
+
+disp_data[3] = OUTPUT(F1L5);
+
+
+--disp_data[2] is disp_data[2]
+--operation mode is output
+
+disp_data[2] = OUTPUT(F1L4);
+
+

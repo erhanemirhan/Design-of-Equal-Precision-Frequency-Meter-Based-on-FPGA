@@ -1,0 +1,823 @@
+Classic Timing Analyzer report for cpj
+Wed Jul 04 17:36:15 2012
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'clkbz'
+  7. Clock Setup: 'clkx'
+  8. Clock Hold: 'clkbz'
+  9. tsu
+ 10. tco
+ 11. th
+ 12. Minimum tco
+ 13. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                             ;
++------------------------------+------------------------------------------+---------------+----------------------------------+------------------------+------------------------+------------+----------+--------------+
+; Type                         ; Slack                                    ; Required Time ; Actual Time                      ; From                   ; To                     ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+------------------------------------------+---------------+----------------------------------+------------------------+------------------------+------------+----------+--------------+
+; Worst-case tsu               ; -1.437 ns                                ; 0.100 ns      ; 1.537 ns                         ; sel[1]                 ; mux4to1:comb_6|out8[7] ; --         ; clkbz    ; 24           ;
+; Worst-case tco               ; -10.160 ns                               ; 0.100 ns      ; 10.260 ns                        ; mux4to1:comb_6|out8[1] ; out8[1]                ; clkbz      ; --       ; 11           ;
+; Worst-case th                ; -0.535 ns                                ; 0.100 ns      ; 0.635 ns                         ; sel[1]                 ; mux4to1:comb_6|out8[3] ; --         ; clkbz    ; 23           ;
+; Worst-case Minimum tco       ; N/A                                      ; None          ; 5.462 ns                         ; rmk:comb_3|y           ; y                      ; clkbz      ; --       ; 0            ;
+; Clock Setup: 'clkx'          ; N/A                                      ; None          ; 91.47 MHz ( period = 10.933 ns ) ; sjzm:comb_4|out1[1]    ; sjzm:comb_4|dcen       ; clkx       ; clkx     ; 0            ;
+; Clock Setup: 'clkbz'         ; N/A                                      ; None          ; 123.20 MHz ( period = 8.117 ns ) ; bzjs:comb_5|out2[27]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; 0            ;
+; Clock Hold: 'clkbz'          ; Not operational: Clock Skew > Data Delay ; None          ; N/A                              ; bzjs:comb_5|out2[11]   ; mux4to1:comb_6|out8[3] ; clkbz      ; clkbz    ; 2            ;
+; Total number of failed paths ;                                          ;               ;                                  ;                        ;                        ;            ;          ; 60           ;
++------------------------------+------------------------------------------+---------------+----------------------------------+------------------------+------------------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C5T144C8        ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; tpd Requirement                                                                                      ; 0.1 ns             ;      ;    ;             ;
+; th Requirement                                                                                       ; 0.1 ns             ;      ;    ;             ;
+; tsu Requirement                                                                                      ; 0.1 ns             ;      ;    ;             ;
+; tco Requirement                                                                                      ; 0.1 ns             ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; On                 ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; clkbz           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; clkx            ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2 processors           ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clkbz'                                                                                                                                                                                                                                       ;
++-----------------------------------------+-----------------------------------------------------+-----------------------+------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                  ; To                     ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+-----------------------+------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 123.20 MHz ( period = 8.117 ns )                    ; bzjs:comb_5|out2[27]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 7.823 ns                ;
+; N/A                                     ; 123.40 MHz ( period = 8.104 ns )                    ; bzjs:comb_5|out2[16]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 7.810 ns                ;
+; N/A                                     ; 129.08 MHz ( period = 7.747 ns )                    ; bzjs:comb_5|out2[30]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 7.453 ns                ;
+; N/A                                     ; 129.37 MHz ( period = 7.730 ns )                    ; bzjs:comb_5|out2[23]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 7.436 ns                ;
+; N/A                                     ; 130.40 MHz ( period = 7.669 ns )                    ; bzjs:comb_5|out2[26]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 7.375 ns                ;
+; N/A                                     ; 131.13 MHz ( period = 7.626 ns )                    ; bzjs:comb_5|out2[31]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 7.332 ns                ;
+; N/A                                     ; 135.80 MHz ( period = 7.364 ns )                    ; bzjs:comb_5|out2[24]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 7.070 ns                ;
+; N/A                                     ; 137.16 MHz ( period = 7.291 ns )                    ; bzjs:comb_5|out2[29]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.997 ns                ;
+; N/A                                     ; 138.31 MHz ( period = 7.230 ns )                    ; bzjs:comb_5|out2[25]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.936 ns                ;
+; N/A                                     ; 139.82 MHz ( period = 7.152 ns )                    ; bzjs:comb_5|out2[17]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.858 ns                ;
+; N/A                                     ; 142.61 MHz ( period = 7.012 ns )                    ; bzjs:comb_5|out2[22]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.718 ns                ;
+; N/A                                     ; 143.78 MHz ( period = 6.955 ns )                    ; bzjs:comb_5|out2[21]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.661 ns                ;
+; N/A                                     ; 144.55 MHz ( period = 6.918 ns )                    ; bzjs:comb_5|out2[1]   ; mux4to1:comb_6|out8[1] ; clkbz      ; clkbz    ; None                        ; None                      ; 5.058 ns                ;
+; N/A                                     ; 146.01 MHz ( period = 6.849 ns )                    ; bzjs:comb_5|out2[28]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.555 ns                ;
+; N/A                                     ; 147.62 MHz ( period = 6.774 ns )                    ; bzjs:comb_5|out2[19]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.480 ns                ;
+; N/A                                     ; 149.99 MHz ( period = 6.667 ns )                    ; bzjs:comb_5|out2[18]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.373 ns                ;
+; N/A                                     ; 151.40 MHz ( period = 6.605 ns )                    ; bzjs:comb_5|out2[9]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.306 ns                ;
+; N/A                                     ; 152.16 MHz ( period = 6.572 ns )                    ; bzjs:comb_5|out2[31]  ; mux4to1:comb_6|out8[7] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.801 ns                ;
+; N/A                                     ; 153.09 MHz ( period = 6.532 ns )                    ; bzjs:comb_5|out2[20]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.238 ns                ;
+; N/A                                     ; 155.09 MHz ( period = 6.448 ns )                    ; bzjs:comb_5|out2[16]  ; mux4to1:comb_6|out8[0] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.786 ns                ;
+; N/A                                     ; 155.33 MHz ( period = 6.438 ns )                    ; bzjs:comb_5|out2[15]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 156.05 MHz ( period = 6.408 ns )                    ; bzjs:comb_5|out2[0]   ; mux4to1:comb_6|out8[0] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.756 ns                ;
+; N/A                                     ; 156.59 MHz ( period = 6.386 ns )                    ; rmk:comb_3|clkjcq[20] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.778 ns                ;
+; N/A                                     ; 156.96 MHz ( period = 6.371 ns )                    ; bzjs:comb_5|out2[6]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 6.072 ns                ;
+; N/A                                     ; 157.53 MHz ( period = 6.348 ns )                    ; rmk:comb_3|clkjcq[19] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.740 ns                ;
+; N/A                                     ; 160.51 MHz ( period = 6.230 ns )                    ; bzjs:comb_5|out2[11]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.931 ns                ;
+; N/A                                     ; 163.03 MHz ( period = 6.134 ns )                    ; bzjs:comb_5|out2[8]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.835 ns                ;
+; N/A                                     ; 164.37 MHz ( period = 6.084 ns )                    ; bzjs:comb_5|out2[7]   ; mux4to1:comb_6|out8[7] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.552 ns                ;
+; N/A                                     ; 164.47 MHz ( period = 6.080 ns )                    ; bzjs:comb_5|out2[13]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.781 ns                ;
+; N/A                                     ; 164.47 MHz ( period = 6.080 ns )                    ; rmk:comb_3|clkjcq[26] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.472 ns                ;
+; N/A                                     ; 164.50 MHz ( period = 6.079 ns )                    ; rmk:comb_3|clkjcq[21] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.471 ns                ;
+; N/A                                     ; 165.45 MHz ( period = 6.044 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.740 ns                ;
+; N/A                                     ; 165.62 MHz ( period = 6.038 ns )                    ; bzjs:comb_5|out2[12]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.739 ns                ;
+; N/A                                     ; 165.78 MHz ( period = 6.032 ns )                    ; bzjs:comb_5|out2[25]  ; mux4to1:comb_6|out8[1] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.620 ns                ;
+; N/A                                     ; 166.78 MHz ( period = 5.996 ns )                    ; bzjs:comb_5|out2[5]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.697 ns                ;
+; N/A                                     ; 166.83 MHz ( period = 5.994 ns )                    ; bzjs:comb_5|out2[6]   ; mux4to1:comb_6|out8[6] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.513 ns                ;
+; N/A                                     ; 167.42 MHz ( period = 5.973 ns )                    ; rmk:comb_3|clkjcq[18] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.365 ns                ;
+; N/A                                     ; 167.73 MHz ( period = 5.962 ns )                    ; rmk:comb_3|clkjcq[30] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.354 ns                ;
+; N/A                                     ; 167.81 MHz ( period = 5.959 ns )                    ; rmk:comb_3|clkjcq[23] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.351 ns                ;
+; N/A                                     ; 168.41 MHz ( period = 5.938 ns )                    ; bzjs:comb_5|out2[24]  ; mux4to1:comb_6|out8[0] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.531 ns                ;
+; N/A                                     ; 168.80 MHz ( period = 5.924 ns )                    ; bzjs:comb_5|out2[10]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.625 ns                ;
+; N/A                                     ; 170.68 MHz ( period = 5.859 ns )                    ; rmk:comb_3|clkjcq[22] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.251 ns                ;
+; N/A                                     ; 170.88 MHz ( period = 5.852 ns )                    ; bzjs:comb_5|out2[7]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.553 ns                ;
+; N/A                                     ; 171.67 MHz ( period = 5.825 ns )                    ; rmk:comb_3|clkjcq[16] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.217 ns                ;
+; N/A                                     ; 173.76 MHz ( period = 5.755 ns )                    ; bzjs:comb_5|out2[3]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.456 ns                ;
+; N/A                                     ; 174.79 MHz ( period = 5.721 ns )                    ; rmk:comb_3|clkjcq[27] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.113 ns                ;
+; N/A                                     ; 175.32 MHz ( period = 5.704 ns )                    ; bzjs:comb_5|out2[2]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; bzjs:comb_5|out2[4]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.397 ns                ;
+; N/A                                     ; 175.87 MHz ( period = 5.686 ns )                    ; bzjs:comb_5|out2[23]  ; mux4to1:comb_6|out8[7] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.358 ns                ;
+; N/A                                     ; 176.77 MHz ( period = 5.657 ns )                    ; rmk:comb_3|clkjcq[11] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.052 ns                ;
+; N/A                                     ; 176.96 MHz ( period = 5.651 ns )                    ; rmk:comb_3|clkjcq[20] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 5.387 ns                ;
+; N/A                                     ; 176.96 MHz ( period = 5.651 ns )                    ; rmk:comb_3|clkjcq[17] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.043 ns                ;
+; N/A                                     ; 176.96 MHz ( period = 5.651 ns )                    ; rmk:comb_3|clkjcq[3]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 5.046 ns                ;
+; N/A                                     ; 178.13 MHz ( period = 5.614 ns )                    ; bzjs:comb_5|out2[8]   ; mux4to1:comb_6|out8[0] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.364 ns                ;
+; N/A                                     ; 178.16 MHz ( period = 5.613 ns )                    ; rmk:comb_3|clkjcq[19] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 5.349 ns                ;
+; N/A                                     ; 178.48 MHz ( period = 5.603 ns )                    ; bzjs:comb_5|out2[14]  ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 5.304 ns                ;
+; N/A                                     ; 178.51 MHz ( period = 5.602 ns )                    ; rmk:comb_3|clkjcq[24] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.994 ns                ;
+; N/A                                     ; 180.80 MHz ( period = 5.531 ns )                    ; rmk:comb_3|clkjcq[7]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.926 ns                ;
+; N/A                                     ; 181.79 MHz ( period = 5.501 ns )                    ; rmk:comb_3|clkjcq[31] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.893 ns                ;
+; N/A                                     ; 182.08 MHz ( period = 5.492 ns )                    ; bzjs:comb_5|out2[27]  ; mux4to1:comb_6|out8[3] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.334 ns                ;
+; N/A                                     ; 182.95 MHz ( period = 5.466 ns )                    ; rmk:comb_3|clkjcq[8]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.861 ns                ;
+; N/A                                     ; 183.86 MHz ( period = 5.439 ns )                    ; rmk:comb_3|clkjcq[25] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.831 ns                ;
+; N/A                                     ; 184.03 MHz ( period = 5.434 ns )                    ; rmk:comb_3|clkjcq[29] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.826 ns                ;
+; N/A                                     ; 184.60 MHz ( period = 5.417 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[31]   ; clkbz      ; clkbz    ; None                        ; None                      ; 5.143 ns                ;
+; N/A                                     ; 186.78 MHz ( period = 5.354 ns )                    ; rmk:comb_3|clkjcq[2]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.749 ns                ;
+; N/A                                     ; 186.81 MHz ( period = 5.353 ns )                    ; rmk:comb_3|clkjcq[15] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.748 ns                ;
+; N/A                                     ; 187.09 MHz ( period = 5.345 ns )                    ; rmk:comb_3|clkjcq[26] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 5.081 ns                ;
+; N/A                                     ; 187.13 MHz ( period = 5.344 ns )                    ; rmk:comb_3|clkjcq[21] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 5.080 ns                ;
+; N/A                                     ; 187.58 MHz ( period = 5.331 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[30]   ; clkbz      ; clkbz    ; None                        ; None                      ; 5.057 ns                ;
+; N/A                                     ; 188.75 MHz ( period = 5.298 ns )                    ; rmk:comb_3|clkjcq[10] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.693 ns                ;
+; N/A                                     ; 189.32 MHz ( period = 5.282 ns )                    ; bzjs:comb_5|out2[9]   ; mux4to1:comb_6|out8[1] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.240 ns                ;
+; N/A                                     ; 189.47 MHz ( period = 5.278 ns )                    ; bzjs:comb_5|out2[1]   ; bzjs:comb_5|load       ; clkbz      ; clkbz    ; None                        ; None                      ; 4.979 ns                ;
+; N/A                                     ; 189.97 MHz ( period = 5.264 ns )                    ; rmk:comb_3|clkjcq[28] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.656 ns                ;
+; N/A                                     ; 190.66 MHz ( period = 5.245 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[29]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.971 ns                ;
+; N/A                                     ; 190.91 MHz ( period = 5.238 ns )                    ; rmk:comb_3|clkjcq[18] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.974 ns                ;
+; N/A                                     ; 191.31 MHz ( period = 5.227 ns )                    ; rmk:comb_3|clkjcq[30] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.963 ns                ;
+; N/A                                     ; 191.42 MHz ( period = 5.224 ns )                    ; rmk:comb_3|clkjcq[23] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.960 ns                ;
+; N/A                                     ; 193.84 MHz ( period = 5.159 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[28]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.885 ns                ;
+; N/A                                     ; 195.16 MHz ( period = 5.124 ns )                    ; rmk:comb_3|clkjcq[22] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.860 ns                ;
+; N/A                                     ; 196.46 MHz ( period = 5.090 ns )                    ; rmk:comb_3|clkjcq[16] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.826 ns                ;
+; N/A                                     ; 197.12 MHz ( period = 5.073 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[27]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.799 ns                ;
+; N/A                                     ; 197.55 MHz ( period = 5.062 ns )                    ; rmk:comb_3|clkjcq[6]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.457 ns                ;
+; N/A                                     ; 198.02 MHz ( period = 5.050 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[31]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.790 ns                ;
+; N/A                                     ; 200.28 MHz ( period = 4.993 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.388 ns                ;
+; N/A                                     ; 200.52 MHz ( period = 4.987 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[26]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.713 ns                ;
+; N/A                                     ; 200.56 MHz ( period = 4.986 ns )                    ; rmk:comb_3|clkjcq[27] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.722 ns                ;
+; N/A                                     ; 200.76 MHz ( period = 4.981 ns )                    ; rmk:comb_3|clkjcq[4]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.376 ns                ;
+; N/A                                     ; 201.33 MHz ( period = 4.967 ns )                    ; rmk:comb_3|clkjcq[9]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.362 ns                ;
+; N/A                                     ; 201.33 MHz ( period = 4.967 ns )                    ; rmk:comb_3|clkjcq[14] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.362 ns                ;
+; N/A                                     ; 201.45 MHz ( period = 4.964 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[30]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.704 ns                ;
+; N/A                                     ; 203.17 MHz ( period = 4.922 ns )                    ; rmk:comb_3|clkjcq[11] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.661 ns                ;
+; N/A                                     ; 203.42 MHz ( period = 4.916 ns )                    ; rmk:comb_3|clkjcq[17] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.652 ns                ;
+; N/A                                     ; 203.42 MHz ( period = 4.916 ns )                    ; rmk:comb_3|clkjcq[3]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.655 ns                ;
+; N/A                                     ; 203.75 MHz ( period = 4.908 ns )                    ; rmk:comb_3|clkjcq[5]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.303 ns                ;
+; N/A                                     ; 204.04 MHz ( period = 4.901 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[25]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.627 ns                ;
+; N/A                                     ; 205.00 MHz ( period = 4.878 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[29]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.618 ns                ;
+; N/A                                     ; 205.42 MHz ( period = 4.868 ns )                    ; bzjs:comb_5|out2[17]  ; mux4to1:comb_6|out8[1] ; clkbz      ; clkbz    ; None                        ; None                      ; 4.038 ns                ;
+; N/A                                     ; 205.47 MHz ( period = 4.867 ns )                    ; rmk:comb_3|clkjcq[24] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.603 ns                ;
+; N/A                                     ; 205.76 MHz ( period = 4.860 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.256 ns                ;
+; N/A                                     ; 207.68 MHz ( period = 4.815 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[24]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.541 ns                ;
+; N/A                                     ; 208.51 MHz ( period = 4.796 ns )                    ; rmk:comb_3|clkjcq[7]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.535 ns                ;
+; N/A                                     ; 208.68 MHz ( period = 4.792 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[28]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.532 ns                ;
+; N/A                                     ; 208.94 MHz ( period = 4.786 ns )                    ; bzjs:comb_5|out2[22]  ; mux4to1:comb_6|out8[6] ; clkbz      ; clkbz    ; None                        ; None                      ; 3.914 ns                ;
+; N/A                                     ; 209.82 MHz ( period = 4.766 ns )                    ; rmk:comb_3|clkjcq[31] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.502 ns                ;
+; N/A                                     ; 210.79 MHz ( period = 4.744 ns )                    ; rmk:comb_3|clkjcq[13] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 4.139 ns                ;
+; N/A                                     ; 211.37 MHz ( period = 4.731 ns )                    ; rmk:comb_3|clkjcq[8]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.470 ns                ;
+; N/A                                     ; 211.60 MHz ( period = 4.726 ns )                    ; bzjs:comb_5|out2[1]   ; bzjs:comb_5|out2[31]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.457 ns                ;
+; N/A                                     ; 212.40 MHz ( period = 4.708 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|clkjcq[31]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.447 ns                ;
+; N/A                                     ; 212.49 MHz ( period = 4.706 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[27]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.446 ns                ;
+; N/A                                     ; 212.59 MHz ( period = 4.704 ns )                    ; rmk:comb_3|clkjcq[25] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.440 ns                ;
+; N/A                                     ; 212.81 MHz ( period = 4.699 ns )                    ; rmk:comb_3|clkjcq[29] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.435 ns                ;
+; N/A                                     ; 215.52 MHz ( period = 4.640 ns )                    ; bzjs:comb_5|out2[1]   ; bzjs:comb_5|out2[30]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.371 ns                ;
+; N/A                                     ; 215.52 MHz ( period = 4.640 ns )                    ; bzjs:comb_5|out2[2]   ; bzjs:comb_5|out2[31]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.371 ns                ;
+; N/A                                     ; 216.22 MHz ( period = 4.625 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[23]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.351 ns                ;
+; N/A                                     ; 216.31 MHz ( period = 4.623 ns )                    ; rmk:comb_3|clkjcq[2]  ; rmk:comb_3|clkjcq[31]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.362 ns                ;
+; N/A                                     ; 216.36 MHz ( period = 4.622 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|clkjcq[30]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.361 ns                ;
+; N/A                                     ; 216.45 MHz ( period = 4.620 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[26]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.360 ns                ;
+; N/A                                     ; 216.50 MHz ( period = 4.619 ns )                    ; rmk:comb_3|clkjcq[2]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.358 ns                ;
+; N/A                                     ; 216.54 MHz ( period = 4.618 ns )                    ; rmk:comb_3|clkjcq[15] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.357 ns                ;
+; N/A                                     ; 217.25 MHz ( period = 4.603 ns )                    ; bzjs:comb_5|out2[3]   ; bzjs:comb_5|out2[31]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.334 ns                ;
+; N/A                                     ; 218.01 MHz ( period = 4.587 ns )                    ; rmk:comb_3|clkjcq[3]  ; rmk:comb_3|clkjcq[31]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.326 ns                ;
+; N/A                                     ; 218.25 MHz ( period = 4.582 ns )                    ; rmk:comb_3|clkjcq[12] ; rmk:comb_3|y           ; clkbz      ; clkbz    ; None                        ; None                      ; 3.977 ns                ;
+; N/A                                     ; 219.15 MHz ( period = 4.563 ns )                    ; rmk:comb_3|clkjcq[10] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.302 ns                ;
+; N/A                                     ; 219.59 MHz ( period = 4.554 ns )                    ; bzjs:comb_5|out2[2]   ; bzjs:comb_5|out2[30]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.285 ns                ;
+; N/A                                     ; 219.59 MHz ( period = 4.554 ns )                    ; bzjs:comb_5|out2[1]   ; bzjs:comb_5|out2[29]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.285 ns                ;
+; N/A                                     ; 220.31 MHz ( period = 4.539 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[22]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.265 ns                ;
+; N/A                                     ; 220.41 MHz ( period = 4.537 ns )                    ; rmk:comb_3|clkjcq[2]  ; rmk:comb_3|clkjcq[30]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.276 ns                ;
+; N/A                                     ; 220.46 MHz ( period = 4.536 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|clkjcq[29]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.275 ns                ;
+; N/A                                     ; 220.56 MHz ( period = 4.534 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[25]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.274 ns                ;
+; N/A                                     ; 220.80 MHz ( period = 4.529 ns )                    ; rmk:comb_3|clkjcq[28] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.265 ns                ;
+; N/A                                     ; 221.39 MHz ( period = 4.517 ns )                    ; bzjs:comb_5|out2[3]   ; bzjs:comb_5|out2[30]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.248 ns                ;
+; N/A                                     ; 222.17 MHz ( period = 4.501 ns )                    ; rmk:comb_3|clkjcq[3]  ; rmk:comb_3|clkjcq[30]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.240 ns                ;
+; N/A                                     ; 223.56 MHz ( period = 4.473 ns )                    ; bzjs:comb_5|out2[4]   ; bzjs:comb_5|out2[31]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.204 ns                ;
+; N/A                                     ; 223.81 MHz ( period = 4.468 ns )                    ; bzjs:comb_5|out2[2]   ; bzjs:comb_5|out2[29]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.199 ns                ;
+; N/A                                     ; 223.81 MHz ( period = 4.468 ns )                    ; bzjs:comb_5|out2[1]   ; bzjs:comb_5|out2[28]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.199 ns                ;
+; N/A                                     ; 224.57 MHz ( period = 4.453 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[21]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.179 ns                ;
+; N/A                                     ; 224.62 MHz ( period = 4.452 ns )                    ; rmk:comb_3|clkjcq[4]  ; rmk:comb_3|clkjcq[31]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.191 ns                ;
+; N/A                                     ; 224.67 MHz ( period = 4.451 ns )                    ; rmk:comb_3|clkjcq[2]  ; rmk:comb_3|clkjcq[29]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.190 ns                ;
+; N/A                                     ; 224.72 MHz ( period = 4.450 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|clkjcq[28]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.189 ns                ;
+; N/A                                     ; 224.82 MHz ( period = 4.448 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[24]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.188 ns                ;
+; N/A                                     ; 225.68 MHz ( period = 4.431 ns )                    ; bzjs:comb_5|out2[3]   ; bzjs:comb_5|out2[29]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.162 ns                ;
+; N/A                                     ; 225.84 MHz ( period = 4.428 ns )                    ; bzjs:comb_5|out2[5]   ; bzjs:comb_5|out2[31]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.159 ns                ;
+; N/A                                     ; 226.45 MHz ( period = 4.416 ns )                    ; rmk:comb_3|clkjcq[5]  ; rmk:comb_3|clkjcq[31]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.155 ns                ;
+; N/A                                     ; 226.50 MHz ( period = 4.415 ns )                    ; rmk:comb_3|clkjcq[3]  ; rmk:comb_3|clkjcq[29]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.154 ns                ;
+; N/A                                     ; 227.95 MHz ( period = 4.387 ns )                    ; bzjs:comb_5|out2[4]   ; bzjs:comb_5|out2[30]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.118 ns                ;
+; N/A                                     ; 228.21 MHz ( period = 4.382 ns )                    ; bzjs:comb_5|out2[1]   ; bzjs:comb_5|out2[27]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.113 ns                ;
+; N/A                                     ; 228.21 MHz ( period = 4.382 ns )                    ; bzjs:comb_5|out2[2]   ; bzjs:comb_5|out2[28]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.113 ns                ;
+; N/A                                     ; 228.21 MHz ( period = 4.382 ns )                    ; bzjs:comb_5|out2[14]  ; mux4to1:comb_6|out8[6] ; clkbz      ; clkbz    ; None                        ; None                      ; 3.707 ns                ;
+; N/A                                     ; 228.99 MHz ( period = 4.367 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[20]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.093 ns                ;
+; N/A                                     ; 229.04 MHz ( period = 4.366 ns )                    ; rmk:comb_3|clkjcq[4]  ; rmk:comb_3|clkjcq[30]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.105 ns                ;
+; N/A                                     ; 229.10 MHz ( period = 4.365 ns )                    ; rmk:comb_3|clkjcq[2]  ; rmk:comb_3|clkjcq[28]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.104 ns                ;
+; N/A                                     ; 229.15 MHz ( period = 4.364 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|clkjcq[27]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.103 ns                ;
+; N/A                                     ; 230.15 MHz ( period = 4.345 ns )                    ; bzjs:comb_5|out2[3]   ; bzjs:comb_5|out2[28]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.076 ns                ;
+; N/A                                     ; 230.31 MHz ( period = 4.342 ns )                    ; bzjs:comb_5|out2[5]   ; bzjs:comb_5|out2[30]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.073 ns                ;
+; N/A                                     ; 230.31 MHz ( period = 4.342 ns )                    ; bzjs:comb_5|out2[6]   ; bzjs:comb_5|out2[31]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.073 ns                ;
+; N/A                                     ; 230.95 MHz ( period = 4.330 ns )                    ; rmk:comb_3|clkjcq[5]  ; rmk:comb_3|clkjcq[30]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.069 ns                ;
+; N/A                                     ; 230.95 MHz ( period = 4.330 ns )                    ; rmk:comb_3|clkjcq[6]  ; rmk:comb_3|clkjcq[31]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.069 ns                ;
+; N/A                                     ; 231.00 MHz ( period = 4.329 ns )                    ; rmk:comb_3|clkjcq[3]  ; rmk:comb_3|clkjcq[28]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.068 ns                ;
+; N/A                                     ; 231.11 MHz ( period = 4.327 ns )                    ; rmk:comb_3|clkjcq[6]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 4.066 ns                ;
+; N/A                                     ; 231.21 MHz ( period = 4.325 ns )                    ; rmk:comb_3|clkjcq[20] ; rmk:comb_3|clkjcq[0]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.057 ns                ;
+; N/A                                     ; 232.50 MHz ( period = 4.301 ns )                    ; bzjs:comb_5|out2[4]   ; bzjs:comb_5|out2[29]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.032 ns                ;
+; N/A                                     ; 232.77 MHz ( period = 4.296 ns )                    ; bzjs:comb_5|out2[2]   ; bzjs:comb_5|out2[27]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.027 ns                ;
+; N/A                                     ; 232.77 MHz ( period = 4.296 ns )                    ; bzjs:comb_5|out2[1]   ; bzjs:comb_5|out2[26]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.027 ns                ;
+; N/A                                     ; 233.26 MHz ( period = 4.287 ns )                    ; rmk:comb_3|clkjcq[19] ; rmk:comb_3|clkjcq[0]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.019 ns                ;
+; N/A                                     ; 233.59 MHz ( period = 4.281 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[19]   ; clkbz      ; clkbz    ; None                        ; None                      ; 4.007 ns                ;
+; N/A                                     ; 233.64 MHz ( period = 4.280 ns )                    ; rmk:comb_3|clkjcq[4]  ; rmk:comb_3|clkjcq[29]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.019 ns                ;
+; N/A                                     ; 233.70 MHz ( period = 4.279 ns )                    ; rmk:comb_3|clkjcq[2]  ; rmk:comb_3|clkjcq[27]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.018 ns                ;
+; N/A                                     ; 233.75 MHz ( period = 4.278 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|clkjcq[26]  ; clkbz      ; clkbz    ; None                        ; None                      ; 4.017 ns                ;
+; N/A                                     ; 234.80 MHz ( period = 4.259 ns )                    ; bzjs:comb_5|out2[3]   ; bzjs:comb_5|out2[27]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.990 ns                ;
+; N/A                                     ; 234.85 MHz ( period = 4.258 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 3.997 ns                ;
+; N/A                                     ; 234.85 MHz ( period = 4.258 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[23]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.998 ns                ;
+; N/A                                     ; 234.96 MHz ( period = 4.256 ns )                    ; bzjs:comb_5|out2[6]   ; bzjs:comb_5|out2[30]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.987 ns                ;
+; N/A                                     ; 234.96 MHz ( period = 4.256 ns )                    ; bzjs:comb_5|out2[5]   ; bzjs:comb_5|out2[29]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.987 ns                ;
+; N/A                                     ; 235.52 MHz ( period = 4.246 ns )                    ; rmk:comb_3|clkjcq[4]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 3.985 ns                ;
+; N/A                                     ; 235.63 MHz ( period = 4.244 ns )                    ; rmk:comb_3|clkjcq[6]  ; rmk:comb_3|clkjcq[30]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.983 ns                ;
+; N/A                                     ; 235.63 MHz ( period = 4.244 ns )                    ; rmk:comb_3|clkjcq[5]  ; rmk:comb_3|clkjcq[29]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.983 ns                ;
+; N/A                                     ; 235.68 MHz ( period = 4.243 ns )                    ; rmk:comb_3|clkjcq[3]  ; rmk:comb_3|clkjcq[27]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.982 ns                ;
+; N/A                                     ; 236.29 MHz ( period = 4.232 ns )                    ; rmk:comb_3|clkjcq[9]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 3.971 ns                ;
+; N/A                                     ; 236.29 MHz ( period = 4.232 ns )                    ; rmk:comb_3|clkjcq[14] ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 3.971 ns                ;
+; N/A                                     ; 237.25 MHz ( period = 4.215 ns )                    ; bzjs:comb_5|out2[4]   ; bzjs:comb_5|out2[28]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.946 ns                ;
+; N/A                                     ; 237.42 MHz ( period = 4.212 ns )                    ; bzjs:comb_5|out2[7]   ; bzjs:comb_5|out2[31]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.943 ns                ;
+; N/A                                     ; 237.53 MHz ( period = 4.210 ns )                    ; bzjs:comb_5|out2[2]   ; bzjs:comb_5|out2[26]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.941 ns                ;
+; N/A                                     ; 237.53 MHz ( period = 4.210 ns )                    ; bzjs:comb_5|out2[1]   ; bzjs:comb_5|out2[25]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.941 ns                ;
+; N/A                                     ; 238.10 MHz ( period = 4.200 ns )                    ; rmk:comb_3|clkjcq[7]  ; rmk:comb_3|clkjcq[31]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.939 ns                ;
+; N/A                                     ; 238.38 MHz ( period = 4.195 ns )                    ; bzjs:comb_5|out2[0]   ; bzjs:comb_5|out2[18]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.921 ns                ;
+; N/A                                     ; 238.44 MHz ( period = 4.194 ns )                    ; rmk:comb_3|clkjcq[4]  ; rmk:comb_3|clkjcq[28]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.933 ns                ;
+; N/A                                     ; 238.49 MHz ( period = 4.193 ns )                    ; rmk:comb_3|clkjcq[2]  ; rmk:comb_3|clkjcq[26]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.932 ns                ;
+; N/A                                     ; 238.55 MHz ( period = 4.192 ns )                    ; rmk:comb_3|clkjcq[1]  ; rmk:comb_3|clkjcq[25]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.931 ns                ;
+; N/A                                     ; 239.46 MHz ( period = 4.176 ns )                    ; bzjs:comb_5|out2[5]   ; mux4to1:comb_6|out8[5] ; clkbz      ; clkbz    ; None                        ; None                      ; 3.641 ns                ;
+; N/A                                     ; 239.64 MHz ( period = 4.173 ns )                    ; rmk:comb_3|clkjcq[5]  ; rmk:comb_3|en          ; clkbz      ; clkbz    ; None                        ; None                      ; 3.912 ns                ;
+; N/A                                     ; 239.64 MHz ( period = 4.173 ns )                    ; bzjs:comb_5|out2[3]   ; bzjs:comb_5|out2[26]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.904 ns                ;
+; N/A                                     ; 239.69 MHz ( period = 4.172 ns )                    ; rmk:comb_3|clkjcq[0]  ; rmk:comb_3|clkjcq[22]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.912 ns                ;
+; N/A                                     ; 239.81 MHz ( period = 4.170 ns )                    ; bzjs:comb_5|out2[6]   ; bzjs:comb_5|out2[29]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.901 ns                ;
+; N/A                                     ; 239.81 MHz ( period = 4.170 ns )                    ; bzjs:comb_5|out2[5]   ; bzjs:comb_5|out2[28]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.901 ns                ;
+; N/A                                     ; 239.92 MHz ( period = 4.168 ns )                    ; bzjs:comb_5|out2[15]  ; mux4to1:comb_6|out8[7] ; clkbz      ; clkbz    ; None                        ; None                      ; 3.594 ns                ;
+; N/A                                     ; 240.50 MHz ( period = 4.158 ns )                    ; rmk:comb_3|clkjcq[6]  ; rmk:comb_3|clkjcq[29]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.897 ns                ;
+; N/A                                     ; 240.50 MHz ( period = 4.158 ns )                    ; rmk:comb_3|clkjcq[5]  ; rmk:comb_3|clkjcq[28]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.897 ns                ;
+; N/A                                     ; 240.56 MHz ( period = 4.157 ns )                    ; rmk:comb_3|clkjcq[3]  ; rmk:comb_3|clkjcq[26]  ; clkbz      ; clkbz    ; None                        ; None                      ; 3.896 ns                ;
+; N/A                                     ; 242.19 MHz ( period = 4.129 ns )                    ; bzjs:comb_5|out2[4]   ; bzjs:comb_5|out2[27]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.860 ns                ;
+; N/A                                     ; 242.37 MHz ( period = 4.126 ns )                    ; bzjs:comb_5|out2[7]   ; bzjs:comb_5|out2[30]   ; clkbz      ; clkbz    ; None                        ; None                      ; 3.857 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                       ;                        ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+-----------------------+------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clkx'                                                                                                                                                                                                                                     ;
++-----------------------------------------+-----------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                 ; To                   ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 91.47 MHz ( period = 10.933 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 10.678 ns               ;
+; N/A                                     ; 92.83 MHz ( period = 10.772 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 10.507 ns               ;
+; N/A                                     ; 95.57 MHz ( period = 10.464 ns )                    ; sjzm:comb_4|out1[17] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 10.201 ns               ;
+; N/A                                     ; 95.82 MHz ( period = 10.436 ns )                    ; sjzm:comb_4|out1[18] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 10.173 ns               ;
+; N/A                                     ; 99.55 MHz ( period = 10.045 ns )                    ; sjzm:comb_4|out1[26] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 9.782 ns                ;
+; N/A                                     ; 99.69 MHz ( period = 10.031 ns )                    ; sjzm:comb_4|out1[9]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 9.766 ns                ;
+; N/A                                     ; 102.97 MHz ( period = 9.712 ns )                    ; sjzm:comb_4|out1[25] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 9.449 ns                ;
+; N/A                                     ; 103.75 MHz ( period = 9.639 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 9.374 ns                ;
+; N/A                                     ; 109.99 MHz ( period = 9.092 ns )                    ; sjzm:comb_4|dcen     ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 8.828 ns                ;
+; N/A                                     ; 115.38 MHz ( period = 8.667 ns )                    ; sjzm:comb_4|out1[13] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 8.402 ns                ;
+; N/A                                     ; 118.12 MHz ( period = 8.466 ns )                    ; sjzm:comb_4|out1[27] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 8.203 ns                ;
+; N/A                                     ; 123.50 MHz ( period = 8.097 ns )                    ; sjzm:comb_4|out1[19] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.834 ns                ;
+; N/A                                     ; 125.53 MHz ( period = 7.966 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.701 ns                ;
+; N/A                                     ; 125.57 MHz ( period = 7.964 ns )                    ; sjzm:comb_4|out1[24] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.701 ns                ;
+; N/A                                     ; 128.65 MHz ( period = 7.773 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.518 ns                ;
+; N/A                                     ; 128.80 MHz ( period = 7.764 ns )                    ; sjzm:comb_4|out1[10] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.499 ns                ;
+; N/A                                     ; 131.25 MHz ( period = 7.619 ns )                    ; sjzm:comb_4|out1[23] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.356 ns                ;
+; N/A                                     ; 132.56 MHz ( period = 7.544 ns )                    ; sjzm:comb_4|out1[14] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.279 ns                ;
+; N/A                                     ; 134.70 MHz ( period = 7.424 ns )                    ; sjzm:comb_4|out1[22] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.161 ns                ;
+; N/A                                     ; 135.57 MHz ( period = 7.376 ns )                    ; sjzm:comb_4|out1[16] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.113 ns                ;
+; N/A                                     ; 135.98 MHz ( period = 7.354 ns )                    ; sjzm:comb_4|out1[31] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.099 ns                ;
+; N/A                                     ; 137.44 MHz ( period = 7.276 ns )                    ; sjzm:comb_4|out1[30] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 7.013 ns                ;
+; N/A                                     ; 138.60 MHz ( period = 7.215 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.950 ns                ;
+; N/A                                     ; 140.15 MHz ( period = 7.135 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.870 ns                ;
+; N/A                                     ; 140.83 MHz ( period = 7.101 ns )                    ; sjzm:comb_4|out1[20] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.838 ns                ;
+; N/A                                     ; 141.60 MHz ( period = 7.062 ns )                    ; sjzm:comb_4|out1[29] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.799 ns                ;
+; N/A                                     ; 144.20 MHz ( period = 6.935 ns )                    ; sjzm:comb_4|out1[28] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.672 ns                ;
+; N/A                                     ; 144.38 MHz ( period = 6.926 ns )                    ; sjzm:comb_4|out1[21] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.671 ns                ;
+; N/A                                     ; 148.68 MHz ( period = 6.726 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.461 ns                ;
+; N/A                                     ; 149.61 MHz ( period = 6.684 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.419 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 6.323 ns                ;
+; N/A                                     ; 156.94 MHz ( period = 6.372 ns )                    ; sjzm:comb_4|out1[11] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.107 ns                ;
+; N/A                                     ; 158.33 MHz ( period = 6.316 ns )                    ; sjzm:comb_4|out1[12] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 6.051 ns                ;
+; N/A                                     ; 163.16 MHz ( period = 6.129 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 5.865 ns                ;
+; N/A                                     ; 170.24 MHz ( period = 5.874 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 5.610 ns                ;
+; N/A                                     ; 175.13 MHz ( period = 5.710 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 5.454 ns                ;
+; N/A                                     ; 177.81 MHz ( period = 5.624 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 5.368 ns                ;
+; N/A                                     ; 180.57 MHz ( period = 5.538 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 5.282 ns                ;
+; N/A                                     ; 183.42 MHz ( period = 5.452 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 184.54 MHz ( period = 5.419 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 5.145 ns                ;
+; N/A                                     ; 184.64 MHz ( period = 5.416 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 5.152 ns                ;
+; N/A                                     ; 185.77 MHz ( period = 5.383 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 5.109 ns                ;
+; N/A                                     ; 186.36 MHz ( period = 5.366 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 5.110 ns                ;
+; N/A                                     ; 189.39 MHz ( period = 5.280 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 5.024 ns                ;
+; N/A                                     ; 190.40 MHz ( period = 5.252 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 4.996 ns                ;
+; N/A                                     ; 190.55 MHz ( period = 5.248 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.974 ns                ;
+; N/A                                     ; 191.86 MHz ( period = 5.212 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.938 ns                ;
+; N/A                                     ; 192.53 MHz ( period = 5.194 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 4.938 ns                ;
+; N/A                                     ; 193.57 MHz ( period = 5.166 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 4.910 ns                ;
+; N/A                                     ; 195.08 MHz ( period = 5.126 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.852 ns                ;
+; N/A                                     ; 196.85 MHz ( period = 5.080 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 4.824 ns                ;
+; N/A                                     ; 199.84 MHz ( period = 5.004 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[23] ; clkx       ; clkx     ; None                        ; None                      ; 4.748 ns                ;
+; N/A                                     ; 200.16 MHz ( period = 4.996 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.722 ns                ;
+; N/A                                     ; 200.24 MHz ( period = 4.994 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 4.738 ns                ;
+; N/A                                     ; 203.33 MHz ( period = 4.918 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[22] ; clkx       ; clkx     ; None                        ; None                      ; 4.662 ns                ;
+; N/A                                     ; 203.75 MHz ( period = 4.908 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 4.652 ns                ;
+; N/A                                     ; 206.23 MHz ( period = 4.849 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.575 ns                ;
+; N/A                                     ; 207.38 MHz ( period = 4.822 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 4.566 ns                ;
+; N/A                                     ; 210.70 MHz ( period = 4.746 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[20] ; clkx       ; clkx     ; None                        ; None                      ; 4.490 ns                ;
+; N/A                                     ; 211.15 MHz ( period = 4.736 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 4.480 ns                ;
+; N/A                                     ; 212.36 MHz ( period = 4.709 ns )                    ; sjzm:comb_4|out1[9]  ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.435 ns                ;
+; N/A                                     ; 212.49 MHz ( period = 4.706 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 4.432 ns                ;
+; N/A                                     ; 213.81 MHz ( period = 4.677 ns )                    ; sjzm:comb_4|out1[10] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.403 ns                ;
+; N/A                                     ; 214.13 MHz ( period = 4.670 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 4.396 ns                ;
+; N/A                                     ; 214.59 MHz ( period = 4.660 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[19] ; clkx       ; clkx     ; None                        ; None                      ; 4.404 ns                ;
+; N/A                                     ; 215.94 MHz ( period = 4.631 ns )                    ; sjzm:comb_4|out1[15] ; sjzm:comb_4|dcen     ; clkx       ; clkx     ; None                        ; None                      ; 4.366 ns                ;
+; N/A                                     ; 218.63 MHz ( period = 4.574 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[18] ; clkx       ; clkx     ; None                        ; None                      ; 4.318 ns                ;
+; N/A                                     ; 219.97 MHz ( period = 4.546 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[23] ; clkx       ; clkx     ; None                        ; None                      ; 4.290 ns                ;
+; N/A                                     ; 220.17 MHz ( period = 4.542 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 4.276 ns                ;
+; N/A                                     ; 220.41 MHz ( period = 4.537 ns )                    ; sjzm:comb_4|out1[11] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.263 ns                ;
+; N/A                                     ; 220.51 MHz ( period = 4.535 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 4.261 ns                ;
+; N/A                                     ; 221.93 MHz ( period = 4.506 ns )                    ; sjzm:comb_4|out1[12] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.232 ns                ;
+; N/A                                     ; 221.93 MHz ( period = 4.506 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 4.240 ns                ;
+; N/A                                     ; 222.27 MHz ( period = 4.499 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 4.225 ns                ;
+; N/A                                     ; 222.82 MHz ( period = 4.488 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[17] ; clkx       ; clkx     ; None                        ; None                      ; 4.232 ns                ;
+; N/A                                     ; 224.22 MHz ( period = 4.460 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[22] ; clkx       ; clkx     ; None                        ; None                      ; 4.204 ns                ;
+; N/A                                     ; 224.42 MHz ( period = 4.456 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 4.190 ns                ;
+; N/A                                     ; 226.24 MHz ( period = 4.420 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 4.154 ns                ;
+; N/A                                     ; 226.60 MHz ( period = 4.413 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 4.139 ns                ;
+; N/A                                     ; 227.17 MHz ( period = 4.402 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[16] ; clkx       ; clkx     ; None                        ; None                      ; 4.146 ns                ;
+; N/A                                     ; 228.78 MHz ( period = 4.371 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 4.105 ns                ;
+; N/A                                     ; 228.83 MHz ( period = 4.370 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 4.104 ns                ;
+; N/A                                     ; 228.83 MHz ( period = 4.370 ns )                    ; sjzm:comb_4|out1[13] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.096 ns                ;
+; N/A                                     ; 230.68 MHz ( period = 4.335 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 4.069 ns                ;
+; N/A                                     ; 230.73 MHz ( period = 4.334 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 4.068 ns                ;
+; N/A                                     ; 233.21 MHz ( period = 4.288 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[20] ; clkx       ; clkx     ; None                        ; None                      ; 4.032 ns                ;
+; N/A                                     ; 233.37 MHz ( period = 4.285 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 4.019 ns                ;
+; N/A                                     ; 233.43 MHz ( period = 4.284 ns )                    ; sjzm:comb_4|out1[14] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 4.010 ns                ;
+; N/A                                     ; 233.43 MHz ( period = 4.284 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 4.018 ns                ;
+; N/A                                     ; 233.48 MHz ( period = 4.283 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 4.009 ns                ;
+; N/A                                     ; 235.35 MHz ( period = 4.249 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.983 ns                ;
+; N/A                                     ; 235.35 MHz ( period = 4.249 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 3.983 ns                ;
+; N/A                                     ; 235.40 MHz ( period = 4.248 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 3.982 ns                ;
+; N/A                                     ; 236.69 MHz ( period = 4.225 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[15] ; clkx       ; clkx     ; None                        ; None                      ; 3.971 ns                ;
+; N/A                                     ; 237.08 MHz ( period = 4.218 ns )                    ; sjzm:comb_4|out1[15] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.944 ns                ;
+; N/A                                     ; 237.98 MHz ( period = 4.202 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[19] ; clkx       ; clkx     ; None                        ; None                      ; 3.946 ns                ;
+; N/A                                     ; 238.15 MHz ( period = 4.199 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.933 ns                ;
+; N/A                                     ; 238.21 MHz ( period = 4.198 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.932 ns                ;
+; N/A                                     ; 240.21 MHz ( period = 4.163 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.897 ns                ;
+; N/A                                     ; 240.21 MHz ( period = 4.163 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.897 ns                ;
+; N/A                                     ; 240.27 MHz ( period = 4.162 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.896 ns                ;
+; N/A                                     ; 241.60 MHz ( period = 4.139 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[14] ; clkx       ; clkx     ; None                        ; None                      ; 3.885 ns                ;
+; N/A                                     ; 241.78 MHz ( period = 4.136 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 3.862 ns                ;
+; N/A                                     ; 242.78 MHz ( period = 4.119 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 3.853 ns                ;
+; N/A                                     ; 242.95 MHz ( period = 4.116 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[18] ; clkx       ; clkx     ; None                        ; None                      ; 3.860 ns                ;
+; N/A                                     ; 243.13 MHz ( period = 4.113 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 3.847 ns                ;
+; N/A                                     ; 243.19 MHz ( period = 4.112 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 3.846 ns                ;
+; N/A                                     ; 245.28 MHz ( period = 4.077 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.811 ns                ;
+; N/A                                     ; 245.28 MHz ( period = 4.077 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 3.811 ns                ;
+; N/A                                     ; 245.34 MHz ( period = 4.076 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 3.810 ns                ;
+; N/A                                     ; 246.73 MHz ( period = 4.053 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[13] ; clkx       ; clkx     ; None                        ; None                      ; 3.799 ns                ;
+; N/A                                     ; 247.95 MHz ( period = 4.033 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.767 ns                ;
+; N/A                                     ; 248.14 MHz ( period = 4.030 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[17] ; clkx       ; clkx     ; None                        ; None                      ; 3.774 ns                ;
+; N/A                                     ; 248.32 MHz ( period = 4.027 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.761 ns                ;
+; N/A                                     ; 248.39 MHz ( period = 4.026 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 3.760 ns                ;
+; N/A                                     ; 249.38 MHz ( period = 4.010 ns )                    ; sjzm:comb_4|out1[16] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.738 ns                ;
+; N/A                                     ; 250.25 MHz ( period = 3.996 ns )                    ; sjzm:comb_4|out1[9]  ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 3.722 ns                ;
+; N/A                                     ; 250.56 MHz ( period = 3.991 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.725 ns                ;
+; N/A                                     ; 250.56 MHz ( period = 3.991 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 3.725 ns                ;
+; N/A                                     ; 250.63 MHz ( period = 3.990 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 3.724 ns                ;
+; N/A                                     ; 251.76 MHz ( period = 3.972 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 3.706 ns                ;
+; N/A                                     ; 252.08 MHz ( period = 3.967 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[12] ; clkx       ; clkx     ; None                        ; None                      ; 3.713 ns                ;
+; N/A                                     ; 252.27 MHz ( period = 3.964 ns )                    ; sjzm:comb_4|out1[10] ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 3.690 ns                ;
+; N/A                                     ; 253.36 MHz ( period = 3.947 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.681 ns                ;
+; N/A                                     ; 253.55 MHz ( period = 3.944 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[16] ; clkx       ; clkx     ; None                        ; None                      ; 3.688 ns                ;
+; N/A                                     ; 253.74 MHz ( period = 3.941 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 3.675 ns                ;
+; N/A                                     ; 254.00 MHz ( period = 3.937 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[1]  ; clkx       ; clkx     ; None                        ; None                      ; 3.673 ns                ;
+; N/A                                     ; 254.26 MHz ( period = 3.933 ns )                    ; sjzm:comb_4|out1[17] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.661 ns                ;
+; N/A                                     ; 254.97 MHz ( period = 3.922 ns )                    ; sjzm:comb_4|out1[21] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.658 ns                ;
+; N/A                                     ; 256.08 MHz ( period = 3.905 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.639 ns                ;
+; N/A                                     ; 256.08 MHz ( period = 3.905 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 3.639 ns                ;
+; N/A                                     ; 257.33 MHz ( period = 3.886 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.620 ns                ;
+; N/A                                     ; 257.67 MHz ( period = 3.881 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[11] ; clkx       ; clkx     ; None                        ; None                      ; 3.627 ns                ;
+; N/A                                     ; 259.00 MHz ( period = 3.861 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 3.595 ns                ;
+; N/A                                     ; 259.40 MHz ( period = 3.855 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 3.589 ns                ;
+; N/A                                     ; 259.88 MHz ( period = 3.848 ns )                    ; sjzm:comb_4|out1[18] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.576 ns                ;
+; N/A                                     ; 260.69 MHz ( period = 3.836 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[23] ; clkx       ; clkx     ; None                        ; None                      ; 3.570 ns                ;
+; N/A                                     ; 260.96 MHz ( period = 3.832 ns )                    ; sjzm:comb_4|out1[9]  ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 3.566 ns                ;
+; N/A                                     ; 261.51 MHz ( period = 3.824 ns )                    ; sjzm:comb_4|out1[11] ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 3.550 ns                ;
+; N/A                                     ; 261.85 MHz ( period = 3.819 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 3.553 ns                ;
+; N/A                                     ; 261.85 MHz ( period = 3.819 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 3.553 ns                ;
+; N/A                                     ; 262.61 MHz ( period = 3.808 ns )                    ; sjzm:comb_4|out1[19] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.536 ns                ;
+; N/A                                     ; 263.16 MHz ( period = 3.800 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.534 ns                ;
+; N/A                                     ; 263.16 MHz ( period = 3.800 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[23] ; clkx       ; clkx     ; None                        ; None                      ; 3.534 ns                ;
+; N/A                                     ; 263.16 MHz ( period = 3.800 ns )                    ; sjzm:comb_4|out1[10] ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 3.534 ns                ;
+; N/A                                     ; 263.50 MHz ( period = 3.795 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[10] ; clkx       ; clkx     ; None                        ; None                      ; 3.541 ns                ;
+; N/A                                     ; 263.64 MHz ( period = 3.793 ns )                    ; sjzm:comb_4|out1[12] ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 3.519 ns                ;
+; N/A                                     ; 264.90 MHz ( period = 3.775 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.509 ns                ;
+; N/A                                     ; 265.46 MHz ( period = 3.767 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[15] ; clkx       ; clkx     ; None                        ; None                      ; 3.513 ns                ;
+; N/A                                     ; 266.67 MHz ( period = 3.750 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[22] ; clkx       ; clkx     ; None                        ; None                      ; 3.484 ns                ;
+; N/A                                     ; 266.95 MHz ( period = 3.746 ns )                    ; sjzm:comb_4|out1[9]  ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.480 ns                ;
+; N/A                                     ; 267.88 MHz ( period = 3.733 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 3.467 ns                ;
+; N/A                                     ; 269.25 MHz ( period = 3.714 ns )                    ; sjzm:comb_4|out1[10] ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.448 ns                ;
+; N/A                                     ; 269.25 MHz ( period = 3.714 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[22] ; clkx       ; clkx     ; None                        ; None                      ; 3.448 ns                ;
+; N/A                                     ; 269.25 MHz ( period = 3.714 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 3.448 ns                ;
+; N/A                                     ; 269.61 MHz ( period = 3.709 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[9]  ; clkx       ; clkx     ; None                        ; None                      ; 3.455 ns                ;
+; N/A                                     ; 271.08 MHz ( period = 3.689 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 3.423 ns                ;
+; N/A                                     ; 271.67 MHz ( period = 3.681 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[14] ; clkx       ; clkx     ; None                        ; None                      ; 3.427 ns                ;
+; N/A                                     ; 271.96 MHz ( period = 3.677 ns )                    ; sjzm:comb_4|out1[20] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.405 ns                ;
+; N/A                                     ; 272.85 MHz ( period = 3.665 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[23] ; clkx       ; clkx     ; None                        ; None                      ; 3.399 ns                ;
+; N/A                                     ; 273.22 MHz ( period = 3.660 ns )                    ; sjzm:comb_4|out1[9]  ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.394 ns                ;
+; N/A                                     ; 273.22 MHz ( period = 3.660 ns )                    ; sjzm:comb_4|out1[11] ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 3.394 ns                ;
+; N/A                                     ; 273.45 MHz ( period = 3.657 ns )                    ; sjzm:comb_4|out1[13] ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 3.383 ns                ;
+; N/A                                     ; 275.56 MHz ( period = 3.629 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[23] ; clkx       ; clkx     ; None                        ; None                      ; 3.363 ns                ;
+; N/A                                     ; 275.56 MHz ( period = 3.629 ns )                    ; sjzm:comb_4|out1[12] ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 3.363 ns                ;
+; N/A                                     ; 275.63 MHz ( period = 3.628 ns )                    ; sjzm:comb_4|out1[10] ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.362 ns                ;
+; N/A                                     ; 275.63 MHz ( period = 3.628 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.362 ns                ;
+; N/A                                     ; 276.01 MHz ( period = 3.623 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[8]  ; clkx       ; clkx     ; None                        ; None                      ; 3.369 ns                ;
+; N/A                                     ; 277.55 MHz ( period = 3.603 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 3.337 ns                ;
+; N/A                                     ; 278.16 MHz ( period = 3.595 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[13] ; clkx       ; clkx     ; None                        ; None                      ; 3.341 ns                ;
+; N/A                                     ; 279.41 MHz ( period = 3.579 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[22] ; clkx       ; clkx     ; None                        ; None                      ; 3.313 ns                ;
+; N/A                                     ; 279.49 MHz ( period = 3.578 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[20] ; clkx       ; clkx     ; None                        ; None                      ; 3.312 ns                ;
+; N/A                                     ; 279.80 MHz ( period = 3.574 ns )                    ; sjzm:comb_4|out1[11] ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.308 ns                ;
+; N/A                                     ; 279.80 MHz ( period = 3.574 ns )                    ; sjzm:comb_4|out1[9]  ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 3.308 ns                ;
+; N/A                                     ; 280.03 MHz ( period = 3.571 ns )                    ; sjzm:comb_4|out1[14] ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 3.297 ns                ;
+; N/A                                     ; 281.69 MHz ( period = 3.550 ns )                    ; sjzm:comb_4|out1[22] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.278 ns                ;
+; N/A                                     ; 282.25 MHz ( period = 3.543 ns )                    ; sjzm:comb_4|out1[12] ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.277 ns                ;
+; N/A                                     ; 282.25 MHz ( period = 3.543 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[23] ; clkx       ; clkx     ; None                        ; None                      ; 3.277 ns                ;
+; N/A                                     ; 282.25 MHz ( period = 3.543 ns )                    ; sjzm:comb_4|out1[5]  ; sjzm:comb_4|out1[22] ; clkx       ; clkx     ; None                        ; None                      ; 3.277 ns                ;
+; N/A                                     ; 282.33 MHz ( period = 3.542 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[20] ; clkx       ; clkx     ; None                        ; None                      ; 3.276 ns                ;
+; N/A                                     ; 282.33 MHz ( period = 3.542 ns )                    ; sjzm:comb_4|out1[10] ; sjzm:comb_4|out1[27] ; clkx       ; clkx     ; None                        ; None                      ; 3.276 ns                ;
+; N/A                                     ; 282.33 MHz ( period = 3.542 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[25] ; clkx       ; clkx     ; None                        ; None                      ; 3.276 ns                ;
+; N/A                                     ; 284.98 MHz ( period = 3.509 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[12] ; clkx       ; clkx     ; None                        ; None                      ; 3.255 ns                ;
+; N/A                                     ; 285.31 MHz ( period = 3.505 ns )                    ; sjzm:comb_4|out1[15] ; sjzm:comb_4|out1[21] ; clkx       ; clkx     ; None                        ; None                      ; 3.231 ns                ;
+; N/A                                     ; 286.29 MHz ( period = 3.493 ns )                    ; sjzm:comb_4|out1[13] ; sjzm:comb_4|out1[30] ; clkx       ; clkx     ; None                        ; None                      ; 3.227 ns                ;
+; N/A                                     ; 286.37 MHz ( period = 3.492 ns )                    ; sjzm:comb_4|out1[2]  ; sjzm:comb_4|out1[19] ; clkx       ; clkx     ; None                        ; None                      ; 3.226 ns                ;
+; N/A                                     ; 286.70 MHz ( period = 3.488 ns )                    ; sjzm:comb_4|out1[11] ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.222 ns                ;
+; N/A                                     ; 286.70 MHz ( period = 3.488 ns )                    ; sjzm:comb_4|out1[9]  ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.222 ns                ;
+; N/A                                     ; 287.52 MHz ( period = 3.478 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[1]  ; clkx       ; clkx     ; None                        ; None                      ; 3.214 ns                ;
+; N/A                                     ; 289.27 MHz ( period = 3.457 ns )                    ; sjzm:comb_4|out1[12] ; sjzm:comb_4|out1[28] ; clkx       ; clkx     ; None                        ; None                      ; 3.191 ns                ;
+; N/A                                     ; 289.27 MHz ( period = 3.457 ns )                    ; sjzm:comb_4|out1[6]  ; sjzm:comb_4|out1[22] ; clkx       ; clkx     ; None                        ; None                      ; 3.191 ns                ;
+; N/A                                     ; 289.35 MHz ( period = 3.456 ns )                    ; sjzm:comb_4|out1[10] ; sjzm:comb_4|out1[26] ; clkx       ; clkx     ; None                        ; None                      ; 3.190 ns                ;
+; N/A                                     ; 289.35 MHz ( period = 3.456 ns )                    ; sjzm:comb_4|out1[3]  ; sjzm:comb_4|out1[19] ; clkx       ; clkx     ; None                        ; None                      ; 3.190 ns                ;
+; N/A                                     ; 289.35 MHz ( period = 3.456 ns )                    ; sjzm:comb_4|out1[8]  ; sjzm:comb_4|out1[24] ; clkx       ; clkx     ; None                        ; None                      ; 3.190 ns                ;
+; N/A                                     ; 291.29 MHz ( period = 3.433 ns )                    ; sjzm:comb_4|out1[1]  ; sjzm:comb_4|out1[7]  ; clkx       ; clkx     ; None                        ; None                      ; 3.179 ns                ;
+; N/A                                     ; 291.97 MHz ( period = 3.425 ns )                    ; sjzm:comb_4|out1[23] ; sjzm:comb_4|out1[31] ; clkx       ; clkx     ; None                        ; None                      ; 3.153 ns                ;
+; N/A                                     ; 292.14 MHz ( period = 3.423 ns )                    ; sjzm:comb_4|out1[0]  ; sjzm:comb_4|out1[11] ; clkx       ; clkx     ; None                        ; None                      ; 3.169 ns                ;
+; N/A                                     ; 293.00 MHz ( period = 3.413 ns )                    ; sjzm:comb_4|out1[7]  ; sjzm:comb_4|out1[23] ; clkx       ; clkx     ; None                        ; None                      ; 3.147 ns                ;
+; N/A                                     ; 293.51 MHz ( period = 3.407 ns )                    ; sjzm:comb_4|out1[4]  ; sjzm:comb_4|out1[20] ; clkx       ; clkx     ; None                        ; None                      ; 3.141 ns                ;
+; N/A                                     ; 293.51 MHz ( period = 3.407 ns )                    ; sjzm:comb_4|out1[13] ; sjzm:comb_4|out1[29] ; clkx       ; clkx     ; None                        ; None                      ; 3.141 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                      ;                      ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Hold: 'clkbz'                                                                                                                                                                                   ;
++------------------------------------------+----------------------+------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Minimum Slack                            ; From                 ; To                     ; From Clock ; To Clock ; Required Hold Relationship ; Required Shortest P2P Time ; Actual Shortest P2P Time ;
++------------------------------------------+----------------------+------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Not operational: Clock Skew > Data Delay ; bzjs:comb_5|out2[11] ; mux4to1:comb_6|out8[3] ; clkbz      ; clkbz    ; None                       ; None                       ; 2.704 ns                 ;
+; Not operational: Clock Skew > Data Delay ; bzjs:comb_5|out2[12] ; mux4to1:comb_6|out8[4] ; clkbz      ; clkbz    ; None                       ; None                       ; 2.701 ns                 ;
++------------------------------------------+----------------------+------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+
+
++------------------------------------------------------------------------------------+
+; tsu                                                                                ;
++-----------+--------------+------------+--------+------------------------+----------+
+; Slack     ; Required tsu ; Actual tsu ; From   ; To                     ; To Clock ;
++-----------+--------------+------------+--------+------------------------+----------+
+; -1.437 ns ; 0.100 ns     ; 1.537 ns   ; sel[1] ; mux4to1:comb_6|out8[7] ; clkbz    ;
+; -1.247 ns ; 0.100 ns     ; 1.347 ns   ; sel[2] ; mux4to1:comb_6|out8[0] ; clkbz    ;
+; -1.194 ns ; 0.100 ns     ; 1.294 ns   ; sel[2] ; mux4to1:comb_6|out8[1] ; clkbz    ;
+; -1.192 ns ; 0.100 ns     ; 1.292 ns   ; sel[2] ; mux4to1:comb_6|out8[7] ; clkbz    ;
+; -1.188 ns ; 0.100 ns     ; 1.288 ns   ; sel[1] ; mux4to1:comb_6|out8[4] ; clkbz    ;
+; -1.164 ns ; 0.100 ns     ; 1.264 ns   ; sel[1] ; mux4to1:comb_6|out8[0] ; clkbz    ;
+; -1.140 ns ; 0.100 ns     ; 1.240 ns   ; sel[2] ; mux4to1:comb_6|out8[5] ; clkbz    ;
+; -1.121 ns ; 0.100 ns     ; 1.221 ns   ; sel[2] ; mux4to1:comb_6|out8[4] ; clkbz    ;
+; -1.120 ns ; 0.100 ns     ; 1.220 ns   ; sel[1] ; mux4to1:comb_6|out8[6] ; clkbz    ;
+; -1.116 ns ; 0.100 ns     ; 1.216 ns   ; sel[1] ; mux4to1:comb_6|out8[2] ; clkbz    ;
+; -1.109 ns ; 0.100 ns     ; 1.209 ns   ; sel[1] ; mux4to1:comb_6|out8[1] ; clkbz    ;
+; -1.054 ns ; 0.100 ns     ; 1.154 ns   ; sel[2] ; mux4to1:comb_6|out8[6] ; clkbz    ;
+; -1.014 ns ; 0.100 ns     ; 1.114 ns   ; sel[2] ; mux4to1:comb_6|out8[2] ; clkbz    ;
+; -0.955 ns ; 0.100 ns     ; 1.055 ns   ; sel[1] ; mux4to1:comb_6|out8[5] ; clkbz    ;
+; -0.931 ns ; 0.100 ns     ; 1.031 ns   ; sel[0] ; mux4to1:comb_6|out8[5] ; clkbz    ;
+; -0.915 ns ; 0.100 ns     ; 1.015 ns   ; sel[0] ; mux4to1:comb_6|out8[7] ; clkbz    ;
+; -0.893 ns ; 0.100 ns     ; 0.993 ns   ; sel[2] ; mux4to1:comb_6|out8[3] ; clkbz    ;
+; -0.883 ns ; 0.100 ns     ; 0.983 ns   ; sel[0] ; mux4to1:comb_6|out8[6] ; clkbz    ;
+; -0.880 ns ; 0.100 ns     ; 0.980 ns   ; sel[0] ; mux4to1:comb_6|out8[2] ; clkbz    ;
+; -0.861 ns ; 0.100 ns     ; 0.961 ns   ; sel[0] ; mux4to1:comb_6|out8[4] ; clkbz    ;
+; -0.798 ns ; 0.100 ns     ; 0.898 ns   ; sel[1] ; mux4to1:comb_6|out8[3] ; clkbz    ;
+; -0.785 ns ; 0.100 ns     ; 0.885 ns   ; sel[0] ; mux4to1:comb_6|out8[0] ; clkbz    ;
+; -0.750 ns ; 0.100 ns     ; 0.850 ns   ; sel[0] ; mux4to1:comb_6|out8[1] ; clkbz    ;
+; -0.656 ns ; 0.100 ns     ; 0.756 ns   ; sel[0] ; mux4to1:comb_6|out8[3] ; clkbz    ;
++-----------+--------------+------------+--------+------------------------+----------+
+
+
++----------------------------------------------------------------------------------------+
+; tco                                                                                    ;
++------------+--------------+------------+------------------------+---------+------------+
+; Slack      ; Required tco ; Actual tco ; From                   ; To      ; From Clock ;
++------------+--------------+------------+------------------------+---------+------------+
+; -10.160 ns ; 0.100 ns     ; 10.260 ns  ; mux4to1:comb_6|out8[1] ; out8[1] ; clkbz      ;
+; -10.157 ns ; 0.100 ns     ; 10.257 ns  ; mux4to1:comb_6|out8[0] ; out8[0] ; clkbz      ;
+; -10.139 ns ; 0.100 ns     ; 10.239 ns  ; mux4to1:comb_6|out8[3] ; out8[3] ; clkbz      ;
+; -10.127 ns ; 0.100 ns     ; 10.227 ns  ; mux4to1:comb_6|out8[6] ; out8[6] ; clkbz      ;
+; -10.123 ns ; 0.100 ns     ; 10.223 ns  ; mux4to1:comb_6|out8[7] ; out8[7] ; clkbz      ;
+; -9.961 ns  ; 0.100 ns     ; 10.061 ns  ; mux4to1:comb_6|out8[4] ; out8[4] ; clkbz      ;
+; -9.928 ns  ; 0.100 ns     ; 10.028 ns  ; mux4to1:comb_6|out8[2] ; out8[2] ; clkbz      ;
+; -9.922 ns  ; 0.100 ns     ; 10.022 ns  ; mux4to1:comb_6|out8[5] ; out8[5] ; clkbz      ;
+; -6.928 ns  ; 0.100 ns     ; 7.028 ns   ; bzjs:comb_5|load       ; int1    ; clkbz      ;
+; -5.912 ns  ; 0.100 ns     ; 6.012 ns   ; sjzm:comb_4|y2         ; y2      ; clkx       ;
+; -5.362 ns  ; 0.100 ns     ; 5.462 ns   ; rmk:comb_3|y           ; y       ; clkbz      ;
++------------+--------------+------------+------------------------+---------+------------+
+
+
++--------------------------------------------------------------------------------------+
+; th                                                                                   ;
++---------------+-------------+-----------+--------+------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From   ; To                     ; To Clock ;
++---------------+-------------+-----------+--------+------------------------+----------+
+; -0.535 ns     ; 0.100 ns    ; 0.635 ns  ; sel[1] ; mux4to1:comb_6|out8[3] ; clkbz    ;
+; -0.507 ns     ; 0.100 ns    ; 0.607 ns  ; sel[0] ; mux4to1:comb_6|out8[3] ; clkbz    ;
+; -0.453 ns     ; 0.100 ns    ; 0.553 ns  ; sel[2] ; mux4to1:comb_6|out8[3] ; clkbz    ;
+; -0.422 ns     ; 0.100 ns    ; 0.522 ns  ; sel[0] ; mux4to1:comb_6|out8[0] ; clkbz    ;
+; -0.416 ns     ; 0.100 ns    ; 0.516 ns  ; sel[0] ; mux4to1:comb_6|out8[1] ; clkbz    ;
+; -0.341 ns     ; 0.100 ns    ; 0.441 ns  ; sel[2] ; mux4to1:comb_6|out8[6] ; clkbz    ;
+; -0.332 ns     ; 0.100 ns    ; 0.432 ns  ; sel[0] ; mux4to1:comb_6|out8[6] ; clkbz    ;
+; -0.314 ns     ; 0.100 ns    ; 0.414 ns  ; sel[1] ; mux4to1:comb_6|out8[1] ; clkbz    ;
+; -0.304 ns     ; 0.100 ns    ; 0.404 ns  ; sel[0] ; mux4to1:comb_6|out8[7] ; clkbz    ;
+; -0.288 ns     ; 0.100 ns    ; 0.388 ns  ; sel[2] ; mux4to1:comb_6|out8[1] ; clkbz    ;
+; -0.267 ns     ; 0.100 ns    ; 0.367 ns  ; sel[2] ; mux4to1:comb_6|out8[4] ; clkbz    ;
+; -0.259 ns     ; 0.100 ns    ; 0.359 ns  ; sel[1] ; mux4to1:comb_6|out8[6] ; clkbz    ;
+; -0.213 ns     ; 0.100 ns    ; 0.313 ns  ; sel[1] ; mux4to1:comb_6|out8[5] ; clkbz    ;
+; -0.203 ns     ; 0.100 ns    ; 0.303 ns  ; sel[1] ; mux4to1:comb_6|out8[2] ; clkbz    ;
+; -0.186 ns     ; 0.100 ns    ; 0.286 ns  ; sel[0] ; mux4to1:comb_6|out8[4] ; clkbz    ;
+; -0.184 ns     ; 0.100 ns    ; 0.284 ns  ; sel[2] ; mux4to1:comb_6|out8[0] ; clkbz    ;
+; -0.182 ns     ; 0.100 ns    ; 0.282 ns  ; sel[1] ; mux4to1:comb_6|out8[0] ; clkbz    ;
+; -0.170 ns     ; 0.100 ns    ; 0.270 ns  ; sel[1] ; mux4to1:comb_6|out8[4] ; clkbz    ;
+; -0.170 ns     ; 0.100 ns    ; 0.270 ns  ; sel[2] ; mux4to1:comb_6|out8[7] ; clkbz    ;
+; -0.109 ns     ; 0.100 ns    ; 0.209 ns  ; sel[0] ; mux4to1:comb_6|out8[2] ; clkbz    ;
+; -0.107 ns     ; 0.100 ns    ; 0.207 ns  ; sel[2] ; mux4to1:comb_6|out8[2] ; clkbz    ;
+; -0.059 ns     ; 0.100 ns    ; 0.159 ns  ; sel[2] ; mux4to1:comb_6|out8[5] ; clkbz    ;
+; -0.058 ns     ; 0.100 ns    ; 0.158 ns  ; sel[0] ; mux4to1:comb_6|out8[5] ; clkbz    ;
+; 0.008 ns      ; 0.100 ns    ; 0.092 ns  ; sel[1] ; mux4to1:comb_6|out8[7] ; clkbz    ;
++---------------+-------------+-----------+--------+------------------------+----------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Minimum tco                                                                                       ;
++---------------+------------------+----------------+------------------------+---------+------------+
+; Minimum Slack ; Required Min tco ; Actual Min tco ; From                   ; To      ; From Clock ;
++---------------+------------------+----------------+------------------------+---------+------------+
+; N/A           ; None             ; 5.462 ns       ; rmk:comb_3|y           ; y       ; clkbz      ;
+; N/A           ; None             ; 6.012 ns       ; sjzm:comb_4|y2         ; y2      ; clkx       ;
+; N/A           ; None             ; 7.028 ns       ; bzjs:comb_5|load       ; int1    ; clkbz      ;
+; N/A           ; None             ; 10.022 ns      ; mux4to1:comb_6|out8[5] ; out8[5] ; clkbz      ;
+; N/A           ; None             ; 10.028 ns      ; mux4to1:comb_6|out8[2] ; out8[2] ; clkbz      ;
+; N/A           ; None             ; 10.061 ns      ; mux4to1:comb_6|out8[4] ; out8[4] ; clkbz      ;
+; N/A           ; None             ; 10.223 ns      ; mux4to1:comb_6|out8[7] ; out8[7] ; clkbz      ;
+; N/A           ; None             ; 10.227 ns      ; mux4to1:comb_6|out8[6] ; out8[6] ; clkbz      ;
+; N/A           ; None             ; 10.239 ns      ; mux4to1:comb_6|out8[3] ; out8[3] ; clkbz      ;
+; N/A           ; None             ; 10.257 ns      ; mux4to1:comb_6|out8[0] ; out8[0] ; clkbz      ;
+; N/A           ; None             ; 10.260 ns      ; mux4to1:comb_6|out8[1] ; out8[1] ; clkbz      ;
++---------------+------------------+----------------+------------------------+---------+------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 222 10/21/2009 SJ Full Version
+    Info: Processing started: Wed Jul 04 17:36:15 2012
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off cpj -c cpj --timing_analysis_only
+Info: Parallel compilation is enabled and will use 2 of the 2 processors detected
+Warning: Timing Analysis is analyzing one or more combinational loops as latches
+    Warning: Node "mux4to1:comb_6|out8[0]" is a latch
+    Warning: Node "mux4to1:comb_6|out8[1]" is a latch
+    Warning: Node "mux4to1:comb_6|out8[2]" is a latch
+    Warning: Node "mux4to1:comb_6|out8[3]" is a latch
+    Warning: Node "mux4to1:comb_6|out8[4]" is a latch
+    Warning: Node "mux4to1:comb_6|out8[5]" is a latch
+    Warning: Node "mux4to1:comb_6|out8[6]" is a latch
+    Warning: Node "mux4to1:comb_6|out8[7]" is a latch
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "clkbz" is an undefined clock
+    Info: Assuming node "clkx" is an undefined clock
+Warning: Found 1 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "bzjs:comb_5|load" as buffer
+Info: Clock "clkbz" has Internal fmax of 123.2 MHz between source register "bzjs:comb_5|out2[27]" and destination register "bzjs:comb_5|load" (period= 8.117 ns)
+    Info: + Longest register to register delay is 7.823 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X18_Y9_N23; Fanout = 4; REG Node = 'bzjs:comb_5|out2[27]'
+        Info: 2: + IC(1.946 ns) + CELL(0.651 ns) = 2.597 ns; Loc. = LCCOMB_X21_Y10_N4; Fanout = 1; COMB Node = 'bzjs:comb_5|WideOr0~7'
+        Info: 3: + IC(0.685 ns) + CELL(0.651 ns) = 3.933 ns; Loc. = LCCOMB_X20_Y10_N4; Fanout = 1; COMB Node = 'bzjs:comb_5|WideOr0~9'
+        Info: 4: + IC(3.131 ns) + CELL(0.651 ns) = 7.715 ns; Loc. = LCCOMB_X1_Y2_N20; Fanout = 1; COMB Node = 'bzjs:comb_5|load~0'
+        Info: 5: + IC(0.000 ns) + CELL(0.108 ns) = 7.823 ns; Loc. = LCFF_X1_Y2_N21; Fanout = 3; REG Node = 'bzjs:comb_5|load'
+        Info: Total cell delay = 2.061 ns ( 26.35 % )
+        Info: Total interconnect delay = 5.762 ns ( 73.65 % )
+    Info: - Smallest clock skew is -0.030 ns
+        Info: + Shortest clock path from clock "clkbz" to destination register is 2.719 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_17; Fanout = 2; CLK Node = 'clkbz'
+            Info: 2: + IC(0.953 ns) + CELL(0.666 ns) = 2.719 ns; Loc. = LCFF_X1_Y2_N21; Fanout = 3; REG Node = 'bzjs:comb_5|load'
+            Info: Total cell delay = 1.766 ns ( 64.95 % )
+            Info: Total interconnect delay = 0.953 ns ( 35.05 % )
+        Info: - Longest clock path from clock "clkbz" to source register is 2.749 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_17; Fanout = 2; CLK Node = 'clkbz'
+            Info: 2: + IC(0.143 ns) + CELL(0.000 ns) = 1.243 ns; Loc. = CLKCTRL_G2; Fanout = 66; COMB Node = 'clkbz~clkctrl'
+            Info: 3: + IC(0.840 ns) + CELL(0.666 ns) = 2.749 ns; Loc. = LCFF_X18_Y9_N23; Fanout = 4; REG Node = 'bzjs:comb_5|out2[27]'
+            Info: Total cell delay = 1.766 ns ( 64.24 % )
+            Info: Total interconnect delay = 0.983 ns ( 35.76 % )
+    Info: + Micro clock to output delay of source is 0.304 ns
+    Info: + Micro setup delay of destination is -0.040 ns
+Info: Clock "clkx" has Internal fmax of 91.47 MHz between source register "sjzm:comb_4|out1[1]" and destination register "sjzm:comb_4|dcen" (period= 10.933 ns)
+    Info: + Longest register to register delay is 10.678 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X1_Y2_N31; Fanout = 4; REG Node = 'sjzm:comb_4|out1[1]'
+        Info: 2: + IC(4.199 ns) + CELL(0.202 ns) = 4.401 ns; Loc. = LCCOMB_X27_Y10_N12; Fanout = 1; COMB Node = 'sjzm:comb_4|dcen~1'
+        Info: 3: + IC(2.181 ns) + CELL(0.370 ns) = 6.952 ns; Loc. = LCCOMB_X17_Y7_N12; Fanout = 1; COMB Node = 'sjzm:comb_4|dcen~4'
+        Info: 4: + IC(1.421 ns) + CELL(0.206 ns) = 8.579 ns; Loc. = LCCOMB_X9_Y7_N2; Fanout = 1; COMB Node = 'sjzm:comb_4|dcen~10'
+        Info: 5: + IC(1.785 ns) + CELL(0.206 ns) = 10.570 ns; Loc. = LCCOMB_X1_Y3_N16; Fanout = 1; COMB Node = 'sjzm:comb_4|dcen~feeder'
+        Info: 6: + IC(0.000 ns) + CELL(0.108 ns) = 10.678 ns; Loc. = LCFF_X1_Y3_N17; Fanout = 34; REG Node = 'sjzm:comb_4|dcen'
+        Info: Total cell delay = 1.092 ns ( 10.23 % )
+        Info: Total interconnect delay = 9.586 ns ( 89.77 % )
+    Info: - Smallest clock skew is 0.009 ns
+        Info: + Shortest clock path from clock "clkx" to destination register is 2.973 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.954 ns) = 0.954 ns; Loc. = PIN_42; Fanout = 34; CLK Node = 'clkx'
+            Info: 2: + IC(1.353 ns) + CELL(0.666 ns) = 2.973 ns; Loc. = LCFF_X1_Y3_N17; Fanout = 34; REG Node = 'sjzm:comb_4|dcen'
+            Info: Total cell delay = 1.620 ns ( 54.49 % )
+            Info: Total interconnect delay = 1.353 ns ( 45.51 % )
+        Info: - Longest clock path from clock "clkx" to source register is 2.964 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.954 ns) = 0.954 ns; Loc. = PIN_42; Fanout = 34; CLK Node = 'clkx'
+            Info: 2: + IC(1.344 ns) + CELL(0.666 ns) = 2.964 ns; Loc. = LCFF_X1_Y2_N31; Fanout = 4; REG Node = 'sjzm:comb_4|out1[1]'
+            Info: Total cell delay = 1.620 ns ( 54.66 % )
+            Info: Total interconnect delay = 1.344 ns ( 45.34 % )
+    Info: + Micro clock to output delay of source is 0.304 ns
+    Info: + Micro setup delay of destination is -0.040 ns
+Warning: Circuit may not operate. Detected 2 non-operational path(s) clocked by clock "clkbz" with clock skew larger than data delay. See Compilation Report for details.
+Info: Found hold time violation between source  pin or register "bzjs:comb_5|out2[11]" and destination pin or register "mux4to1:comb_6|out8[3]" for clock "clkbz" (Hold time is 242 ps)
+    Info: + Largest clock skew is 3.250 ns
+        Info: + Longest clock path from clock "clkbz" to destination register is 6.004 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_17; Fanout = 2; CLK Node = 'clkbz'
+            Info: 2: + IC(0.953 ns) + CELL(0.970 ns) = 3.023 ns; Loc. = LCFF_X1_Y2_N21; Fanout = 3; REG Node = 'bzjs:comb_5|load'
+            Info: 3: + IC(1.247 ns) + CELL(0.000 ns) = 4.270 ns; Loc. = CLKCTRL_G3; Fanout = 8; COMB Node = 'bzjs:comb_5|load~clkctrl'
+            Info: 4: + IC(1.364 ns) + CELL(0.370 ns) = 6.004 ns; Loc. = LCCOMB_X19_Y10_N22; Fanout = 1; REG Node = 'mux4to1:comb_6|out8[3]'
+            Info: Total cell delay = 2.440 ns ( 40.64 % )
+            Info: Total interconnect delay = 3.564 ns ( 59.36 % )
+        Info: - Shortest clock path from clock "clkbz" to source register is 2.754 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_17; Fanout = 2; CLK Node = 'clkbz'
+            Info: 2: + IC(0.143 ns) + CELL(0.000 ns) = 1.243 ns; Loc. = CLKCTRL_G2; Fanout = 66; COMB Node = 'clkbz~clkctrl'
+            Info: 3: + IC(0.845 ns) + CELL(0.666 ns) = 2.754 ns; Loc. = LCFF_X18_Y10_N23; Fanout = 4; REG Node = 'bzjs:comb_5|out2[11]'
+            Info: Total cell delay = 1.766 ns ( 64.12 % )
+            Info: Total interconnect delay = 0.988 ns ( 35.88 % )
+    Info: - Micro clock to output delay of source is 0.304 ns
+    Info: - Shortest register to register delay is 2.704 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X18_Y10_N23; Fanout = 4; REG Node = 'bzjs:comb_5|out2[11]'
+        Info: 2: + IC(0.767 ns) + CELL(0.624 ns) = 1.391 ns; Loc. = LCCOMB_X19_Y10_N8; Fanout = 1; COMB Node = 'mux4to1:comb_6|Mux4~1'
+        Info: 3: + IC(0.377 ns) + CELL(0.366 ns) = 2.134 ns; Loc. = LCCOMB_X19_Y10_N18; Fanout = 1; COMB Node = 'mux4to1:comb_6|Mux4~4'
+        Info: 4: + IC(0.364 ns) + CELL(0.206 ns) = 2.704 ns; Loc. = LCCOMB_X19_Y10_N22; Fanout = 1; REG Node = 'mux4to1:comb_6|out8[3]'
+        Info: Total cell delay = 1.196 ns ( 44.23 % )
+        Info: Total interconnect delay = 1.508 ns ( 55.77 % )
+    Info: + Micro hold delay of destination is 0.000 ns
+    Info: Delay path is controlled by inverted clocks -- if clock duty cycle is 50%, fmax is divided by two
+Warning: Can't achieve timing requirement tsu along 24 path(s). See Report window for details.
+Info: Slack time is -1.437 ns for clock "clkbz" between source pin "sel[1]" and destination register "mux4to1:comb_6|out8[7]"
+    Info: + tsu requirement for source pin and destination register is 0.100 ns
+    Info: - tsu from clock to input pin is 1.537 ns
+        Info: + Longest pin to register delay is 6.105 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.965 ns) = 0.965 ns; Loc. = PIN_75; Fanout = 24; PIN Node = 'sel[1]'
+            Info: 2: + IC(2.918 ns) + CELL(0.206 ns) = 4.089 ns; Loc. = LCCOMB_X9_Y10_N10; Fanout = 1; COMB Node = 'mux4to1:comb_6|Mux0~2'
+            Info: 3: + IC(0.366 ns) + CELL(0.206 ns) = 4.661 ns; Loc. = LCCOMB_X9_Y10_N24; Fanout = 1; COMB Node = 'mux4to1:comb_6|Mux0~3'
+            Info: 4: + IC(0.673 ns) + CELL(0.206 ns) = 5.540 ns; Loc. = LCCOMB_X9_Y10_N2; Fanout = 1; COMB Node = 'mux4to1:comb_6|Mux0~4'
+            Info: 5: + IC(0.359 ns) + CELL(0.206 ns) = 6.105 ns; Loc. = LCCOMB_X9_Y10_N6; Fanout = 1; REG Node = 'mux4to1:comb_6|out8[7]'
+            Info: Total cell delay = 1.789 ns ( 29.30 % )
+            Info: Total interconnect delay = 4.316 ns ( 70.70 % )
+        Info: + Micro setup delay of destination is 1.419 ns
+        Info: - Shortest clock path from clock "clkbz" to destination register is 5.987 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_17; Fanout = 2; CLK Node = 'clkbz'
+            Info: 2: + IC(0.953 ns) + CELL(0.970 ns) = 3.023 ns; Loc. = LCFF_X1_Y2_N21; Fanout = 3; REG Node = 'bzjs:comb_5|load'
+            Info: 3: + IC(1.247 ns) + CELL(0.000 ns) = 4.270 ns; Loc. = CLKCTRL_G3; Fanout = 8; COMB Node = 'bzjs:comb_5|load~clkctrl'
+            Info: 4: + IC(1.347 ns) + CELL(0.370 ns) = 5.987 ns; Loc. = LCCOMB_X9_Y10_N6; Fanout = 1; REG Node = 'mux4to1:comb_6|out8[7]'
+            Info: Total cell delay = 2.440 ns ( 40.75 % )
+            Info: Total interconnect delay = 3.547 ns ( 59.25 % )
+Warning: Can't achieve timing requirement tco along 11 path(s). See Report window for details.
+Info: Slack time is -10.16 ns for clock "clkbz" between source register "mux4to1:comb_6|out8[1]" and destination pin "out8[1]"
+    Info: + tco requirement for source register and destination pin is 0.100 ns
+    Info: - tco from clock to output pin is 10.260 ns
+        Info: + Longest clock path from clock "clkbz" to source register is 6.023 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_17; Fanout = 2; CLK Node = 'clkbz'
+            Info: 2: + IC(0.953 ns) + CELL(0.970 ns) = 3.023 ns; Loc. = LCFF_X1_Y2_N21; Fanout = 3; REG Node = 'bzjs:comb_5|load'
+            Info: 3: + IC(1.247 ns) + CELL(0.000 ns) = 4.270 ns; Loc. = CLKCTRL_G3; Fanout = 8; COMB Node = 'bzjs:comb_5|load~clkctrl'
+            Info: 4: + IC(1.383 ns) + CELL(0.370 ns) = 6.023 ns; Loc. = LCCOMB_X27_Y10_N0; Fanout = 1; REG Node = 'mux4to1:comb_6|out8[1]'
+            Info: Total cell delay = 2.440 ns ( 40.51 % )
+            Info: Total interconnect delay = 3.583 ns ( 59.49 % )
+        Info: + Longest register to pin delay is 4.237 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCCOMB_X27_Y10_N0; Fanout = 1; REG Node = 'mux4to1:comb_6|out8[1]'
+            Info: 2: + IC(0.941 ns) + CELL(3.296 ns) = 4.237 ns; Loc. = PIN_114; Fanout = 0; PIN Node = 'out8[1]'
+            Info: Total cell delay = 3.296 ns ( 77.79 % )
+            Info: Total interconnect delay = 0.941 ns ( 22.21 % )
+Warning: Can't achieve timing requirement th along 23 path(s). See Report window for details.
+Info: Minimum slack time is -535 ps for clock "clkbz" between source pin "sel[1]" and destination register "mux4to1:comb_6|out8[3]"
+    Info: + th requirement for source pin and destination register is 0.100 ns
+    Info: - th from clock to input pin is 0.635 ns
+        Info: + Longest clock path from clock "clkbz" to destination register is 6.004 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_17; Fanout = 2; CLK Node = 'clkbz'
+            Info: 2: + IC(0.953 ns) + CELL(0.970 ns) = 3.023 ns; Loc. = LCFF_X1_Y2_N21; Fanout = 3; REG Node = 'bzjs:comb_5|load'
+            Info: 3: + IC(1.247 ns) + CELL(0.000 ns) = 4.270 ns; Loc. = CLKCTRL_G3; Fanout = 8; COMB Node = 'bzjs:comb_5|load~clkctrl'
+            Info: 4: + IC(1.364 ns) + CELL(0.370 ns) = 6.004 ns; Loc. = LCCOMB_X19_Y10_N22; Fanout = 1; REG Node = 'mux4to1:comb_6|out8[3]'
+            Info: Total cell delay = 2.440 ns ( 40.64 % )
+            Info: Total interconnect delay = 3.564 ns ( 59.36 % )
+        Info: + Micro hold delay of destination is 0.000 ns
+        Info: - Shortest pin to register delay is 5.369 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.965 ns) = 0.965 ns; Loc. = PIN_75; Fanout = 24; PIN Node = 'sel[1]'
+            Info: 2: + IC(2.488 ns) + CELL(0.206 ns) = 3.659 ns; Loc. = LCCOMB_X19_Y10_N30; Fanout = 1; COMB Node = 'mux4to1:comb_6|Mux4~2'
+            Info: 3: + IC(0.364 ns) + CELL(0.206 ns) = 4.229 ns; Loc. = LCCOMB_X19_Y10_N28; Fanout = 1; COMB Node = 'mux4to1:comb_6|Mux4~3'
+            Info: 4: + IC(0.364 ns) + CELL(0.206 ns) = 4.799 ns; Loc. = LCCOMB_X19_Y10_N18; Fanout = 1; COMB Node = 'mux4to1:comb_6|Mux4~4'
+            Info: 5: + IC(0.364 ns) + CELL(0.206 ns) = 5.369 ns; Loc. = LCCOMB_X19_Y10_N22; Fanout = 1; REG Node = 'mux4to1:comb_6|out8[3]'
+            Info: Total cell delay = 1.789 ns ( 33.32 % )
+            Info: Total interconnect delay = 3.580 ns ( 66.68 % )
+Info: Minimum tco from clock "clkbz" to destination pin "y" through register "rmk:comb_3|y" is 5.462 ns
+    Info: + Shortest clock path from clock "clkbz" to source register is 2.536 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.100 ns) = 1.100 ns; Loc. = PIN_17; Fanout = 2; CLK Node = 'clkbz'
+        Info: 2: + IC(0.143 ns) + CELL(0.000 ns) = 1.243 ns; Loc. = CLKCTRL_G2; Fanout = 66; COMB Node = 'clkbz~clkctrl'
+        Info: 3: + IC(0.959 ns) + CELL(0.334 ns) = 2.536 ns; Loc. = IOC_X0_Y2_N4; Fanout = 1; REG Node = 'rmk:comb_3|y'
+        Info: Total cell delay = 1.434 ns ( 56.55 % )
+        Info: Total interconnect delay = 1.102 ns ( 43.45 % )
+    Info: + Micro clock to output delay of source is 0.187 ns
+    Info: + Shortest register to pin delay is 2.739 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = IOC_X0_Y2_N4; Fanout = 1; REG Node = 'rmk:comb_3|y'
+        Info: 2: + IC(0.000 ns) + CELL(2.739 ns) = 2.739 ns; Loc. = PIN_32; Fanout = 0; PIN Node = 'y'
+        Info: Total cell delay = 2.739 ns ( 100.00 % )
+Critical Warning: Timing requirements for slow timing model timing analysis were not met. See Report window for details.
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 16 warnings
+    Info: Peak virtual memory: 156 megabytes
+    Info: Processing ended: Wed Jul 04 17:36:15 2012
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

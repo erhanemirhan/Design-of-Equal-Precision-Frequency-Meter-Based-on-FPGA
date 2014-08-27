@@ -1,0 +1,16 @@
+Fitter Status : Successful - Fri May 18 20:40:47 2012
+Quartus II Version : 9.1 Build 222 10/21/2009 SJ Full Version
+Revision Name : freq
+Top-level Entity Name : freq
+Family : Cyclone II
+Device : EP2C8Q208C8
+Timing Models : Final
+Total logic elements : 7,202 / 8,256 ( 87 % )
+    Total combinational functions : 7,185 / 8,256 ( 87 % )
+    Dedicated logic registers : 228 / 8,256 ( 3 % )
+Total registers : 228
+Total pins : 14 / 138 ( 10 % )
+Total virtual pins : 0
+Total memory bits : 0 / 165,888 ( 0 % )
+Embedded Multiplier 9-bit elements : 6 / 36 ( 17 % )
+Total PLLs : 0 / 2 ( 0 % )

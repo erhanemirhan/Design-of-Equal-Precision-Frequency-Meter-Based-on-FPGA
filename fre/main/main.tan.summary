@@ -1,0 +1,116 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 35.238 ns
+From           : flip_latch:b2v_inst2|Q4[1]
+To             : disp_data[0]
+From Clock     : Clock
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 27.526 ns
+From           : SW2
+To             : disp_data[0]
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'Clock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 81.01 MHz ( period = 12.344 ns )
+From           : gate_control:b2v_inst3|wire_1
+To             : gate_control:b2v_inst3|wire_2
+From Clock     : Clock
+To Clock       : Clock
+Failed Paths   : 0
+
+Type           : Clock Setup: 'F_in'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 183.69 MHz ( period = 5.444 ns )
+From           : counter:b2v_inst|Q0[3]
+To             : counter:b2v_inst|Q5[1]
+From Clock     : F_in
+To Clock       : F_in
+Failed Paths   : 0
+
+Type           : Clock Setup: 'SW1'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 242.60 MHz ( period = 4.122 ns )
+From           : gate_control:b2v_inst3|wire_1
+To             : gate_control:b2v_inst3|wire_2
+From Clock     : SW1
+To Clock       : SW1
+Failed Paths   : 0
+
+Type           : Clock Setup: 'SW2'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 264.97 MHz ( period = 3.774 ns )
+From           : gate_control:b2v_inst3|wire_1
+To             : gate_control:b2v_inst3|wire_2
+From Clock     : SW2
+To Clock       : SW2
+Failed Paths   : 0
+
+Type           : Clock Setup: 'SW0'
+Slack          : N/A
+Required Time  : None
+Actual Time    : Restricted to 340.02 MHz ( period = 2.941 ns )
+From           : gate_control:b2v_inst3|wire_1
+To             : gate_control:b2v_inst3|wire_2
+From Clock     : SW0
+To Clock       : SW0
+Failed Paths   : 0
+
+Type           : Clock Hold: 'Clock'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : gate_control:b2v_inst3|wire_1
+To             : gate_control:b2v_inst3|wire_1
+From Clock     : Clock
+To Clock       : Clock
+Failed Paths   : 2
+
+Type           : Clock Hold: 'SW1'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : gate_control:b2v_inst3|wire_1
+To             : gate_control:b2v_inst3|wire_1
+From Clock     : SW1
+To Clock       : SW1
+Failed Paths   : 1
+
+Type           : Clock Hold: 'SW2'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : gate_control:b2v_inst3|wire_1
+To             : gate_control:b2v_inst3|wire_1
+From Clock     : SW2
+To Clock       : SW2
+Failed Paths   : 1
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 4
+
+--------------------------------------------------------------------------------------
+

@@ -1,0 +1,56 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 12.124 ns
+From           : LCD_1602:U_LCD|LCD_Data[1]
+To             : LCD_Data[1]
+From Clock     : CLK
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'CLK'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 3.58 MHz ( period = 279.071 ns )
+From           : Frequency_Control:FreQ|cnt_Fb[30]
+To             : Data_Convert:UData|D2[0]
+From Clock     : CLK
+To Clock       : CLK
+Failed Paths   : 0
+
+Type           : Clock Setup: 'Fx'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 204.92 MHz ( period = 4.880 ns )
+From           : Frequency_Control:FreQ|cnt_Fx[1]
+To             : Frequency_Control:FreQ|cnt_Fx[29]
+From Clock     : Fx
+To Clock       : Fx
+Failed Paths   : 0
+
+Type           : Clock Hold: 'CLK'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : Data_Convert:UData|Ascii_Convert:UA8|Ascii_out[3]
+To             : LCD_1602:U_LCD|LCD_Data[3]
+From Clock     : CLK
+To Clock       : CLK
+Failed Paths   : 3
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 3
+
+--------------------------------------------------------------------------------------
+

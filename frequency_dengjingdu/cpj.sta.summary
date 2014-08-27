@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'bzjs:comb_5|load'
+Slack : -5.941
+TNS   : -43.327
+
+Type  : Slow Model Setup 'clkx'
+Slack : -4.801
+TNS   : -109.296
+
+Type  : Slow Model Setup 'clkbz'
+Slack : -4.567
+TNS   : -210.670
+
+Type  : Slow Model Hold 'clkbz'
+Slack : -2.558
+TNS   : -2.558
+
+Type  : Slow Model Hold 'clkx'
+Slack : 0.499
+TNS   : 0.000
+
+Type  : Slow Model Hold 'bzjs:comb_5|load'
+Slack : 2.285
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'clkbz'
+Slack : -1.941
+TNS   : -101.369
+
+Type  : Slow Model Minimum Pulse Width 'clkx'
+Slack : -1.777
+TNS   : -52.233
+
+Type  : Slow Model Minimum Pulse Width 'bzjs:comb_5|load'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'bzjs:comb_5|load'
+Slack : -1.579
+TNS   : -11.351
+
+Type  : Fast Model Setup 'clkx'
+Slack : -1.138
+TNS   : -17.256
+
+Type  : Fast Model Setup 'clkbz'
+Slack : -1.066
+TNS   : -30.808
+
+Type  : Fast Model Hold 'clkbz'
+Slack : -1.361
+TNS   : -1.361
+
+Type  : Fast Model Hold 'clkx'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'bzjs:comb_5|load'
+Slack : 1.274
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'clkbz'
+Slack : -1.380
+TNS   : -68.380
+
+Type  : Fast Model Minimum Pulse Width 'clkx'
+Slack : -1.222
+TNS   : -35.222
+
+Type  : Fast Model Minimum Pulse Width 'bzjs:comb_5|load'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

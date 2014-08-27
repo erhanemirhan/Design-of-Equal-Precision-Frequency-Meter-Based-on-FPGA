@@ -1,0 +1,36 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 14.299 ns
+From           : dispselect:b2v_inst7|Q[1]
+To             : dp
+From Clock     : Clock
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'Clock'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 177.37 MHz ( period = 5.638 ns )
+From           : fdiv:b2v_inst1|cnt1[6]
+To             : fdiv:b2v_inst1|cnt1[0]
+From Clock     : Clock
+To Clock       : Clock
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

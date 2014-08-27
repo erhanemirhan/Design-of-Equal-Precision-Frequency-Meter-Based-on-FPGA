@@ -1,0 +1,86 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : -1.437 ns
+Required Time  : 0.100 ns
+Actual Time    : 1.537 ns
+From           : sel[1]
+To             : mux4to1:comb_6|out8[7]
+From Clock     : --
+To Clock       : clkbz
+Failed Paths   : 24
+
+Type           : Worst-case tco
+Slack          : -10.160 ns
+Required Time  : 0.100 ns
+Actual Time    : 10.260 ns
+From           : mux4to1:comb_6|out8[1]
+To             : out8[1]
+From Clock     : clkbz
+To Clock       : --
+Failed Paths   : 11
+
+Type           : Worst-case th
+Slack          : -0.535 ns
+Required Time  : 0.100 ns
+Actual Time    : 0.635 ns
+From           : sel[1]
+To             : mux4to1:comb_6|out8[3]
+From Clock     : --
+To Clock       : clkbz
+Failed Paths   : 23
+
+Type           : Worst-case Minimum tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 5.462 ns
+From           : rmk:comb_3|y
+To             : y
+From Clock     : clkbz
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'clkx'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 91.47 MHz ( period = 10.933 ns )
+From           : sjzm:comb_4|out1[1]
+To             : sjzm:comb_4|dcen
+From Clock     : clkx
+To Clock       : clkx
+Failed Paths   : 0
+
+Type           : Clock Setup: 'clkbz'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 123.20 MHz ( period = 8.117 ns )
+From           : bzjs:comb_5|out2[27]
+To             : bzjs:comb_5|load
+From Clock     : clkbz
+To Clock       : clkbz
+Failed Paths   : 0
+
+Type           : Clock Hold: 'clkbz'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : bzjs:comb_5|out2[11]
+To             : mux4to1:comb_6|out8[3]
+From Clock     : clkbz
+To Clock       : clkbz
+Failed Paths   : 2
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 60
+
+--------------------------------------------------------------------------------------
+
